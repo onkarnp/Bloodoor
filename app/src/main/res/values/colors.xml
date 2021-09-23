@@ -8,4 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_blue">#FFC9F7FF</color>
+    <color name="colorPrimary">#FAF5CA</color>
+    <color name="colorPrimaryDark">#0027FF</color>
+    <color name="colorAccent">#FA3E02</color>
+    <color name="colortextfirst">#FF000000</color>
+    <color name="colortextsecond">#777474</color>
+    <color name="color_view">#A5A2A2</color>
+    <color name="white">#fff</color>
 </resources>
