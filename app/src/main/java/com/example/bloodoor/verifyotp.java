@@ -1,26 +1,40 @@
 package com.example.bloodoor;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
+
+import java.util.concurrent.TimeUnit;
 
 public class verifyotp extends AppCompatActivity {
 
     EditText inputnumber1, inputnumber2, inputnumber3, inputnumber4, inputnumber5, inputnumber6;
+    String getotpbackend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verifyotp);
 
-        Button verifybuttononclick = findViewById(R.id.buttongetotp);
+        final Button verifybuttononclick = findViewById(R.id.buttongetotp);
 
         inputnumber1 = findViewById(R.id.inputotp1);
         inputnumber2 = findViewById(R.id.inputotp2);
@@ -30,20 +44,92 @@ public class verifyotp extends AppCompatActivity {
         inputnumber6 = findViewById(R.id.inputotp6);
 
         TextView textView = findViewById(R.id.textshowmobilenumber);
-        textView.setText(String.format("+91~s", getIntent().getStringExtra("mobile")));
+        textView.setText(String.format(
+                "+91~%s", getIntent().getStringExtra("mobile")
+        ));
 
-        verifybuttononclick.setOnClickListener(new View.OnClickListener(){
+        getotpbackend = getIntent().getStringExtra("backendotp");
+
+        final ProgressBar progressBarverifyotp = findViewById(R.id.progressbar_verify_otp);
+
+        verifybuttononclick.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                if(!inputnumber1.getText().toString().trim().isEmpty()  && !inputnumber2.getText().toString().trim().isEmpty() && !inputnumber3.getText().toString().trim().isEmpty() && !inputnumber4.getText().toString().trim().isEmpty() && !inputnumber5.getText().toString().trim().isEmpty() && !inputnumber6.getText().toString().trim().isEmpty()){
-                    Toast.makeText(verifyotp.this, "OTP verify...",Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(verifyotp.this, "Please enter all number...",Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+
+                if (!inputnumber1.getText().toString().trim().isEmpty() && !inputnumber2.getText().toString().trim().isEmpty() && !inputnumber3.getText().toString().trim().isEmpty() && !inputnumber4.getText().toString().trim().isEmpty() && !inputnumber5.getText().toString().trim().isEmpty() && !inputnumber6.getText().toString().trim().isEmpty()) {
+                    String entercodeotp = inputnumber1.getText().toString() +
+                            inputnumber2.getText().toString() +
+                            inputnumber3.getText().toString() +
+                            inputnumber4.getText().toString() +
+                            inputnumber5.getText().toString() +
+                            inputnumber6.getText().toString();
+
+                    if (getotpbackend != null) {
+                        progressBarverifyotp.setVisibility(View.VISIBLE);
+                        verifybuttononclick.setVisibility(View.INVISIBLE);
+
+                        PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(
+                                getotpbackend, entercodeotp
+                        );
+                        FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        progressBarverifyotp.setVisibility(View.GONE);
+                                        verifybuttononclick.setVisibility(View.VISIBLE);
+
+                                        if (task.isSuccessful()) {
+                                            Intent intent = new Intent(getApplicationContext(), Homepage_BB.class);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(verifyotp.this, "Enter the correct OTP...", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+
+                    } else {
+                        Toast.makeText(verifyotp.this, "Please check your internet connection...", Toast.LENGTH_SHORT).show();
+                    }
+//                    Toast.makeText(verifyotp.this, "OTP verify...",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(verifyotp.this, "Please enter all number...", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
         numberotpmove();
+
+        TextView resendlabel = findViewById(R.id.textresendotp);
+
+        resendlabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                        "+91" + getIntent().getStringExtra("mobile"),
+                        90,
+                        TimeUnit.SECONDS,
+                        verifyotp.this,
+                        new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                            @Override
+                            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+
+                            }
+
+                            @Override
+                            public void onVerificationFailed(@NonNull FirebaseException e) {
+                                Toast.makeText(verifyotp.this, "Please check your internet connection...", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onCodeSent(@NonNull String newbackendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                                getotpbackend = newbackendotp;
+                                Toast.makeText(verifyotp.this, "OTP send successfully..", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                );
+            }
+        });
     }
 
     private void numberotpmove() {
@@ -55,7 +141,7 @@ public class verifyotp extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!s.toString().trim().isEmpty()){
+                if (!s.toString().trim().isEmpty()) {
                     inputnumber2.requestFocus();
                 }
             }
@@ -74,7 +160,7 @@ public class verifyotp extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!s.toString().trim().isEmpty()){
+                if (!s.toString().trim().isEmpty()) {
                     inputnumber3.requestFocus();
                 }
             }
@@ -93,7 +179,7 @@ public class verifyotp extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!s.toString().trim().isEmpty()){
+                if (!s.toString().trim().isEmpty()) {
                     inputnumber4.requestFocus();
                 }
             }
@@ -112,7 +198,7 @@ public class verifyotp extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!s.toString().trim().isEmpty()){
+                if (!s.toString().trim().isEmpty()) {
                     inputnumber5.requestFocus();
                 }
             }
@@ -131,7 +217,7 @@ public class verifyotp extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!s.toString().trim().isEmpty()){
+                if (!s.toString().trim().isEmpty()) {
                     inputnumber6.requestFocus();
                 }
             }
