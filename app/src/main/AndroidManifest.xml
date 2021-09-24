@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloodoor">
         <activity android:name=".verifyOTP" />
+        <activity android:name=".Homepage_BB">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Homepage_user" />
+        <activity android:name=".verifyOTP"></activity>
         <activity android:name=".EnterNumber1" />
         <activity android:name=".MainActivity">
             <intent-filter>
