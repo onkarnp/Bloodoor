@@ -197,16 +197,29 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/buttongetotp"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/enter"
-            android:textSize="18sp"
-            android:layout_margin="30dp"
-            android:textColor="@color/colortextfirst"
-            android:textStyle="bold"
-            android:background="@drawable/buttonback"/>
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/buttongetotp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonback"
+                android:text="@string/enter"
+                android:textSize="18sp"
+                android:layout_margin="30dp"
+                android:textColor="@color/colortextfirst"
+                android:textStyle="bold"/>
+
+            <ProgressBar
+                android:id="@+id/progressbar_verify_otp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+
+        </FrameLayout>
 
     </LinearLayout>
 </ScrollView>
