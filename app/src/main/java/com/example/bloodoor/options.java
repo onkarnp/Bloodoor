@@ -30,7 +30,7 @@ public class options extends AppCompatActivity {
         bbcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Homepage_BB.class);
+                Intent intent = new Intent(getApplicationContext(),SignUp_BB.class);
                 startActivity(intent);
             }
         });
@@ -39,7 +39,7 @@ public class options extends AppCompatActivity {
         usercard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Homepage_user.class);
+                Intent intent = new Intent(getApplicationContext(),SignUp.class);
                 startActivity(intent);
             }
         });

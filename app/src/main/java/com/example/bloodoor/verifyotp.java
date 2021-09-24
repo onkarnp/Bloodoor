@@ -99,7 +99,7 @@ public class verifyotp extends AppCompatActivity {
                                 });
 
                     } else {
-                        Toast.makeText(verifyotp.this, "Please check your internet connection:(", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(verifyotp.this, "Network error:(", Toast.LENGTH_SHORT).show();
                     }
 //                    Toast.makeText(verifyotp.this, "OTP verify...",Toast.LENGTH_SHORT).show();
                 } else {
@@ -128,7 +128,7 @@ public class verifyotp extends AppCompatActivity {
 
                             @Override
                             public void onVerificationFailed(@NonNull FirebaseException e) {
-                                Toast.makeText(verifyotp.this, "Please check your internet connection:(", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(verifyotp.this, "Network Error:(", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override

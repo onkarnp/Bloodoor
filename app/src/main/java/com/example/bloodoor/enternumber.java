@@ -67,7 +67,7 @@ public class enternumber extends AppCompatActivity {
                                     public void onVerificationFailed(@NonNull FirebaseException e) {
                                         progressBar.setVisibility(View.VISIBLE);
                                         getotpbutton.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(enternumber.this, "Please check your internet connection:(", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(enternumber.this, "Network Error:(", Toast.LENGTH_SHORT).show();
                                     }
 
                                     @Override
