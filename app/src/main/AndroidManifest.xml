@@ -9,16 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloodoor">
-        <activity android:name=".options"/>
-        <activity android:name=".Homepage_BB" />
-        <activity android:name=".Homepage_user" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".options"/>
+        <activity android:name=".enternumber">
+
+        </activity>
+        <activity android:name=".verifyotp">
+
+        </activity>
+        <activity android:name=".Homepage_BB" />
+        <activity android:name=".Homepage_user" />
     </application>
 
 </manifest>

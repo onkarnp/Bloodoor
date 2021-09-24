@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -22,16 +24,23 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+
+import io.alterac.blurkit.BlurLayout;
 
 public class verifyotp extends AppCompatActivity {
 
     EditText inputnumber1, inputnumber2, inputnumber3, inputnumber4, inputnumber5, inputnumber6;
     String getotpbackend;
+    BlurLayout blurLayout1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Objects.requireNonNull(getSupportActionBar()).hide();    //removes action bar
         setContentView(R.layout.activity_verifyotp);
 
         final Button verifybuttononclick = findViewById(R.id.buttongetotp);
@@ -42,6 +51,7 @@ public class verifyotp extends AppCompatActivity {
         inputnumber4 = findViewById(R.id.inputotp4);
         inputnumber5 = findViewById(R.id.inputotp5);
         inputnumber6 = findViewById(R.id.inputotp6);
+        blurLayout1 = findViewById(R.id.blurLayout);
 
         TextView textView = findViewById(R.id.textshowmobilenumber);
         textView.setText(String.format(
@@ -83,17 +93,17 @@ public class verifyotp extends AppCompatActivity {
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(intent);
                                         } else {
-                                            Toast.makeText(verifyotp.this, "Enter the correct OTP...", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(verifyotp.this, "Enter the correct OTP", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
 
                     } else {
-                        Toast.makeText(verifyotp.this, "Please check your internet connection...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(verifyotp.this, "Please check your internet connection:(", Toast.LENGTH_SHORT).show();
                     }
 //                    Toast.makeText(verifyotp.this, "OTP verify...",Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(verifyotp.this, "Please enter all number...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(verifyotp.this, "Please enter all numbers", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -118,13 +128,13 @@ public class verifyotp extends AppCompatActivity {
 
                             @Override
                             public void onVerificationFailed(@NonNull FirebaseException e) {
-                                Toast.makeText(verifyotp.this, "Please check your internet connection...", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(verifyotp.this, "Please check your internet connection:(", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onCodeSent(@NonNull String newbackendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                 getotpbackend = newbackendotp;
-                                Toast.makeText(verifyotp.this, "OTP send successfully..", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(verifyotp.this, "OTP sent successfully:)", Toast.LENGTH_SHORT).show();
                             }
                         }
                 );
