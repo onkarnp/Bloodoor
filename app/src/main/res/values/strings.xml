@@ -7,8 +7,27 @@
     <string name="get_otp">Get OTP</string>
     <string name="todo">TODO</string>
     <string name="please_enter_the_otp_send_to_you">Please enter the OTP send to you.</string>
-    <string name="didn_t_receive_the_opt">Didn\'t receive the OPT</string>
+    <string name="didn_t_receive_the_opt">Didn\'t receive the OPT?</string>
     <string name="resend_otp">RESEND OTP</string>
     <string name="enter">Enter</string>
+    <string name="enter_full_name">Enter full name…</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="mobile_number">Mobile Number…</string>
+    <string name="email_id">Email ID…</string>
+    <string name="city">City…</string>
+    <string name="home_address">Home Address…</string>
+    <string name="select_blood_group">Select Blood Group..</string>
+    <string name="blood_group">Blood Group</string>
+    <string name="sign_up">Sign Up</string>
 
+    <string-array name="Group">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+    </string-array>
 </resources>

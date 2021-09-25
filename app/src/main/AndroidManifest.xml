@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloodoor">
-        <activity android:name=".options"/>
+        <activity android:name=".SignUp_BB"></activity>
+        <activity android:name=".SignUp" />
+        <activity android:name=".options" />
         <activity android:name=".Homepage_BB" />
         <activity android:name=".Homepage_user" />
         <activity android:name=".MainActivity">

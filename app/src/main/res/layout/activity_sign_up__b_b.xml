@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/buttonback"
+    tools:context=".SignUp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3fff"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/SignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle"
+            android:gravity="center"
+            android:text="@string/sign_up"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/enterFullName"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button"
+            android:drawableStart="@drawable/ic_person"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="@string/enter_full_name"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFBF8"
+            app:layout_constraintBottom_toTopOf="@+id/dateOfBirth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SignUp" />
+
+        <EditText
+            android:id="@+id/mobileNumber"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawableLeft="@drawable/ic_phone"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="@string/mobile_number"
+            android:inputType="phone"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFBF8"
+            app:layout_constraintBottom_toTopOf="@+id/emailID"
+            app:layout_constraintEnd_toEndOf="@+id/enterFullName"
+            app:layout_constraintStart_toStartOf="@+id/enterFullName"
+            app:layout_constraintTop_toBottomOf="@+id/enterFullName" />
+
+        <EditText
+            android:id="@+id/emailID"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button"
+            android:drawableStart="@drawable/ic_email"
+            android:drawableLeft="@drawable/ic_email"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="@string/email_id"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFBF8"
+            app:layout_constraintBottom_toTopOf="@+id/homeAddress"
+            app:layout_constraintEnd_toEndOf="@+id/mobileNumber"
+            app:layout_constraintStart_toStartOf="@+id/mobileNumber"
+            app:layout_constraintTop_toBottomOf="@+id/mobileNumber" />
+
+        <EditText
+            android:id="@+id/homeAddress"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button"
+            android:drawableStart="@drawable/ic_home"
+            android:drawableLeft="@drawable/ic_home"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="@string/home_address"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFBF8"
+            app:layout_constraintBottom_toTopOf="@+id/city"
+            app:layout_constraintEnd_toEndOf="@+id/emailID"
+            app:layout_constraintStart_toStartOf="@+id/emailID"
+            app:layout_constraintTop_toBottomOf="@+id/emailID" />
+
+        <EditText
+            android:id="@+id/city"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button"
+            android:drawableStart="@drawable/ic_home"
+            android:drawableLeft="@drawable/ic_home"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="@string/city"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFBF8"
+            app:layout_constraintBottom_toTopOf="@+id/dateOfBirth"
+            app:layout_constraintEnd_toEndOf="@+id/homeAddress"
+            app:layout_constraintStart_toStartOf="@+id/homeAddress"
+            app:layout_constraintTop_toBottomOf="@+id/homeAddress" />
+
+        <EditText
+            android:id="@+id/dateOfBirth"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button"
+            android:drawableStart="@drawable/ic_baseline_calendar_today_24"
+            android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Date of Birth..."
+            android:inputType="date"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFBF8"
+            app:layout_constraintBottom_toTopOf="@+id/bloodGroup"
+            app:layout_constraintEnd_toEndOf="@+id/city"
+            app:layout_constraintStart_toStartOf="@+id/city"
+            app:layout_constraintTop_toBottomOf="@+id/city" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_baseline_group_24"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="@string/blood_group"
+            app:startIconDrawable="@drawable/ic_baseline_group_24">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/button"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:text="@string/select_blood_group"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFBF8" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btncolor"
+            android:text="@string/sign_up"
+            android:textAllCaps="false"
+            android:textColor="#FFFBF8" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="#3fff" />
+
+    </LinearLayout>
+
+</LinearLayout>
