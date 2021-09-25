@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -15,16 +17,24 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+
+import io.alterac.blurkit.BlurLayout;
 
 public class enternumber extends AppCompatActivity {
 
     EditText entermobilenumber;
     Button getotpbutton;
+    BlurLayout blurLayout1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Objects.requireNonNull(getSupportActionBar()).hide();    //removes action bar
+        blurLayout1 = findViewById(R.id.blurLayout);
         setContentView(R.layout.activity_enternumber);
 
         entermobilenumber = findViewById(R.id.input_mobile_number);
@@ -57,7 +67,7 @@ public class enternumber extends AppCompatActivity {
                                     public void onVerificationFailed(@NonNull FirebaseException e) {
                                         progressBar.setVisibility(View.VISIBLE);
                                         getotpbutton.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(enternumber.this, "Please check your internet connection...", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(enternumber.this, "Please check your internet connection:(", Toast.LENGTH_SHORT).show();
                                     }
 
                                     @Override
@@ -84,5 +94,18 @@ public class enternumber extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        blurLayout1 = findViewById(R.id.blurLayout1);
+        blurLayout1.startBlur();
+    }
+
+    @Override
+    protected void onStop() {
+        blurLayout1.pauseBlur();
+        super.onStop();
     }
 }
