@@ -50,6 +50,30 @@
             android:layout_marginBottom="20dp"/>
 
         <EditText
+            android:id="@+id/enterBloodBankName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button"
+            android:drawableStart="@drawable/ic_person"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawableTint="@color/white"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="@string/enter_blood_bank_name"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#ECAB7A"
+            app:layout_constraintBottom_toTopOf="@+id/dateOfBirth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SignUp" />
+
+        <EditText
             android:id="@+id/enterFullName"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -60,7 +84,7 @@
             android:drawableTint="@color/white"
             android:drawablePadding="10dp"
             android:ems="10"
-            android:hint="Enter Full Name..."
+            android:hint="@string/enter_handler_name"
             android:inputType="textPersonName"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
@@ -92,10 +116,34 @@
             android:paddingBottom="10dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#ECAB7A"
-            app:layout_constraintBottom_toTopOf="@+id/emailID"
+            app:layout_constraintBottom_toTopOf="@+id/phoneNumber"
             app:layout_constraintEnd_toEndOf="@+id/enterFullName"
             app:layout_constraintStart_toStartOf="@+id/enterFullName"
             app:layout_constraintTop_toBottomOf="@+id/enterFullName" />
+
+        <EditText
+            android:id="@+id/phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawableLeft="@drawable/ic_phone"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/white"
+            android:ems="10"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#ECAB7A"
+            app:layout_constraintBottom_toTopOf="@+id/emailID"
+            app:layout_constraintEnd_toEndOf="@+id/mobileNumber"
+            app:layout_constraintStart_toStartOf="@+id/mobileNumber"
+            app:layout_constraintTop_toBottomOf="@+id/mobileNumber" />
 
         <EditText
             android:id="@+id/emailID"
@@ -166,60 +214,10 @@
             android:paddingBottom="10dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#ECAB7A"
-            app:layout_constraintBottom_toTopOf="@+id/dateOfBirth"
+            app:layout_constraintBottom_toTopOf="@+id/signupcard"
             app:layout_constraintEnd_toEndOf="@+id/homeAddress"
             app:layout_constraintStart_toStartOf="@+id/homeAddress"
             app:layout_constraintTop_toBottomOf="@+id/homeAddress" />
-
-        <EditText
-            android:id="@+id/dateOfBirth"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button"
-            android:drawableStart="@drawable/ic_baseline_calendar_today_24"
-            android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
-            android:drawablePadding="10dp"
-            android:drawableTint="@color/white"
-            android:ems="10"
-            android:hint="Date of Birth..."
-            android:inputType="date"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="10dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#ECAB7A"
-            app:layout_constraintBottom_toTopOf="@+id/bloodGroup"
-            app:layout_constraintEnd_toEndOf="@+id/city"
-            app:layout_constraintStart_toStartOf="@+id/city"
-            app:layout_constraintTop_toBottomOf="@+id/city" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/ic_baseline_group_24"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="@string/blood_group"
-            app:startIconDrawable="@drawable/ic_baseline_group_24">
-
-            <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:background="@drawable/button"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp"
-                android:text="@string/select_blood_group"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#ECAB7A" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/signupcard"
@@ -239,8 +237,6 @@
                 android:src="@drawable/right_arrow"
                 android:padding="5dp"/>
         </androidx.cardview.widget.CardView>
-
-
 
     </LinearLayout>
 
