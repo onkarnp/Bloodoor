@@ -25,7 +25,7 @@ import io.alterac.blurkit.BlurLayout;
 public class SignUp_User extends AppCompatActivity {
 
     BlurLayout blurLayout;
-    CardView signupcard;
+    CardView signupcard,signincard;
     AutoCompleteTextView autoCompleteTextView, autoCompleteTextView1;
     private EditText date;
 
@@ -45,17 +45,26 @@ public class SignUp_User extends AppCompatActivity {
         autoCompleteTextView1 = findViewById(R.id.autoCompleteTextView1);
         String []option1 = {"Select", "Male", "Female"};
         ArrayAdapter arrayAdapter1 = new ArrayAdapter(this, R.layout.options_item, option1);
-        autoCompleteTextView1.setText(arrayAdapter1.getItem(0).toString(), false); //to make defaultvalue...
+        autoCompleteTextView1.setText(arrayAdapter1.getItem(0).toString(), false); //to make default value...
         autoCompleteTextView1.setAdapter(arrayAdapter1);
         
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
         String []option = {"Select", "O+", "O-","A+", "A-", "B+", "B-", "AB+", "AB-"};
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.options_item, option);
-        autoCompleteTextView.setText(arrayAdapter.getItem(0).toString(), false); //to make defaultvalue...
+        autoCompleteTextView.setText(arrayAdapter.getItem(0).toString(), false); //to make default value...
         autoCompleteTextView.setAdapter(arrayAdapter);
 
         signupcard = (CardView) findViewById(R.id.signupcard);
         signupcard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),enternumber.class);
+                startActivity(intent);
+            }
+        });
+
+        signincard = (CardView) findViewById(R.id.signincard);
+        signincard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),enternumber.class);

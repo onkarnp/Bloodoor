@@ -16,7 +16,7 @@ import io.alterac.blurkit.BlurLayout;
 public class SignUp_BB extends AppCompatActivity {
 
     BlurLayout blurLayout;
-    CardView signupcard;
+    CardView signupcard,signincard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +35,17 @@ public class SignUp_BB extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        signincard = (CardView) findViewById(R.id.signincard);
+        signincard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),enternumber.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    //FUnctions for making background blurr
+    //Functions for making background blurr
     @Override
     protected void onStart() {
         super.onStart();
