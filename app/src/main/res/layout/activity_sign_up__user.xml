@@ -310,6 +310,12 @@
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:src="@drawable/loginicon"/>
+                <ProgressBar
+                    android:id="@+id/progressbar_sending_otp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

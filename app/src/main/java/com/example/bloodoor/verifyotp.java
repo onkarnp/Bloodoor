@@ -21,8 +21,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -34,6 +37,9 @@ public class verifyotp extends AppCompatActivity {
     EditText inputnumber1, inputnumber2, inputnumber3, inputnumber4, inputnumber5, inputnumber6;
     String getotpbackend;
     BlurLayout blurLayout1;
+    private FirebaseAuth mAuth;
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +48,7 @@ public class verifyotp extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();    //removes action bar
         setContentView(R.layout.activity_verifyotp);
-
+        User user= (User) getIntent().getSerializableExtra("User");
         final Button verifybuttononclick = findViewById(R.id.buttongetotp);
 
         inputnumber1 = findViewById(R.id.inputotp1);
@@ -89,6 +95,11 @@ public class verifyotp extends AppCompatActivity {
                                         verifybuttononclick.setVisibility(View.VISIBLE);
 
                                         if (task.isSuccessful()) {
+                                            rootNode = FirebaseDatabase.getInstance();
+                                            FirebaseUser mauth=FirebaseAuth.getInstance().getCurrentUser();
+                                            String userID = mauth.getUid();
+                                            reference = rootNode.getReference("users");
+                                            reference.child(userID).setValue(user);
                                             Intent intent = new Intent(getApplicationContext(), Homepage_BB.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(intent);
