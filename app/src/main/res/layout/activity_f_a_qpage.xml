@@ -56,8 +56,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/Que1"
@@ -65,20 +65,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:clickable="true"
-                android:textColor="@color/black"
+                android:focusable="true"
                 android:onClick="Que1Clicked"
                 android:text="@string/que1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:focusable="true"
-                android:textStyle="bold"
-                android:textSize="20sp"/>
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/Ans1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#ECAB7A"
                 android:text="@string/ans1"
+                android:textColor="#ECAB7A"
                 android:textSize="20sp"
                 android:textStyle="italic"
                 android:visibility="gone" />
@@ -93,17 +93,17 @@
                 android:onClick="Que2Clicked"
                 android:text="@string/que2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/Ans2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ans2"
-                android:textSize="20sp"
                 android:textColor="#ECAB7A"
+                android:textSize="20sp"
                 android:textStyle="italic"
                 android:visibility="gone" />
 
@@ -117,17 +117,17 @@
                 android:onClick="Que3Clicked"
                 android:text="@string/que3"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/Ans3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ans3"
-                android:textSize="20sp"
                 android:textColor="#ECAB7A"
+                android:textSize="20sp"
                 android:textStyle="italic"
                 android:visibility="gone" />
 
@@ -141,17 +141,17 @@
                 android:onClick="Que4Clicked"
                 android:text="@string/que4"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/Ans4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ans4"
-                android:textSize="20sp"
                 android:textColor="#ECAB7A"
+                android:textSize="20sp"
                 android:textStyle="italic"
                 android:visibility="gone" />
 
@@ -165,17 +165,17 @@
                 android:onClick="Que5Clicked"
                 android:text="@string/que5"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/Ans5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ans5"
-                android:textSize="20sp"
                 android:textColor="#ECAB7A"
+                android:textSize="20sp"
                 android:textStyle="italic"
                 android:visibility="gone" />
 
@@ -185,13 +185,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
+                android:focusable="true"
                 android:onClick="Que6Clicked"
                 android:text="@string/que6"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold"
-                android:textSize="20sp"
                 android:textColor="@color/black"
-                android:focusable="true" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/Ans6"
@@ -199,8 +199,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/ans6"
                 android:textColor="#ECAB7A"
-                android:textStyle="italic"
                 android:textSize="20sp"
+                android:textStyle="italic"
                 android:visibility="gone" />
 
             <TextView
@@ -209,13 +209,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
+                android:focusable="true"
                 android:onClick="Que7Clicked"
                 android:text="@string/que7"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold"
-                android:textSize="20sp"
                 android:textColor="@color/black"
-                android:focusable="true" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/Ans7"
@@ -223,8 +223,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/ans7"
                 android:textColor="#ECAB7A"
-                android:textStyle="italic"
                 android:textSize="20sp"
+                android:textStyle="italic"
                 android:visibility="gone" />
 
             <TextView
@@ -233,13 +233,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
+                android:focusable="true"
                 android:onClick="Que8Clicked"
                 android:text="@string/que8"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold"
-                android:textSize="20sp"
                 android:textColor="@color/black"
-                android:focusable="true" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/Ans8"
@@ -247,8 +247,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/ans8"
                 android:textColor="#ECAB7A"
-                android:textStyle="italic"
                 android:textSize="20sp"
+                android:textStyle="italic"
                 android:visibility="gone" />
 
             <TextView
@@ -257,13 +257,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
+                android:focusable="true"
                 android:onClick="Que9Clicked"
                 android:text="@string/que9"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold"
-                android:textSize="20sp"
                 android:textColor="@color/black"
-                android:focusable="true" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/Ans9"
@@ -271,10 +271,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/ans9"
                 android:textColor="#ECAB7A"
-                android:textStyle="italic"
                 android:textSize="20sp"
+                android:textStyle="italic"
                 android:visibility="gone" />
-
 
         </LinearLayout>
     </LinearLayout>

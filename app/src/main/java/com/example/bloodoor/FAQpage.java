@@ -1,5 +1,6 @@
 package com.example.bloodoor;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -17,6 +18,27 @@ public class FAQpage extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_f_a_qpage);
+
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
+        ((TextView) findViewById(R.id.faqText)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Que1)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Ans1)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Que2)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Ans2)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Que3)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Ans3)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Que4)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Ans4)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Que5)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Ans5)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Que6)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Ans6)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Que7)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Ans7)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Que8)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Ans8)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Que9)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.Ans9)).setTypeface(typeface);
 
         T1 = (TextView) findViewById(R.id.Que1);
         T2 = (TextView) findViewById(R.id.Ans1);

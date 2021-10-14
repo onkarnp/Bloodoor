@@ -9,14 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloodoor">
-        <activity android:name=".AboutUS"></activity>
-        <activity android:name=".FAQpage">
+        <activity android:name=".profileUpdate_BB"></activity>
+        <activity android:name=".profileUpdate_User">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AboutUS" />
+        <activity android:name=".FAQpage" />
         <activity android:name=".SignUp_BB" />
         <activity android:name=".SignUp_User" />
         <activity android:name=".options" />

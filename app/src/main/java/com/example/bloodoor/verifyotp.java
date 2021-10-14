@@ -1,9 +1,7 @@
 package com.example.bloodoor;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +13,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -50,6 +51,15 @@ public class verifyotp extends AppCompatActivity {
         setContentView(R.layout.activity_verifyotp);
         User user= (User) getIntent().getSerializableExtra("User");
         final Button verifybuttononclick = findViewById(R.id.buttongetotp);
+
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
+        ((TextView) findViewById(R.id.textView)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.textView2)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.textView3)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.textresendotp)).setTypeface(typeface);
+
+        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
+        ((Button) findViewById(R.id.buttongetotp)).setTypeface(typeface1);
 
         inputnumber1 = findViewById(R.id.inputotp1);
         inputnumber2 = findViewById(R.id.inputotp2);

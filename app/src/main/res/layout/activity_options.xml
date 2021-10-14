@@ -29,6 +29,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/option"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
@@ -56,6 +57,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
+            android:id="@+id/option1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baumans"
@@ -83,6 +85,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
+            android:id="@+id/option2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baumans"

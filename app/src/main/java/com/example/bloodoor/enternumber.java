@@ -1,9 +1,7 @@
 package com.example.bloodoor;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -11,7 +9,11 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -36,6 +38,15 @@ public class enternumber extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();    //removes action bar
         blurLayout1 = findViewById(R.id.blurLayout);
         setContentView(R.layout.activity_enternumber);
+
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
+        ((TextView) findViewById(R.id.textView)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.textView2)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.textView3)).setTypeface(typeface);
+
+        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
+        ((Button) findViewById(R.id.buttongetotp)).setTypeface(typeface1);
+
 
         entermobilenumber = findViewById(R.id.input_mobile_number);
         getotpbutton = findViewById(R.id.buttongetotp);
