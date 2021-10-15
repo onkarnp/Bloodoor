@@ -27,7 +27,7 @@
                 android:src="@drawable/avtar" />
 
             <TextView
-                android:id="@+id/full_name"
+                android:id="@+id/blood_bank_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -39,9 +39,10 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/holder_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/full_name"
+                android:layout_below="@+id/blood_bank_name"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/profile_image"
                 android:includeFontPadding="false"
@@ -154,6 +155,7 @@
                 android:padding="20dp">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/bb_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -172,6 +174,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/bb_holder_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -190,6 +193,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/bb_mobileNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -208,6 +212,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/bb_phoneNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -226,6 +231,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/bb_emailId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -244,6 +250,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/bb_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -262,6 +269,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/bb_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -279,49 +287,15 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/signincard"
+                <Button
+                    android:id="@+id/btn_update"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/blurLayout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:backgroundTint="@color/white"
-                    app:cardCornerRadius="10dp"
-                    android:clickable="true"
-                    android:elevation="100dp"
-                    android:focusable="true"
-                    android:foreground="@drawable/card_effect">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="10dp"
-                            android:gravity="center"
-                            android:text="UPDATE"
-                            android:textColor="#ECAB7A"
-                            android:textSize="18sp" />
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/loginicon"/>
-                        <ProgressBar
-                            android:id="@+id/progressbar_sending_otp"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center"
-                            android:visibility="gone" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                    android:layout_height="match_parent"
+                    android:background="@drawable/buttonback"
+                    android:gravity="center"
+                    android:text="UPDATE"
+                    android:textColor="@color/colortextfirst"
+                    android:textSize="18sp" />
 
             </LinearLayout>
         </ScrollView>

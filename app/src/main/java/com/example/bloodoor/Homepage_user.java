@@ -1,10 +1,10 @@
 package com.example.bloodoor;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
@@ -21,6 +21,8 @@ public class Homepage_user extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();    //removes action bar
         blurLayout1 = findViewById(R.id.blurLayout);
         setContentView(R.layout.activity_homepage_user);
+
+
     }
 
     @Override

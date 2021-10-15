@@ -114,6 +114,7 @@ public class SignUp_User extends AppCompatActivity {
                                         intent.putExtra("backendotp", backendotp);
                                         intent.putExtra("User", user);
                                         startActivity(intent);
+
                                     }
                                 }
                         );
