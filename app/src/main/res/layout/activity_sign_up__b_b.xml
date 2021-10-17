@@ -53,8 +53,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            //paste it here
-
             <EditText
                 android:id="@+id/enterBloodBankName"
                 android:layout_width="match_parent"

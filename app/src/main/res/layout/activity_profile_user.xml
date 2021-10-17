@@ -63,7 +63,7 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#ECAB7A"
+                app:cardBackgroundColor="@color/colorPrimary"
                 app:cardElevation="10dp">
 
                 <RelativeLayout
@@ -72,15 +72,17 @@
                     android:padding="5dp">
 
                     <ImageView
+                        android:id="@+id/blood"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/blooddrop" />
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/blooddrop"/>
 
                     <TextView
                         android:id="@+id/blood_donated"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/blood"
                         android:layout_centerInParent="true"
                         android:includeFontPadding="false"
                         android:text="2 lt."
@@ -94,7 +96,7 @@
                         android:layout_below="@+id/blood_donated"
                         android:layout_centerHorizontal="true"
                         android:includeFontPadding="false"
-                        android:text="2"
+                        android:text="2 Units"
                         android:textColor="@color/colortextsecond"
                         android:textSize="20sp" />
                 </RelativeLayout>
@@ -105,7 +107,7 @@
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#ECAB7A"
+                app:cardBackgroundColor="@color/colorPrimary"
                 app:cardElevation="10dp">
 
                 <RelativeLayout
@@ -114,15 +116,17 @@
                     android:padding="5dp">
 
                     <ImageView
+                        android:id="@+id/date"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/date" />
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/date"/>
 
                     <TextView
                         android:id="@+id/date_donated"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/date"
                         android:layout_centerInParent="true"
                         android:includeFontPadding="false"
                         android:text="30/09"

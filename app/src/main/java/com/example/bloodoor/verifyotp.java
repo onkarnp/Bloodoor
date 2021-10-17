@@ -52,15 +52,6 @@ public class verifyotp extends AppCompatActivity {
         User user= (User) getIntent().getSerializableExtra("User");
         final Button verifybuttononclick = findViewById(R.id.buttongetotp);
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((TextView) findViewById(R.id.textView)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.textView2)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.textView3)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.textresendotp)).setTypeface(typeface);
-
-        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((Button) findViewById(R.id.buttongetotp)).setTypeface(typeface1);
-
         inputnumber1 = findViewById(R.id.inputotp1);
         inputnumber2 = findViewById(R.id.inputotp2);
         inputnumber3 = findViewById(R.id.inputotp3);
@@ -161,6 +152,15 @@ public class verifyotp extends AppCompatActivity {
                 );
             }
         });
+
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
+        ((TextView) findViewById(R.id.textView)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.textView2)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.textView3)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.textresendotp)).setTypeface(typeface);
+
+        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
+        ((Button) findViewById(R.id.buttongetotp)).setTypeface(typeface1);
     }
 
     private void numberotpmove() {

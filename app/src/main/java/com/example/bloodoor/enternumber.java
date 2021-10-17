@@ -39,15 +39,6 @@ public class enternumber extends AppCompatActivity {
         blurLayout1 = findViewById(R.id.blurLayout);
         setContentView(R.layout.activity_enternumber);
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((TextView) findViewById(R.id.textView)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.textView2)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.textView3)).setTypeface(typeface);
-
-        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((Button) findViewById(R.id.buttongetotp)).setTypeface(typeface1);
-
-
         entermobilenumber = findViewById(R.id.input_mobile_number);
         getotpbutton = findViewById(R.id.buttongetotp);
 
@@ -68,6 +59,7 @@ public class enternumber extends AppCompatActivity {
                                 TimeUnit.SECONDS,
                                 enternumber.this,
                                 new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
                                     @Override
                                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                                         progressBar.setVisibility(View.VISIBLE);
@@ -105,6 +97,14 @@ public class enternumber extends AppCompatActivity {
                 }
             }
         });
+
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
+        ((TextView) findViewById(R.id.textView)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.textView2)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.textView3)).setTypeface(typeface);
+
+        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
+        ((Button) findViewById(R.id.buttongetotp)).setTypeface(typeface1);
     }
 
     @Override

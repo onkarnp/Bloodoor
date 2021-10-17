@@ -58,6 +58,7 @@ public class SignUp_User extends AppCompatActivity {
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.options_item, option);
         bloodgrp.setText(arrayAdapter.getItem(0).toString(), false); //to make default value...
         bloodgrp.setAdapter(arrayAdapter);
+
         name = findViewById(R.id.enterFullName);
         address = findViewById(R.id.homeAddress);
         phoneno = findViewById(R.id.mobileNumber);
@@ -91,6 +92,7 @@ public class SignUp_User extends AppCompatActivity {
                                 TimeUnit.SECONDS,
                                 SignUp_User.this,
                                 new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
                                     @Override
                                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
