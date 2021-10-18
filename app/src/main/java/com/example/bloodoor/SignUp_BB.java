@@ -2,36 +2,37 @@ package com.example.bloodoor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 import io.alterac.blurkit.BlurLayout;
 
 public class SignUp_BB extends AppCompatActivity {
 
     BlurLayout blurLayout;
-    CardView signupcard,signincard;
+    CardView signupcard, signincard;
     private EditText name, handlerName, mobileNo, phoneNo, email, address, city;
-
-    FirebaseDatabase rootNode;
-    DatabaseReference reference;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();    //removes action bar
         blurLayout = findViewById(R.id.blurLayout);         //for blurring background
         setContentView(R.layout.activity_sign_up__b_b);
@@ -50,9 +51,7 @@ public class SignUp_BB extends AppCompatActivity {
         signupcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("bloodBanks");
-                //Get all the values
+
                 String regName = name.getText().toString();
                 String regHandlerName = handlerName.getText().toString();
                 String regMobileNo = mobileNo.getText().toString();
@@ -62,16 +61,48 @@ public class SignUp_BB extends AppCompatActivity {
                 String regCity = city.getText().toString();
 
                 bloodBankHelperClass helperClass = new bloodBankHelperClass(regName, regHandlerName, regMobileNo, regPhoneNo, regEmail, regAddress, regCity);
+                if (!mobileNo.getText().toString().trim().isEmpty()) {
+                    if ((mobileNo.getText().toString().trim()).length() == 10) {
 
-                reference.child(regMobileNo).setValue(helperClass);
-            }
-        });
+                        signupcard.setVisibility(View.INVISIBLE);
+                        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                                "+91" + mobileNo.getText().toString(),
+                                90,
+                                TimeUnit.SECONDS,
+                                SignUp_BB.this,
+                                new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
-        signupcard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),enternumber.class);
-                startActivity(intent);
+                                    @Override
+                                    public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                                        signupcard.setVisibility(View.INVISIBLE);
+                                    }
+
+                                    @Override
+                                    public void onVerificationFailed(@NonNull FirebaseException e) {
+                                        signupcard.setVisibility(View.INVISIBLE);
+                                        Toast.makeText(SignUp_BB.this, "Network Error:(", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    @Override
+                                    public void onCodeSent(@NonNull String backendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+
+                                        signupcard.setVisibility(View.INVISIBLE);
+                                        Intent intent = new Intent(getApplicationContext(), verifyotp_BB.class);
+                                        bloodBankHelperClass helperClass = new bloodBankHelperClass(regName, regHandlerName, regMobileNo, regPhoneNo, regEmail, regAddress, regCity);
+                                        intent.putExtra("mobile", mobileNo.getText().toString());
+                                        intent.putExtra("backendotp", backendotp);
+                                        intent.putExtra("BloodBanks", (Parcelable) helperClass);
+                                        startActivity(intent);
+
+                                    }
+                                }
+                        );
+                    } else {
+                        Toast.makeText(SignUp_BB.this, "Please enter correct number", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(SignUp_BB.this, "Enter Mobile Number", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -79,7 +110,7 @@ public class SignUp_BB extends AppCompatActivity {
         signincard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),enternumber.class);
+                Intent intent = new Intent(getApplicationContext(), enternumber.class);
                 startActivity(intent);
             }
         });

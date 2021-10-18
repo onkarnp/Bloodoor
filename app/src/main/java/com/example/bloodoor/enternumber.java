@@ -77,7 +77,7 @@ public class enternumber extends AppCompatActivity {
                                     public void onCodeSent(@NonNull String backendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                         progressBar.setVisibility(View.VISIBLE);
                                         getotpbutton.setVisibility(View.INVISIBLE);
-                                        Intent intent = new Intent(getApplicationContext(), verifyotp.class);
+                                        Intent intent = new Intent(getApplicationContext(), verifyotp_User.class);
                                         intent.putExtra("mobile", entermobilenumber.getText().toString());
                                         intent.putExtra("backendotp",backendotp);
                                         startActivity(intent);

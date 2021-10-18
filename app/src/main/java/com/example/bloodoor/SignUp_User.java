@@ -109,7 +109,7 @@ public class SignUp_User extends AppCompatActivity {
                                     public void onCodeSent(@NonNull String backendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
 
                                         signupcard.setVisibility(View.INVISIBLE);
-                                        Intent intent = new Intent(getApplicationContext(), verifyotp.class);
+                                        Intent intent = new Intent(getApplicationContext(), verifyotp_User.class);
                                         User user = new User(fullName, homeAddress, mobileNo, email,
                                                 City, Date, Bloodgrp, Gender);
                                         intent.putExtra("mobile", phoneno.getText().toString());

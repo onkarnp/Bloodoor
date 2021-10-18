@@ -33,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 
 import io.alterac.blurkit.BlurLayout;
 
-public class verifyotp extends AppCompatActivity {
+public class verifyotp_BB extends AppCompatActivity {
 
     EditText inputnumber1, inputnumber2, inputnumber3, inputnumber4, inputnumber5, inputnumber6;
     String getotpbackend;
@@ -48,8 +48,8 @@ public class verifyotp extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();    //removes action bar
-        setContentView(R.layout.activity_verifyotp);
-        User user= (User) getIntent().getSerializableExtra("User");
+        setContentView(R.layout.activity_verifyotp__b_b);
+        bloodBankHelperClass helperClass = (bloodBankHelperClass) getIntent().getSerializableExtra("BloodBanks");
         final Button verifybuttononclick = findViewById(R.id.buttongetotp);
 
         inputnumber1 = findViewById(R.id.inputotp1);
@@ -97,25 +97,25 @@ public class verifyotp extends AppCompatActivity {
 
                                         if (task.isSuccessful()) {
                                             rootNode = FirebaseDatabase.getInstance();
-                                            FirebaseUser mauth=FirebaseAuth.getInstance().getCurrentUser();
-                                            String userID = mauth.getUid();
-                                            reference = rootNode.getReference("users");
-                                            reference.child(userID).setValue(user);
-                                            Intent intent = new Intent(getApplicationContext(), Homepage_user.class);
+                                            FirebaseUser mauth = FirebaseAuth.getInstance().getCurrentUser();
+                                            String bloodBankID = mauth.getUid();
+                                            reference = rootNode.getReference().child("BloodBanks");
+                                            reference.child(bloodBankID).setValue(helperClass);
+                                            Intent intent = new Intent(getApplicationContext(), Homepage_BB.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(intent);
                                         } else {
-                                            Toast.makeText(verifyotp.this, "Enter the correct OTP", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(verifyotp_BB.this, "Enter the correct OTP", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
 
                     } else {
-                        Toast.makeText(verifyotp.this, "Network error:(", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(verifyotp_BB.this, "Network error:(", Toast.LENGTH_SHORT).show();
                     }
 //                    Toast.makeText(verifyotp.this, "OTP verify...",Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(verifyotp.this, "Please enter all numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(verifyotp_BB.this, "Please enter all numbers", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -131,7 +131,7 @@ public class verifyotp extends AppCompatActivity {
                         "+91" + getIntent().getStringExtra("mobile"),
                         90,
                         TimeUnit.SECONDS,
-                        verifyotp.this,
+                        verifyotp_BB.this,
                         new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                             @Override
                             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
@@ -140,13 +140,13 @@ public class verifyotp extends AppCompatActivity {
 
                             @Override
                             public void onVerificationFailed(@NonNull FirebaseException e) {
-                                Toast.makeText(verifyotp.this, "Network Error:(", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(verifyotp_BB.this, "Network Error:(", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onCodeSent(@NonNull String newbackendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                 getotpbackend = newbackendotp;
-                                Toast.makeText(verifyotp.this, "OTP sent successfully:)", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(verifyotp_BB.this, "OTP sent successfully:)", Toast.LENGTH_SHORT).show();
                             }
                         }
                 );

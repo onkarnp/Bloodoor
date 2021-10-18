@@ -41,20 +41,7 @@ public class profileBB extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_profile_b_b);
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((TextView) findViewById(R.id.bb_name)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.bb_holder_name)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.bb_mobileNo)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.bb_phoneNo)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.bb_emailId)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.bb_address)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.bb_city)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.blood_bank_name)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.holder_name)).setTypeface(typeface);
-        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((Button) findViewById(R.id.btn_update)).setTypeface(typeface1);
-
-        reference = FirebaseDatabase.getInstance().getReference("bloodBank");
+        reference = FirebaseDatabase.getInstance().getReference("BloodBanks");
         bloodBank = FirebaseAuth.getInstance().getCurrentUser();
         bloodBankID = bloodBank.getUid();
 
@@ -77,14 +64,14 @@ public class profileBB extends AppCompatActivity {
         reference.child(bloodBankID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User profileBB = snapshot.getValue(User.class);
+                bloodBankHelperClass profileBB = snapshot.getValue(bloodBankHelperClass.class);
                 if(profileBB != null){
-                    String bb_bloodBankname = profileBB.getFullName();
-                    String bb_holdername = profileBB.getFullName();
+                    String bb_bloodBankname = profileBB.getName();
+                    String bb_holdername = profileBB.getHandlerName();
                     String bb_mobileNo = profileBB.getMobileNo();
-                    String bb_phoneNo = profileBB.getMobileNo();
+                    String bb_phoneNo = profileBB.getPhoneNo();
                     String bb_email = profileBB.getEmail();
-                    String bb_bandLocationAdd = profileBB.getHomeAddress();
+                    String bb_bandLocationAdd = profileBB.getAddress();
                     String bb_city = profileBB.getCity();
                     loadingBar.dismiss();
 
@@ -107,6 +94,19 @@ public class profileBB extends AppCompatActivity {
                 Toast.makeText(profileBB.this, "Something went wrong :(", Toast.LENGTH_SHORT).show();
             }
         });
+
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
+        ((TextView) findViewById(R.id.bb_name)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.bb_holder_name)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.bb_mobileNo)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.bb_phoneNo)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.bb_emailId)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.bb_address)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.bb_city)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.blood_bank_name)).setTypeface(typeface);
+        ((TextView) findViewById(R.id.holder_name)).setTypeface(typeface);
+        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
+        ((Button) findViewById(R.id.btn_update)).setTypeface(typeface1);
 
         updateProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
