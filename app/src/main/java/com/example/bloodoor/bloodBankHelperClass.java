@@ -1,6 +1,9 @@
 package com.example.bloodoor;
 
-public class bloodBankHelperClass {
+import java.io.Serializable;
+
+public class bloodBankHelperClass implements Serializable {
+
     String name, handlerName, mobileNo, phoneNo, email, address, city;
 
     public bloodBankHelperClass() {

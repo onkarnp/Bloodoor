@@ -6,14 +6,20 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 import io.alterac.blurkit.BlurLayout;
 
@@ -50,10 +56,6 @@ public class SignUp_BB extends AppCompatActivity {
         signupcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference().child("BloodBanks");
-
-                //Get all the values in the strings...
                 String regName = name.getText().toString();
                 String regHandlerName = handlerName.getText().toString();
                 String regMobileNo = mobileNo.getText().toString();
@@ -61,14 +63,59 @@ public class SignUp_BB extends AppCompatActivity {
                 String regEmail = email.getText().toString();
                 String regAddress = address.getText().toString();
                 String regCity = city.getText().toString();
+                bloodBankHelperClass helper = new bloodBankHelperClass(regName, regHandlerName, regMobileNo,
+                        regPhoneNo, regEmail, regAddress, regCity);
+                if (!mobileNo.getText().toString().trim().isEmpty()) {
+                    if ((mobileNo.getText().toString().trim()).length() == 10) {
 
-                Intent intent = new Intent(getApplicationContext(), verifyotp_BB.class);
-                intent.putExtra("mobileNo",regMobileNo);
-                startActivity(intent);
 
-                //Storing data in the Firebase...
-                //bloodBankHelperClass helperClass = new bloodBankHelperClass(regName, regHandlerName, regMobileNo, regPhoneNo, regEmail, regAddress, regCity);
-                //reference.child(regMobileNo).setValue(helperClass);
+                        signupcard.setVisibility(View.INVISIBLE);
+
+                        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                                "+91" + mobileNo.getText().toString(),
+                                90,
+                                TimeUnit.SECONDS,
+                                SignUp_BB.this,
+                                new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+                                    @Override
+                                    public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+
+                                        signupcard.setVisibility(View.INVISIBLE);
+                                    }
+
+                                    @Override
+                                    public void onVerificationFailed(@NonNull FirebaseException e) {
+                                        signupcard.setVisibility(View.INVISIBLE);
+                                        Toast.makeText(SignUp_BB.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    @Override
+                                    public void onCodeSent(@NonNull String backendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+
+                                        signupcard.setVisibility(View.INVISIBLE);
+                                        Intent intent = new Intent(getApplicationContext(), verifyotp_BB.class);
+                                        bloodBankHelperClass helper = new bloodBankHelperClass(regName, regHandlerName, regMobileNo,
+                                                regPhoneNo, regEmail, regAddress, regCity);
+                                        intent.putExtra("mobileNo", mobileNo.getText().toString());
+                                        intent.putExtra("backendotp", backendotp);
+                                        intent.putExtra("Helper", helper);
+                                        startActivity(intent);
+
+                                    }
+                                }
+                        );
+
+//                        Intent intent = new Intent(getApplicationContext(),verifyotp.class);
+//                        intent.putExtra("mobile",entermobilenumber.getText().toString());
+//                        startActivity(intent);
+
+                    } else {
+                        Toast.makeText(SignUp_BB.this, "Please enter correct number", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(SignUp_BB.this, "Enter Mobile Number", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -82,7 +129,7 @@ public class SignUp_BB extends AppCompatActivity {
         });
     }
 
-    //Functions for making background blurr
+    //FUnctions for making background blur
     @Override
     protected void onStart() {
         super.onStart();
@@ -90,11 +137,11 @@ public class SignUp_BB extends AppCompatActivity {
         blurLayout.startBlur();
     }
 
-    //FUnctions for making background blurr
+    //FUnctions for making background blur
     @Override
     protected void onStop() {
         blurLayout.pauseBlur();
         super.onStop();
     }
-
 }
+

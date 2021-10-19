@@ -97,7 +97,7 @@ public class verifyotp_User extends AppCompatActivity {
 
                                         if (task.isSuccessful()) {
                                             rootNode = FirebaseDatabase.getInstance();
-                                            FirebaseUser mauth=FirebaseAuth.getInstance().getCurrentUser();
+                                            FirebaseUser mauth = FirebaseAuth.getInstance().getCurrentUser();
                                             String userID = mauth.getUid();
                                             reference = rootNode.getReference("users");
                                             reference.child(userID).setValue(user);

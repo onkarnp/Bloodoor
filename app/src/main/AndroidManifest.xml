@@ -29,7 +29,6 @@
         <activity android:name=".Homepage_BB" />
         <activity android:name=".Homepage_user" />
         <activity android:name=".MainActivity" />
-
         <activity android:name=".enternumber" />
         <activity android:name=".verifyotp_User" />
     </application>

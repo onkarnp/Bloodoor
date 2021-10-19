@@ -46,5 +46,6 @@
     <string name="general_information">General Information...</string>
     <string name="name">Name</string>
     <string name="enter_new_name">Enter New Name</string>
+    <string name="enter_otp_here">Enter OTP here...</string>
 
 </resources>
