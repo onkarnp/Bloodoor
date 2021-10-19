@@ -68,8 +68,8 @@ public class enternumber extends AppCompatActivity {
 
                                     @Override
                                     public void onVerificationFailed(@NonNull FirebaseException e) {
-                                        progressBar.setVisibility(View.VISIBLE);
-                                        getotpbutton.setVisibility(View.INVISIBLE);
+                                        progressBar.setVisibility(View.INVISIBLE);
+                                        getotpbutton.setVisibility(View.VISIBLE);
                                         Toast.makeText(enternumber.this, "Network Error:(", Toast.LENGTH_SHORT).show();
                                     }
 
