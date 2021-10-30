@@ -1,260 +1,138 @@
 package com.example.bloodoor;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 public class FAQpage extends AppCompatActivity {
-    TextView T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,T16,T17,T18;
+
+    LinearLayout A1, A2, A3, A4, A5, A6, A7, A8, A9;
+    CardView C1, C2, C3, C4, C5, C6, C7, C8, C9;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_f_a_qpage);
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((TextView) findViewById(R.id.faqText)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Que1)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Ans1)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Que2)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Ans2)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Que3)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Ans3)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Que4)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Ans4)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Que5)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Ans5)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Que6)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Ans6)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Que7)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Ans7)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Que8)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Ans8)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Que9)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.Ans9)).setTypeface(typeface);
+        A1 = findViewById(R.id.Ans1);
+        A2 = findViewById(R.id.Ans2);
+        A3 = findViewById(R.id.Ans3);
+        A4 = findViewById(R.id.Ans4);
+        A5 = findViewById(R.id.Ans5);
+        A6 = findViewById(R.id.Ans6);
+        A7 = findViewById(R.id.Ans7);
+        A8 = findViewById(R.id.Ans8);
+        A9 = findViewById(R.id.Ans9);
 
-        T1 = (TextView) findViewById(R.id.Que1);
-        T2 = (TextView) findViewById(R.id.Ans1);
-        T3 = (TextView) findViewById(R.id.Que2);
-        T4 = (TextView) findViewById(R.id.Ans2);
-        T5 = (TextView) findViewById(R.id.Que3);
-        T6 = (TextView) findViewById(R.id.Ans3);
-        T7 = (TextView) findViewById(R.id.Que4);
-        T8 = (TextView) findViewById(R.id.Ans4);
-        T9 = (TextView) findViewById(R.id.Que5);
-        T10 = (TextView) findViewById(R.id.Ans5);
-        T11 = (TextView) findViewById(R.id.Que6);
-        T12 = (TextView) findViewById(R.id.Ans6);
-        T13 = (TextView) findViewById(R.id.Que7);
-        T14 = (TextView) findViewById(R.id.Ans7);
-        T15 = (TextView) findViewById(R.id.Que8);
-        T16 = (TextView) findViewById(R.id.Ans8);
-        T17 = (TextView) findViewById(R.id.Que9);
-        T18 = (TextView) findViewById(R.id.Ans9);
+        C1 = findViewById(R.id.cardView1);
+        C2 = findViewById(R.id.cardView2);
+        C3 = findViewById(R.id.cardView3);
+        C4 = findViewById(R.id.cardView4);
+        C5 = findViewById(R.id.cardView5);
+        C6 = findViewById(R.id.cardView6);
+        C7 = findViewById(R.id.cardView7);
+        C8 = findViewById(R.id.cardView8);
+        C9 = findViewById(R.id.cardView9);
+
     }
 
-    public void Que1Clicked(View v)
-    {
-        T1.setVisibility(View.VISIBLE);
-        T2.setVisibility(View.VISIBLE);
-        T3.setVisibility(View.VISIBLE);
-        T4.setVisibility(View.GONE);
-        T5.setVisibility(View.VISIBLE);
-        T6.setVisibility(View.GONE);
-        T7.setVisibility(View.VISIBLE);
-        T8.setVisibility(View.GONE);
-        T9.setVisibility(View.VISIBLE);
-        T10.setVisibility(View.GONE);
-        T11.setVisibility(View.VISIBLE);
-        T12.setVisibility(View.GONE);
-        T13.setVisibility(View.VISIBLE);
-        T14.setVisibility(View.GONE);
-        T15.setVisibility(View.VISIBLE);
-        T16.setVisibility(View.GONE);
-        T17.setVisibility(View.VISIBLE);
-        T18.setVisibility(View.GONE);
+    public void Que1Clicked(View view) {
+        if(A1.getVisibility() == View.GONE) {
+            TransitionManager.beginDelayedTransition(C1, new AutoTransition());
+            A1.setVisibility(View.VISIBLE);
+        }else{
+            TransitionManager.beginDelayedTransition(C1, new AutoTransition());
+            A1.setVisibility(View.GONE);
+        }
     }
 
-    public void Que2Clicked(View v)
-    {
-        T1.setVisibility(View.VISIBLE);
-        T2.setVisibility(View.GONE);
-        T3.setVisibility(View.VISIBLE);
-        T4.setVisibility(View.VISIBLE);
-        T5.setVisibility(View.VISIBLE);
-        T6.setVisibility(View.GONE);
-        T7.setVisibility(View.VISIBLE);
-        T8.setVisibility(View.GONE);
-        T9.setVisibility(View.VISIBLE);
-        T10.setVisibility(View.GONE);
-        T11.setVisibility(View.VISIBLE);
-        T12.setVisibility(View.GONE);
-        T13.setVisibility(View.VISIBLE);
-        T14.setVisibility(View.GONE);
-        T15.setVisibility(View.VISIBLE);
-        T16.setVisibility(View.GONE);
-        T17.setVisibility(View.VISIBLE);
-        T18.setVisibility(View.GONE);
+    public void Que2Clicked(View view) {
+        if(A2.getVisibility() == View.GONE) {
+            TransitionManager.beginDelayedTransition(C2, new AutoTransition());
+            A2.setVisibility(View.VISIBLE);
+        }else{
+            TransitionManager.beginDelayedTransition(C2, new AutoTransition());
+            A2.setVisibility(View.GONE);
+        }
     }
 
-    public void Que3Clicked(View v)
-    {
-        T1.setVisibility(View.VISIBLE);
-        T2.setVisibility(View.GONE);
-        T3.setVisibility(View.VISIBLE);
-        T4.setVisibility(View.GONE);
-        T5.setVisibility(View.VISIBLE);
-        T6.setVisibility(View.VISIBLE);
-        T7.setVisibility(View.VISIBLE);
-        T8.setVisibility(View.GONE);
-        T9.setVisibility(View.VISIBLE);
-        T10.setVisibility(View.GONE);
-        T11.setVisibility(View.VISIBLE);
-        T12.setVisibility(View.GONE);
-        T13.setVisibility(View.VISIBLE);
-        T14.setVisibility(View.GONE);
-        T15.setVisibility(View.VISIBLE);
-        T16.setVisibility(View.GONE);
-        T17.setVisibility(View.VISIBLE);
-        T18.setVisibility(View.GONE);
+    public void Que3Clicked(View view) {
+        if(A3.getVisibility() == View.GONE) {
+            TransitionManager.beginDelayedTransition(C3, new AutoTransition());
+            A3.setVisibility(View.VISIBLE);
+        }else{
+            TransitionManager.beginDelayedTransition(C3, new AutoTransition());
+            A3.setVisibility(View.GONE);
+        }
     }
 
-    public void Que4Clicked(View v)
-    {
-        T1.setVisibility(View.VISIBLE);
-        T2.setVisibility(View.GONE);
-        T3.setVisibility(View.VISIBLE);
-        T4.setVisibility(View.GONE);
-        T5.setVisibility(View.VISIBLE);
-        T6.setVisibility(View.GONE);
-        T7.setVisibility(View.VISIBLE);
-        T8.setVisibility(View.VISIBLE);
-        T9.setVisibility(View.VISIBLE);
-        T10.setVisibility(View.GONE);
-        T11.setVisibility(View.VISIBLE);
-        T12.setVisibility(View.GONE);
-        T13.setVisibility(View.VISIBLE);
-        T14.setVisibility(View.GONE);
-        T15.setVisibility(View.VISIBLE);
-        T16.setVisibility(View.GONE);
-        T17.setVisibility(View.VISIBLE);
-        T18.setVisibility(View.GONE);
+    public void Que4Clicked(View view) {
+        if(A4.getVisibility() == View.GONE) {
+            TransitionManager.beginDelayedTransition(C4, new AutoTransition());
+            A4.setVisibility(View.VISIBLE);
+        }else{
+            TransitionManager.beginDelayedTransition(C4, new AutoTransition());
+            A4.setVisibility(View.GONE);
+        }
     }
 
-    public void Que5Clicked(View v)
-    {
-        T1.setVisibility(View.VISIBLE);
-        T2.setVisibility(View.GONE);
-        T3.setVisibility(View.VISIBLE);
-        T4.setVisibility(View.GONE);
-        T5.setVisibility(View.VISIBLE);
-        T6.setVisibility(View.GONE);
-        T7.setVisibility(View.VISIBLE);
-        T8.setVisibility(View.GONE);
-        T9.setVisibility(View.VISIBLE);
-        T10.setVisibility(View.VISIBLE);
-        T11.setVisibility(View.VISIBLE);
-        T12.setVisibility(View.GONE);
-        T13.setVisibility(View.VISIBLE);
-        T14.setVisibility(View.GONE);
-        T15.setVisibility(View.VISIBLE);
-        T16.setVisibility(View.GONE);
-        T17.setVisibility(View.VISIBLE);
-        T18.setVisibility(View.GONE);
+    public void Que5Clicked(View view) {
+        if(A5.getVisibility() == View.GONE) {
+            TransitionManager.beginDelayedTransition(C5, new AutoTransition());
+            A5.setVisibility(View.VISIBLE);
+        }else{
+            TransitionManager.beginDelayedTransition(C5, new AutoTransition());
+            A5.setVisibility(View.GONE);
+        }
     }
 
-    public void Que6Clicked(View v)
-    {
-        T1.setVisibility(View.VISIBLE);
-        T2.setVisibility(View.GONE);
-        T3.setVisibility(View.VISIBLE);
-        T4.setVisibility(View.GONE);
-        T5.setVisibility(View.VISIBLE);
-        T6.setVisibility(View.GONE);
-        T7.setVisibility(View.VISIBLE);
-        T8.setVisibility(View.GONE);
-        T9.setVisibility(View.VISIBLE);
-        T10.setVisibility(View.GONE);
-        T11.setVisibility(View.VISIBLE);
-        T12.setVisibility(View.VISIBLE);
-        T13.setVisibility(View.VISIBLE);
-        T14.setVisibility(View.GONE);
-        T15.setVisibility(View.VISIBLE);
-        T16.setVisibility(View.GONE);
-        T17.setVisibility(View.VISIBLE);
-        T18.setVisibility(View.GONE);
+    public void Que6Clicked(View view) {
+        if(A6.getVisibility() == View.GONE) {
+            TransitionManager.beginDelayedTransition(C6, new AutoTransition());
+            A6.setVisibility(View.VISIBLE);
+        }else{
+            TransitionManager.beginDelayedTransition(C6, new AutoTransition());
+            A6.setVisibility(View.GONE);
+        }
     }
 
-    public void Que7Clicked(View v)
-    {
-        T1.setVisibility(View.VISIBLE);
-        T2.setVisibility(View.GONE);
-        T3.setVisibility(View.VISIBLE);
-        T4.setVisibility(View.GONE);
-        T5.setVisibility(View.VISIBLE);
-        T6.setVisibility(View.GONE);
-        T7.setVisibility(View.VISIBLE);
-        T8.setVisibility(View.GONE);
-        T9.setVisibility(View.VISIBLE);
-        T10.setVisibility(View.GONE);
-        T11.setVisibility(View.VISIBLE);
-        T12.setVisibility(View.GONE);
-        T13.setVisibility(View.VISIBLE);
-        T14.setVisibility(View.VISIBLE);
-        T15.setVisibility(View.VISIBLE);
-        T16.setVisibility(View.GONE);
-        T17.setVisibility(View.VISIBLE);
-        T18.setVisibility(View.GONE);
+    public void Que7Clicked(View view) {
+        if(A7.getVisibility() == View.GONE) {
+            TransitionManager.beginDelayedTransition(C7, new AutoTransition());
+            A7.setVisibility(View.VISIBLE);
+        }else{
+            TransitionManager.beginDelayedTransition(C7, new AutoTransition());
+            A7.setVisibility(View.GONE);
+        }
     }
 
-    public void Que8Clicked(View v)
-    {
-        T1.setVisibility(View.VISIBLE);
-        T2.setVisibility(View.GONE);
-        T3.setVisibility(View.VISIBLE);
-        T4.setVisibility(View.GONE);
-        T5.setVisibility(View.VISIBLE);
-        T6.setVisibility(View.GONE);
-        T7.setVisibility(View.VISIBLE);
-        T8.setVisibility(View.GONE);
-        T9.setVisibility(View.VISIBLE);
-        T10.setVisibility(View.GONE);
-        T11.setVisibility(View.VISIBLE);
-        T12.setVisibility(View.GONE);
-        T13.setVisibility(View.VISIBLE);
-        T14.setVisibility(View.GONE);
-        T15.setVisibility(View.VISIBLE);
-        T16.setVisibility(View.VISIBLE);
-        T17.setVisibility(View.VISIBLE);
-        T18.setVisibility(View.GONE);
+    public void Que8Clicked(View view) {
+        if(A8.getVisibility() == View.GONE) {
+            TransitionManager.beginDelayedTransition(C8, new AutoTransition());
+            A8.setVisibility(View.VISIBLE);
+        }else{
+            TransitionManager.beginDelayedTransition(C8, new AutoTransition());
+            A8.setVisibility(View.GONE);
+        }
     }
 
-    public void Que9Clicked(View v)
-    {
-        T1.setVisibility(View.VISIBLE);
-        T2.setVisibility(View.GONE);
-        T3.setVisibility(View.VISIBLE);
-        T4.setVisibility(View.GONE);
-        T5.setVisibility(View.VISIBLE);
-        T6.setVisibility(View.GONE);
-        T7.setVisibility(View.VISIBLE);
-        T8.setVisibility(View.GONE);
-        T9.setVisibility(View.VISIBLE);
-        T10.setVisibility(View.GONE);
-        T11.setVisibility(View.VISIBLE);
-        T12.setVisibility(View.GONE);
-        T13.setVisibility(View.VISIBLE);
-        T14.setVisibility(View.GONE);
-        T15.setVisibility(View.VISIBLE);
-        T16.setVisibility(View.GONE);
-        T17.setVisibility(View.VISIBLE);
-        T18.setVisibility(View.VISIBLE);
+    public void Que9Clicked(View view) {
+        if(A9.getVisibility() == View.GONE) {
+            TransitionManager.beginDelayedTransition(C9, new AutoTransition());
+            A9.setVisibility(View.VISIBLE);
+        }else{
+            TransitionManager.beginDelayedTransition(C9, new AutoTransition());
+            A9.setVisibility(View.GONE);
+        }
     }
 }
