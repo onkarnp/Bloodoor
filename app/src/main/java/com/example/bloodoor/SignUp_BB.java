@@ -1,5 +1,6 @@
 package com.example.bloodoor;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.alterac.blurkit.BlurLayout;
 
@@ -28,6 +31,7 @@ public class SignUp_BB extends AppCompatActivity {
     BlurLayout blurLayout;
     CardView signupcard, signincard;
     private EditText name, handlerName, mobileNo, phoneNo, email, address, city;
+    private ProgressDialog loadingBar;
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -48,14 +52,57 @@ public class SignUp_BB extends AppCompatActivity {
         email = findViewById(R.id.emailID);
         address = findViewById(R.id.homeAddress);
         city = findViewById(R.id.city);
-
-
-
-        //Save data in Firebase on Button Click
         signupcard = (CardView) findViewById(R.id.signupcard);
+        signincard = (CardView) findViewById(R.id.signincard);
+        loadingBar = new ProgressDialog(this);
+
+
+
         signupcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String regName = name.getText().toString();
+                String regHandlerName = handlerName.getText().toString();
+                String regMobileNo = mobileNo.getText().toString();
+                String regPhoneNo = phoneNo.getText().toString();
+                String regEmail = email.getText().toString();
+                String regAddress = address.getText().toString();
+                String regCity = city.getText().toString();
+
+                if(regName.isEmpty() || regName.length()<5)
+                {
+                    showError(name, "Please enter correct name");
+                }
+                else if(regHandlerName.isEmpty() || regHandlerName.length()<5)
+                {
+                    showError(handlerName, "Please enter correct name");
+                }
+                else if (regMobileNo.length()!=10)
+                {
+                    showError(mobileNo, "Please enter valid mobile number");
+                }
+                else if (regPhoneNo.length()!=10)
+                {
+                    showError(phoneNo, "Please enter valid 10 digit number");
+                }
+                else if(regEmail.isEmpty() && !isEmailValid(regEmail))
+                {
+                    showError(email, "Please enter valid email");
+                }
+                else if (regAddress.isEmpty() || regAddress.length()<5)
+                {
+                    showError(address, "Please enter valid address");
+                }
+                else if (regCity.isEmpty() || regCity.length()<5)
+                {
+                    showError(city, "Please enter valid city name");
+                }
+                else{
+                    createBloodBank();
+                }
+            }
+
+            public void createBloodBank(){
                 String regName = name.getText().toString();
                 String regHandlerName = handlerName.getText().toString();
                 String regMobileNo = mobileNo.getText().toString();
@@ -68,8 +115,11 @@ public class SignUp_BB extends AppCompatActivity {
                 if (!mobileNo.getText().toString().trim().isEmpty()) {
                     if ((mobileNo.getText().toString().trim()).length() == 10) {
 
-
                         signupcard.setVisibility(View.INVISIBLE);
+//                      loadingBar.setTitle("Create Account");
+                        loadingBar.setMessage("Signing up");
+                        loadingBar.setCanceledOnTouchOutside(false);
+                        loadingBar.show();
 
                         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                                 "+91" + mobileNo.getText().toString(),
@@ -86,7 +136,8 @@ public class SignUp_BB extends AppCompatActivity {
 
                                     @Override
                                     public void onVerificationFailed(@NonNull FirebaseException e) {
-                                        signupcard.setVisibility(View.INVISIBLE);
+                                        signupcard.setVisibility(View.VISIBLE);
+                                        loadingBar.dismiss();
                                         Toast.makeText(SignUp_BB.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
 
@@ -100,6 +151,7 @@ public class SignUp_BB extends AppCompatActivity {
                                         intent.putExtra("mobileNo", mobileNo.getText().toString());
                                         intent.putExtra("backendotp", backendotp);
                                         intent.putExtra("Helper", helper);
+                                        loadingBar.dismiss();
                                         startActivity(intent);
 
                                     }
@@ -111,15 +163,18 @@ public class SignUp_BB extends AppCompatActivity {
 //                        startActivity(intent);
 
                     } else {
+                        signupcard.setVisibility(View.VISIBLE);
+                        loadingBar.dismiss();
                         Toast.makeText(SignUp_BB.this, "Please enter correct number", Toast.LENGTH_SHORT).show();
                     }
                 } else {
+                    signupcard.setVisibility(View.VISIBLE);
+                    loadingBar.dismiss();
                     Toast.makeText(SignUp_BB.this, "Enter Mobile Number", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        signincard = (CardView) findViewById(R.id.signincard);
         signincard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,7 +184,7 @@ public class SignUp_BB extends AppCompatActivity {
         });
     }
 
-    //FUnctions for making background blur
+    //Functions for making background blur
     @Override
     protected void onStart() {
         super.onStart();
@@ -137,11 +192,27 @@ public class SignUp_BB extends AppCompatActivity {
         blurLayout.startBlur();
     }
 
-    //FUnctions for making background blur
+    //Functions for making background blur
     @Override
     protected void onStop() {
         blurLayout.pauseBlur();
         super.onStop();
+    }
+
+    //Function to show error message when input is not in correct format
+    public void showError(EditText input, String s)
+    {
+        input.setError(s);
+        input.requestFocus();
+    }
+
+    //Function to check whether an email enters is valid or not
+    public boolean isEmailValid(String email)
+    {
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9]+(\\.[_A-Za-z0-9]+)*@[_A-Za-z0-9]+(\\.[_A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        final Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        final Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }
 

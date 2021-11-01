@@ -6,7 +6,7 @@
     <string name="_9876543210">9876543210</string>
     <string name="get_otp">Get OTP</string>
     <string name="todo">TODO</string>
-    <string name="please_enter_the_otp_send_to_you">Please enter the OTP send to you.</string>
+    <string name="please_enter_the_otp_send_to_you">Please enter the OTP sent to you.</string>
     <string name="didn_t_receive_the_opt">Didn\'t receive the OPT?</string>
     <string name="resend_otp">RESEND OTP</string>
     <string name="enter">Enter</string>
@@ -47,5 +47,6 @@
     <string name="name">Name</string>
     <string name="enter_new_name">Enter New Name</string>
     <string name="enter_otp_here">Enter OTP here</string>
+    <string name="verify_continue"><![CDATA[VERIFY & CONTINUE]]></string>
 
 </resources>

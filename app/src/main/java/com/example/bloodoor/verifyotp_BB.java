@@ -1,5 +1,6 @@
 package com.example.bloodoor;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,8 +40,10 @@ public class verifyotp_BB extends AppCompatActivity {
     String getotpbackend;
     BlurLayout blurLayout1;
     private FirebaseAuth mAuth;
+    CardView verify_card;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    private ProgressDialog loadingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class verifyotp_BB extends AppCompatActivity {
         bloodBankHelperClass helper = (bloodBankHelperClass) getIntent().getSerializableExtra("Helper");
         final Button verifybuttononclick = findViewById(R.id.buttongetotp);
 
+        verify_card = (CardView) findViewById(R.id.verify_card);
         inputnumber1 = findViewById(R.id.inputotp1);
         inputnumber2 = findViewById(R.id.inputotp2);
         inputnumber3 = findViewById(R.id.inputotp3);
@@ -58,6 +63,7 @@ public class verifyotp_BB extends AppCompatActivity {
         inputnumber5 = findViewById(R.id.inputotp5);
         inputnumber6 = findViewById(R.id.inputotp6);
         blurLayout1 = findViewById(R.id.blurLayout);
+        loadingBar = new ProgressDialog(this);
 
         TextView textView = findViewById(R.id.textshowmobilenumber);
         textView.setText(String.format(
@@ -66,9 +72,8 @@ public class verifyotp_BB extends AppCompatActivity {
 
         getotpbackend = getIntent().getStringExtra("backendotp");
 
-        final ProgressBar progressBarverifyotp = findViewById(R.id.progressbar_verify_otp);
 
-        verifybuttononclick.setOnClickListener(new View.OnClickListener() {
+        verify_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -81,9 +86,10 @@ public class verifyotp_BB extends AppCompatActivity {
                             inputnumber6.getText().toString();
 
                     if (getotpbackend != null) {
-                        progressBarverifyotp.setVisibility(View.VISIBLE);
-                        verifybuttononclick.setVisibility(View.INVISIBLE);
-
+//                        loadingBar.setTitle("Logging in");
+                        loadingBar.setMessage("Verifying OTP");
+                        loadingBar.setCanceledOnTouchOutside(false);
+                        loadingBar.show();
                         PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(
                                 getotpbackend, entercodeotp
                         );
@@ -91,8 +97,6 @@ public class verifyotp_BB extends AppCompatActivity {
                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
-                                        progressBarverifyotp.setVisibility(View.GONE);
-                                        verifybuttononclick.setVisibility(View.VISIBLE);
 
                                         if (task.isSuccessful()) {
                                             rootNode = FirebaseDatabase.getInstance();
@@ -102,18 +106,23 @@ public class verifyotp_BB extends AppCompatActivity {
                                             reference.child(bloodBankID).setValue(helper);
                                             Intent intent = new Intent(getApplicationContext(), Homepage_BB.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            loadingBar.dismiss();
+                                            Toast.makeText(verifyotp_BB.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
                                             startActivity(intent);
                                         } else {
+                                            loadingBar.dismiss();
                                             Toast.makeText(verifyotp_BB.this, "Enter the correct OTP", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
 
                     } else {
+                        loadingBar.dismiss();
                         Toast.makeText(verifyotp_BB.this, "Network error:(", Toast.LENGTH_SHORT).show();
                     }
 //                    Toast.makeText(verifyotp.this, "OTP verify...",Toast.LENGTH_SHORT).show();
                 } else {
+                    loadingBar.dismiss();
                     Toast.makeText(verifyotp_BB.this, "Please enter all numbers", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -46,6 +46,7 @@ public class FAQpage extends AppCompatActivity {
 
     }
 
+    //methods for visibility
     public void Que1Clicked(View view) {
         if(A1.getVisibility() == View.GONE) {
             TransitionManager.beginDelayedTransition(C1, new AutoTransition());

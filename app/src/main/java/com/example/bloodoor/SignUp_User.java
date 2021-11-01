@@ -1,9 +1,11 @@
 package com.example.bloodoor;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -25,6 +27,8 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.alterac.blurkit.BlurLayout;
 
@@ -34,6 +38,7 @@ public class SignUp_User extends AppCompatActivity {
     CardView signupcard, signincard;
     private EditText date, name, city, address, Email, phoneno;
     AutoCompleteTextView gender, bloodgrp;
+    private ProgressDialog loadingBar;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     //this annotation because dropdown menu code requires minimum android jelly bean...
@@ -64,12 +69,62 @@ public class SignUp_User extends AppCompatActivity {
         phoneno = findViewById(R.id.mobileNumber);
         Email = findViewById(R.id.emailID);
         city = findViewById(R.id.city);
-
-
         signupcard = (CardView) findViewById(R.id.signupcard);
+        signincard = (CardView) findViewById(R.id.signincard);
+        loadingBar = new ProgressDialog(this);
+
         signupcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String fullName = name.getText().toString();
+                String homeAddress = address.getText().toString();
+                String mobileNo = phoneno.getText().toString();
+                String email = Email.getText().toString();
+                String City = city.getText().toString();
+                String Date = date.getText().toString();
+                String Bloodgrp = bloodgrp.getText().toString();
+                String Gender = gender.getText().toString();
+
+                if(fullName.isEmpty() || fullName.length()<5)
+                {
+                    showError(name, "Please enter valid name");
+                }
+                else if (mobileNo.length()!=10)
+                {
+                    showError(phoneno, "Please enter valid 10 digit number");
+                }
+                else if(email.isEmpty() && !isEmailValid(email))
+                {
+                    showError(Email, "Please enter valid email address");
+                }
+                else if (homeAddress.isEmpty() || homeAddress.length()<5)
+                {
+                    showError(address, "Please enter valid home address");
+                }
+                else if(City.isEmpty())
+                {
+                    showError(city, "This field can not be empty");
+                }
+                else if(Date.isEmpty())
+                {
+                    showError(date, "Please select correct date");
+                }
+                else if(Gender.isEmpty() | Gender.equals("Select"))
+                {
+                    Toast.makeText(SignUp_User.this, "Please select your gender", Toast.LENGTH_SHORT).show();
+                }
+                else if(Bloodgrp.isEmpty()| Bloodgrp.equals("Select"))
+                {
+                    Toast.makeText(SignUp_User.this, "Please select your blood group", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    createUser();
+                }
+            }
+
+
+            //function for registration
+            public void createUser(){
                 String fullName = name.getText().toString();
                 String homeAddress = address.getText().toString();
                 String mobileNo = phoneno.getText().toString();
@@ -85,6 +140,10 @@ public class SignUp_User extends AppCompatActivity {
 
 
                         signupcard.setVisibility(View.INVISIBLE);
+//                        loadingBar.setTitle("Create Account");
+                        loadingBar.setMessage("Signing up");
+                        loadingBar.setCanceledOnTouchOutside(false);
+                        loadingBar.show();
 
                         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                                 "+91" + phoneno.getText().toString(),
@@ -101,8 +160,9 @@ public class SignUp_User extends AppCompatActivity {
 
                                     @Override
                                     public void onVerificationFailed(@NonNull FirebaseException e) {
-                                        signupcard.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(SignUp_User.this, "Network Error:(", Toast.LENGTH_SHORT).show();
+                                        signupcard.setVisibility(View.VISIBLE);
+                                        loadingBar.dismiss();
+                                        Toast.makeText(SignUp_User.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
 
                                     @Override
@@ -115,6 +175,7 @@ public class SignUp_User extends AppCompatActivity {
                                         intent.putExtra("mobile", phoneno.getText().toString());
                                         intent.putExtra("backendotp", backendotp);
                                         intent.putExtra("User", user);
+                                        loadingBar.dismiss();
                                         startActivity(intent);
 
                                     }
@@ -126,15 +187,21 @@ public class SignUp_User extends AppCompatActivity {
 //                        startActivity(intent);
 
                     } else {
+                        loadingBar.dismiss();
+                        signupcard.setVisibility(View.VISIBLE);
                         Toast.makeText(SignUp_User.this, "Please enter correct number", Toast.LENGTH_SHORT).show();
                     }
                 } else {
+                    loadingBar.dismiss();
+                    signupcard.setVisibility(View.VISIBLE);
                     Toast.makeText(SignUp_User.this, "Enter Mobile Number", Toast.LENGTH_SHORT).show();
                 }
+
             }
+
+
         });
 
-        signincard = (CardView) findViewById(R.id.signincard);
         signincard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,11 +227,13 @@ public class SignUp_User extends AppCompatActivity {
                     }
                 }, year, month, day);
                 //Disables past date
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis() - 1000);
                 //Show date picker dialog
                 datePickerDialog.show();
             }
         });
+
+
     }
 
     //FUnctions for making background blur
@@ -180,6 +249,22 @@ public class SignUp_User extends AppCompatActivity {
     protected void onStop() {
         blurLayout.pauseBlur();
         super.onStop();
+    }
+
+    //Function to show error message when input is not in correct format
+    public void showError(EditText input, String s)
+    {
+        input.setError(s);
+        input.requestFocus();
+    }
+
+    //Function to check whether an email enters is valid or not
+    public boolean isEmailValid(String email)
+    {
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9]+(\\.[_A-Za-z0-9]+)*@[_A-Za-z0-9]+(\\.[_A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        final Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        final Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }
 
