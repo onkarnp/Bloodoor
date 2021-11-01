@@ -1,7 +1,6 @@
 package com.example.bloodoor;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -46,10 +45,10 @@ public class verifyotp_User extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();    //removes action bar
         setContentView(R.layout.activity_verifyotp_user);
-        User user= (User) getIntent().getSerializableExtra("User");
+        User user = (User) getIntent().getSerializableExtra("User");
         final Button verifybuttononclick = findViewById(R.id.buttongetotp);
 
         inputnumber1 = findViewById(R.id.inputotp1);
@@ -126,7 +125,7 @@ public class verifyotp_User extends AppCompatActivity {
 
         resendlabel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 PhoneAuthProvider.getInstance().verifyPhoneNumber(
                         "+91" + getIntent().getStringExtra("mobile"),
                         90,
@@ -152,15 +151,6 @@ public class verifyotp_User extends AppCompatActivity {
                 );
             }
         });
-
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((TextView) findViewById(R.id.textView)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.textView2)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.textView3)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.textresendotp)).setTypeface(typeface);
-
-        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((Button) findViewById(R.id.buttongetotp)).setTypeface(typeface1);
     }
 
     private void numberotpmove() {

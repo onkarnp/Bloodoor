@@ -1,7 +1,6 @@
 package com.example.bloodoor;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -152,15 +151,6 @@ public class verifyotp_BB extends AppCompatActivity {
                 );
             }
         });
-
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((TextView) findViewById(R.id.textView)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.textView2)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.textView3)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.textresendotp)).setTypeface(typeface);
-
-        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((Button) findViewById(R.id.buttongetotp)).setTypeface(typeface1);
     }
 
     private void numberotpmove() {

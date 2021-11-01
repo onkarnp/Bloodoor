@@ -2,7 +2,6 @@ package com.example.bloodoor;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -94,19 +93,6 @@ public class profileBB extends AppCompatActivity {
                 Toast.makeText(profileBB.this, "Something went wrong :(", Toast.LENGTH_SHORT).show();
             }
         });
-
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((TextView) findViewById(R.id.bb_name)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.bb_holder_name)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.bb_mobileNo)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.bb_phoneNo)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.bb_emailId)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.bb_address)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.bb_city)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.blood_bank_name)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.holder_name)).setTypeface(typeface);
-        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((Button) findViewById(R.id.btn_update)).setTypeface(typeface1);
 
         updateProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,12 +1,9 @@
 package com.example.bloodoor;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -46,23 +43,6 @@ public class profileUpdate_User extends AppCompatActivity {
         phoneno = findViewById(R.id.mobileNumber);
         Email = findViewById(R.id.emailID);
         city = findViewById(R.id.city);
-
-
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((TextView) findViewById(R.id.userProfileHeading)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.txv_general_info)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.txv_name)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.txv_mobileNumber)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.txv_emailId)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.txv_homeAdd)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.txv_city)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.updateDOB)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.autoCompleteTextView1)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.autoCompleteTextView)).setTypeface(typeface);
-
-        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((Button) findViewById(R.id.btn_update)).setTypeface(typeface1);
-
-
+        date = findViewById(R.id.updateDOB);
     }
 }

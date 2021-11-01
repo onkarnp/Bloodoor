@@ -1,12 +1,10 @@
 package com.example.bloodoor;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -45,11 +43,6 @@ public class options extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((TextView) findViewById(R.id.option)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.option1)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.option2)).setTypeface(typeface);
     }
 
     //FUnctions for making background blurr

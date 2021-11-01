@@ -2,7 +2,6 @@ package com.example.bloodoor;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -40,20 +39,6 @@ public class profileUser extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_profile_user);
-
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((TextView) findViewById(R.id.user_name_profile)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.mobile_number_profile)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.email_id_profile)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.home_address_profile)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.city_profile)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.dateOfBirth_profile)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.blood_gruop_profile)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.gender_profile)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.full_name_field)).setTypeface(typeface);
-        ((TextView) findViewById(R.id.user_name_field)).setTypeface(typeface);
-        Typeface typeface1 = Typeface.createFromAsset(getAssets(), "MeriendaOne-Regular.ttf");
-        ((Button) findViewById(R.id.btn_update)).setTypeface(typeface1);
 
         reference = FirebaseDatabase.getInstance().getReference("users");
         user = FirebaseAuth.getInstance().getCurrentUser();
