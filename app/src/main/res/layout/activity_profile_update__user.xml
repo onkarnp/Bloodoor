@@ -295,72 +295,169 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="115dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="15dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="300dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="10dp"
-                        android:drawableLeft="@drawable/ic_baseline_group_24"
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="25dp"
                         android:drawablePadding="10dp"
-                        android:ems="10"
-                        android:hint="@string/select_gender"
-                        app:startIconDrawable="@drawable/ic_baseline_group_24">
+                        android:src="@drawable/gender" />
 
-                        <AutoCompleteTextView
-                            android:id="@+id/autoCompleteTextView1"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/button"
-                            android:paddingLeft="20dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="20dp"
-                            android:paddingBottom="10dp"
-                            android:text="Select New Gender"
-                            android:textColor="@color/colortextfirst"
-                            android:textColorHint="#ECAB7A"
-                            android:textSize="18sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="300dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="10dp"
-                        android:drawableLeft="@drawable/ic_baseline_group_24"
-                        android:drawablePadding="10dp"
-                        android:ems="10"
-                        android:hint="@string/blood_group"
-                        app:startIconDrawable="@drawable/ic_baseline_group_24">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/autoCompleteTextView"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/button"
-                            android:paddingLeft="20dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="20dp"
-                            android:paddingBottom="10dp"
-                            android:text="Select New Blood Group"
-                            android:textColor="@color/colortextfirst"
-                            android:textColorHint="#ECAB7A"
-                            android:textSize="18sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:id="@+id/update_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="8dp"
+                        android:text="Select Gender"
+                        android:textColor="@color/colortextfirst"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/update_radio_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radio_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="Female"
+                        android:textColor="@color/colortextfirst"
+                        android:textSize="18sp" />
+
+                    <RadioButton
+                        android:id="@+id/radio_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="Male"
+                        android:textColor="@color/colortextfirst"
+                        android:textSize="18sp" />
+                </RadioGroup>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="25dp"
+                        android:drawablePadding="10dp"
+                        android:src="@drawable/bloodgroup" />
+
+                    <TextView
+                        android:id="@+id/update_bloodGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="8dp"
+                        android:text="Select Blood Group"
+                        android:textColor="@color/colortextfirst"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/update_radio_bloodGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio_OP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="O+"
+                            android:textColor="@color/colortextfirst"
+                            android:textSize="18sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio_ON"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="O-"
+                            android:textColor="@color/colortextfirst"
+                            android:textSize="18sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio_ABP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="AB+"
+                            android:textColor="@color/colortextfirst"
+                            android:textSize="18sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio_ABN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="AB-"
+                            android:textColor="@color/colortextfirst"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio_AP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="A+"
+                            android:textColor="@color/colortextfirst"
+                            android:textSize="18sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio_AN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="A-"
+                            android:textColor="@color/colortextfirst"
+                            android:textSize="18sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio_BP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="B+"
+                            android:textColor="@color/colortextfirst"
+                            android:textSize="18sp" />
+
+                        <RadioButton
+                            android:id="@+id/radio_BN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="B-"
+                            android:textColor="@color/colortextfirst"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </RadioGroup>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -369,7 +466,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:elevation="15dp"
                     android:orientation="vertical">
 
@@ -385,6 +482,14 @@
 
                 </LinearLayout>
 
+                <ProgressBar
+                    android:id="@+id/progressbar_Update_Profile"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:elevation="18dp"
+                    android:visibility="gone" />
             </LinearLayout>
 
         </ScrollView>

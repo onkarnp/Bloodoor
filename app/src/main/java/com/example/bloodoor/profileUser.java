@@ -36,7 +36,7 @@ public class profileUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes tite bar
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_profile_user);
 
@@ -56,7 +56,7 @@ public class profileUser extends AppCompatActivity {
         updateProfileButton = (Button) findViewById(R.id.btn_update);
         loadingBar = new ProgressDialog(this);
         loadingBar.setTitle("User Profile");
-        loadingBar.setMessage("Fetching user profile details, "+ "Please wait for a moment...");
+        loadingBar.setMessage("Fetching user profile details, " + "Please wait for a moment...");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
@@ -64,7 +64,7 @@ public class profileUser extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User profileUser = snapshot.getValue(User.class);
-                if(profileUser != null){
+                if (profileUser != null) {
                     String user_username = profileUser.getFullName();
                     String user_mobileNo = profileUser.getMobileNo();
                     String user_emailID = profileUser.getEmail();
@@ -99,7 +99,7 @@ public class profileUser extends AppCompatActivity {
         updateProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),profileUpdate_User.class);
+                Intent intent = new Intent(getApplicationContext(), profileUpdate_User.class);
                 startActivity(intent);
             }
         });

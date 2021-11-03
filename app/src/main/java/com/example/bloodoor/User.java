@@ -15,6 +15,13 @@ public class User implements Serializable {
         this.mobileNo = mobileno;
     }
 
+    public User(String date, String gender, String mobileNo) {
+
+        this.date = date;
+        this.gender = gender;
+        this.mobileNo = mobileNo;
+    }
+
     public User(String fullName, String homeAddress, String mobileNo, String email, String city, String date, String bloodgrp, String gender) {
         this.fullName = fullName;
         this.homeAddress = homeAddress;

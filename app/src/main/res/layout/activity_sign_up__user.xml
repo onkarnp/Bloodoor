@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -23,7 +22,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -200,11 +199,8 @@
                     android:layout_width="250dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
-                    android:drawableLeft="@drawable/ic_baseline_group_24"
-                    android:drawablePadding="10dp"
                     android:ems="10"
-                    android:hint="@string/select_gender"
-                    app:startIconDrawable="@drawable/ic_baseline_group_24">
+                    android:hint="@string/select_gender">
 
                     <AutoCompleteTextView
                         android:id="@+id/autoCompleteTextView1"
@@ -212,6 +208,10 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/button"
+                        android:drawableStart="@drawable/gender"
+                        android:drawableLeft="@drawable/gender"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/white"
                         android:paddingLeft="20dp"
                         android:paddingTop="10dp"
                         android:paddingRight="20dp"
@@ -226,11 +226,8 @@
                     android:layout_width="250dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
-                    android:drawableLeft="@drawable/ic_baseline_group_24"
-                    android:drawablePadding="10dp"
                     android:ems="10"
-                    android:hint="@string/blood_group"
-                    app:startIconDrawable="@drawable/ic_baseline_group_24">
+                    android:hint="@string/blood_group">
 
                     <AutoCompleteTextView
                         android:id="@+id/autoCompleteTextView"
@@ -238,6 +235,10 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/button"
+                        android:drawableStart="@drawable/bloodgroup"
+                        android:drawableLeft="@drawable/bloodgroup"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/white"
                         android:paddingLeft="20dp"
                         android:paddingTop="10dp"
                         android:paddingRight="20dp"
@@ -276,15 +277,15 @@
             android:id="@+id/signincard"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="@+id/blurLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:backgroundTint="@color/white"
-            app:cardCornerRadius="10dp"
             android:clickable="true"
             android:elevation="100dp"
             android:focusable="true"
-            android:foreground="@drawable/card_effect">
+            android:foreground="@drawable/card_effect"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/blurLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -306,7 +307,8 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/loginicon"/>
+                    android:src="@drawable/loginicon" />
+
                 <ProgressBar
                     android:id="@+id/progressbar_sending_otp"
                     android:layout_width="35dp"
