@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloodoor">
-        <activity android:name=".template"></activity>
+        <activity android:name=".live_events"></activity>
+        <activity android:name=".create_donation_event" />
+        <activity android:name=".find_nearby_bb" />
+        <activity android:name=".request_blood" />
+        <activity android:name=".search_donor" />
+        <activity android:name=".template" />
         <activity android:name=".verifyotp_BB" />
         <activity android:name=".profileBB" />
         <activity android:name=".profileUser" />
@@ -21,14 +26,14 @@
         <activity android:name=".SignUp_User" />
         <activity android:name=".options" />
         <activity android:name=".Homepage_BB" />
-        <activity android:name=".Homepage_user" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Homepage_user">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".enternumber" />
         <activity android:name=".verifyotp_User" />
 

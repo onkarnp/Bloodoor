@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -26,6 +28,7 @@ import io.alterac.blurkit.BlurLayout;
 
 public class Homepage_user extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    CardView search_donor_card, request_blood_card, live_events_card, find_banks_card;
     BlurLayout blurLayout1;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -39,6 +42,42 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         blurLayout1 = findViewById(R.id.blurLayout1);
         setContentView(R.layout.activity_homepage_user);
+
+        search_donor_card = (CardView) findViewById(R.id.search_donor);
+        search_donor_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), search_donor.class);
+                startActivity(intent);
+            }
+        });
+
+        request_blood_card = (CardView) findViewById(R.id.request_blood);
+        request_blood_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), request_blood.class);
+                startActivity(intent);
+            }
+        });
+
+        live_events_card = (CardView) findViewById(R.id.live_events);
+        live_events_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), live_events.class);
+                startActivity(intent);
+            }
+        });
+
+        find_banks_card = (CardView) findViewById(R.id.find_banks);
+        find_banks_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), find_nearby_bb.class);
+                startActivity(intent);
+            }
+        });
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
