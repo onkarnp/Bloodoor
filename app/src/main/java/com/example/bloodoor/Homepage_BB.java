@@ -21,7 +21,6 @@ public class Homepage_BB extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        Objects.requireNonNull(getSupportActionBar()).hide();    //removes action bar
         blurLayout1 = findViewById(R.id.blurLayout1);
         setContentView(R.layout.activity_homepage__b_b);
         cardView = (CardView) findViewById(R.id.cardview);

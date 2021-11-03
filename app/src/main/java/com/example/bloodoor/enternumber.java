@@ -33,7 +33,6 @@ public class enternumber extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        Objects.requireNonNull(getSupportActionBar()).hide();    //removes action bar
         blurLayout1 = findViewById(R.id.blurLayout);
         setContentView(R.layout.activity_enternumber);
 

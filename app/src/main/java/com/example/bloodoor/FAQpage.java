@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import java.util.Objects;
+
 public class FAQpage extends AppCompatActivity {
 
     LinearLayout A1, A2, A3, A4, A5, A6, A7, A8, A9;
@@ -21,7 +23,6 @@ public class FAQpage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_f_a_qpage);
 
         A1 = findViewById(R.id.Ans1);

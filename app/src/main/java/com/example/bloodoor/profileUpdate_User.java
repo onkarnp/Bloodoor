@@ -50,7 +50,6 @@ public class profileUpdate_User extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_update__user);
-        Objects.requireNonNull(getSupportActionBar()).hide();    //removes action bar
         blurLayout = findViewById(R.id.blurLayout);         //for blurring background
         setContentView(R.layout.activity_profile_update__user);
 

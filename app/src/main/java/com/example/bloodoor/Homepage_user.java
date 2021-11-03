@@ -37,7 +37,6 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        Objects.requireNonNull(getSupportActionBar()).show();    //removes action bar
         blurLayout1 = findViewById(R.id.blurLayout1);
         setContentView(R.layout.activity_homepage_user);
 

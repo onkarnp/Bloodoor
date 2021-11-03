@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class profileBB extends AppCompatActivity {
 
     private TextInputEditText bloodBankname, holdername, mobileNo, phoneNo, email, bandLocationAdd, city;
@@ -37,7 +39,6 @@ public class profileBB extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes tite bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_profile_b_b);
 
         reference = FirebaseDatabase.getInstance().getReference("BloodBanks");

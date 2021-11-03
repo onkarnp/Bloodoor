@@ -50,7 +50,6 @@ public class verifyotp_BB extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        Objects.requireNonNull(getSupportActionBar()).hide();    //removes action bar
         setContentView(R.layout.activity_verifyotp_user);
         bloodBankHelperClass helper = (bloodBankHelperClass) getIntent().getSerializableExtra("Helper");
         final Button verifybuttononclick = findViewById(R.id.buttongetotp);
