@@ -49,4 +49,8 @@
     <string name="enter_otp_here">Enter OTP here</string>
     <string name="verify_continue"><![CDATA[VERIFY & CONTINUE]]></string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
 </resources>
