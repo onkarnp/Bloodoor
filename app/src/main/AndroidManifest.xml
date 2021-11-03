@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloodoor">
-
-        <activity android:name=".verifyotp_BB"/>
+        <activity android:name=".template"></activity>
+        <activity android:name=".verifyotp_BB" />
         <activity android:name=".profileBB" />
         <activity android:name=".profileUser" />
         <activity android:name=".profileUpdate_BB" />
