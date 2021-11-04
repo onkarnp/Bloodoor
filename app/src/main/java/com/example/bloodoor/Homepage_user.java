@@ -22,8 +22,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.Objects;
-
 import io.alterac.blurkit.BlurLayout;
 
 public class Homepage_user extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -83,9 +81,10 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("BlooDoor");
 
         navigationView.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(Homepage_user.this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -117,20 +116,14 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.profile:
                 Intent intent = new Intent(Homepage_user.this, profileUser.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                        Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;
             case R.id.about:
                 Intent intent1 = new Intent(Homepage_user.this, AboutUS.class);
-                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                        Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent1);
                 break;
             case R.id.faq:
                 Intent intent2 = new Intent(Homepage_user.this, FAQpage.class);
-                intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                        Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent2);
                 break;
             case R.id.logOut:

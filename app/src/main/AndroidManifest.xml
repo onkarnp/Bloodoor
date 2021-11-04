@@ -25,14 +25,15 @@
         <activity android:name=".SignUp_BB" />
         <activity android:name=".SignUp_User" />
         <activity android:name=".options" />
-        <activity android:name=".Homepage_BB" />
-        <activity android:name=".Homepage_user">
+        <activity android:name=".Homepage_BB" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Homepage_user"/>
+
         <activity android:name=".MainActivity" />
         <activity android:name=".enternumber" />
         <activity android:name=".verifyotp_User" />
