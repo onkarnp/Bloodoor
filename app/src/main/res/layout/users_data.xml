@@ -75,15 +75,15 @@
             app:layout_constraintTop_toBottomOf="@+id/email1" />
 
         <TextView
-            android:id="@+id/city1"
+            android:id="@+id/pinCode1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:drawablePadding="10dp"
-            android:text="@string/city"
+            android:text="Pin Code"
             android:textColor="#3F51B5"
             android:textSize="15sp"
-            app:drawableLeftCompat="@drawable/ic_home"
+            app:drawableLeftCompat="@drawable/ic_pin"
             app:drawableTint="#3F51B5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/homeAddress1" />
@@ -100,7 +100,7 @@
             app:drawableLeftCompat="@drawable/ic_baseline_calendar_today_24"
             app:drawableTint="#3F51B5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/city1" />
+            app:layout_constraintTop_toBottomOf="@+id/pinCode1" />
 
         <TextView
             android:id="@+id/gender1"

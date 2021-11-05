@@ -36,10 +36,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         holder.handlerName.setText(user.getHandlerName());
         holder.mobileNo.setText(user.getMobileNo());
         holder.phoneNo.setText(user.getPhoneNo());
-        holder.city.setText(user.getCity());
         holder.email.setText(user.getEmail());
         holder.address.setText(user.getAddress());
-        holder.city.setText(user.getCity());
+        holder.bbPinCode.setText(user.getbbPinCode());
     }
 
     @Override
@@ -49,7 +48,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView name, handlerName, mobileNo, phoneNo, email, address, city;
+        TextView name, handlerName, mobileNo, phoneNo, email, address, bbPinCode;
         Button button;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -58,9 +57,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             handlerName = itemView.findViewById(R.id.bb_holder_name0);
             mobileNo = itemView.findViewById(R.id.mobileNo0);
             phoneNo = itemView.findViewById(R.id.phoneNo0);
-            email = itemView.findViewById(R.id.city0);
+            email = itemView.findViewById(R.id.email0);
             address = itemView.findViewById(R.id.homeAddress0);
-            city = itemView.findViewById(R.id.city0);
+            bbPinCode = itemView.findViewById(R.id.bb_pin_code0);
             button = itemView.findViewById(R.id.btn_email);
         }
     }

@@ -19,7 +19,6 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,7 +29,7 @@ public class SignUp_BB extends AppCompatActivity {
 
     BlurLayout blurLayout;
     CardView signupcard, signincard;
-    private EditText name, handlerName, mobileNo, phoneNo, email, address, city;
+    private EditText name, handlerName, mobileNo, phoneNo, email, address, bbPinCode;
     private ProgressDialog loadingBar;
 
     FirebaseDatabase rootNode;
@@ -49,8 +48,8 @@ public class SignUp_BB extends AppCompatActivity {
         mobileNo = findViewById(R.id.mobileNumber);
         phoneNo = findViewById(R.id.phoneNumber);
         email = findViewById(R.id.emailID);
-        address = findViewById(R.id.homeAddress);
-        city = findViewById(R.id.city);
+        address = findViewById(R.id.bankAddress);
+        bbPinCode = findViewById(R.id.bb_pin_code);
         signupcard = (CardView) findViewById(R.id.signupcard);
         signincard = (CardView) findViewById(R.id.signincard);
         loadingBar = new ProgressDialog(this);
@@ -66,7 +65,7 @@ public class SignUp_BB extends AppCompatActivity {
                 String regPhoneNo = phoneNo.getText().toString();
                 String regEmail = email.getText().toString();
                 String regAddress = address.getText().toString();
-                String regCity = city.getText().toString();
+                String regPinCode = bbPinCode.getText().toString();
 
                 if(regName.isEmpty() || regName.length()<5)
                 {
@@ -92,9 +91,9 @@ public class SignUp_BB extends AppCompatActivity {
                 {
                     showError(address, "Please enter valid address");
                 }
-                else if (regCity.isEmpty() || regCity.length()<5)
+                else if (regPinCode.length()!=6)
                 {
-                    showError(city, "Please enter valid city name");
+                    showError(bbPinCode, "Please enter a valid pin code");
                 }
                 else{
                     createBloodBank();
@@ -108,9 +107,9 @@ public class SignUp_BB extends AppCompatActivity {
                 String regPhoneNo = phoneNo.getText().toString();
                 String regEmail = email.getText().toString();
                 String regAddress = address.getText().toString();
-                String regCity = city.getText().toString();
+                String regPinCode = bbPinCode.getText().toString();
                 bloodBankHelperClass helper = new bloodBankHelperClass(regName, regHandlerName, regMobileNo,
-                        regPhoneNo, regEmail, regAddress, regCity);
+                        regPhoneNo, regEmail, regAddress, regPinCode);
                 if (!mobileNo.getText().toString().trim().isEmpty()) {
                     if ((mobileNo.getText().toString().trim()).length() == 10) {
 
@@ -146,10 +145,11 @@ public class SignUp_BB extends AppCompatActivity {
                                         signupcard.setVisibility(View.INVISIBLE);
                                         Intent intent = new Intent(getApplicationContext(), verifyotp_BB.class);
                                         bloodBankHelperClass helper = new bloodBankHelperClass(regName, regHandlerName, regMobileNo,
-                                                regPhoneNo, regEmail, regAddress, regCity);
+                                                regPhoneNo, regEmail, regAddress, regPinCode);
                                         intent.putExtra("mobileNo", mobileNo.getText().toString());
                                         intent.putExtra("backendotp", backendotp);
                                         intent.putExtra("Helper", helper);
+                                        intent.putExtra("from","SignUp_BB");
                                         loadingBar.dismiss();
                                         startActivity(intent);
 

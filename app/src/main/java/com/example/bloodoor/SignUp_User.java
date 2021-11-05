@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -25,7 +24,6 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.Calendar;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,7 +34,7 @@ public class SignUp_User extends AppCompatActivity {
 
     BlurLayout blurLayout;
     CardView signupcard, signincard;
-    private EditText date, name, city, address, Email, phoneno;
+    private EditText date, name, pincode, address, Email, phoneno;
     AutoCompleteTextView gender, bloodgrp;
     private ProgressDialog loadingBar;
 
@@ -64,10 +62,10 @@ public class SignUp_User extends AppCompatActivity {
         bloodgrp.setAdapter(arrayAdapter);
 
         name = findViewById(R.id.enterFullName);
-        address = findViewById(R.id.homeAddress);
+        address = findViewById(R.id.bankAddress);
         phoneno = findViewById(R.id.mobileNumber);
         Email = findViewById(R.id.emailID);
-        city = findViewById(R.id.city);
+        pincode = findViewById(R.id.pin_code);
         signupcard = (CardView) findViewById(R.id.signupcard);
         signincard = (CardView) findViewById(R.id.signincard);
         loadingBar = new ProgressDialog(this);
@@ -79,7 +77,7 @@ public class SignUp_User extends AppCompatActivity {
                 String homeAddress = address.getText().toString();
                 String mobileNo = phoneno.getText().toString();
                 String email = Email.getText().toString();
-                String City = city.getText().toString();
+                String pin_code = pincode.getText().toString();
                 String Date = date.getText().toString();
                 String Bloodgrp = bloodgrp.getText().toString();
                 String Gender = gender.getText().toString();
@@ -100,9 +98,9 @@ public class SignUp_User extends AppCompatActivity {
                 {
                     showError(address, "Please enter valid home address");
                 }
-                else if(City.isEmpty())
+                else if(pin_code.length()!=6)
                 {
-                    showError(city, "This field can not be empty");
+                    showError(pincode, "Please enter correct pin code");
                 }
                 else if(Date.isEmpty())
                 {
@@ -128,12 +126,12 @@ public class SignUp_User extends AppCompatActivity {
                 String homeAddress = address.getText().toString();
                 String mobileNo = phoneno.getText().toString();
                 String email = Email.getText().toString();
-                String City = city.getText().toString();
+                String pin_code = pincode.getText().toString();
                 String Date = date.getText().toString();
                 String Bloodgrp = bloodgrp.getText().toString();
                 String Gender = gender.getText().toString();
                 User user = new User(fullName, homeAddress, mobileNo, email,
-                        City, Date, Bloodgrp, Gender);
+                        pin_code, Date, Bloodgrp, Gender);
                 if (!phoneno.getText().toString().trim().isEmpty()) {
                     if ((phoneno.getText().toString().trim()).length() == 10) {
 
@@ -170,10 +168,11 @@ public class SignUp_User extends AppCompatActivity {
                                         signupcard.setVisibility(View.INVISIBLE);
                                         Intent intent = new Intent(getApplicationContext(), verifyotp_User.class);
                                         User user = new User(fullName, homeAddress, mobileNo, email,
-                                                City, Date, Bloodgrp, Gender);
+                                                pin_code, Date, Bloodgrp, Gender);
                                         intent.putExtra("mobile", phoneno.getText().toString());
                                         intent.putExtra("backendotp", backendotp);
                                         intent.putExtra("User", user);
+                                        intent.putExtra("from","SignUp_User");
                                         loadingBar.dismiss();
                                         startActivity(intent);
 

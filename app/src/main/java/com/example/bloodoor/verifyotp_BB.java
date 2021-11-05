@@ -63,6 +63,7 @@ public class verifyotp_BB extends AppCompatActivity {
         inputnumber6 = findViewById(R.id.inputotp6);
         blurLayout1 = findViewById(R.id.blurLayout);
         loadingBar = new ProgressDialog(this);
+        String from_intent = getIntent().getStringExtra("from");
 
         TextView textView = findViewById(R.id.textshowmobilenumber);
         textView.setText(String.format(
@@ -98,16 +99,24 @@ public class verifyotp_BB extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                                         if (task.isSuccessful()) {
-                                            rootNode = FirebaseDatabase.getInstance();
-                                            FirebaseUser mauth = FirebaseAuth.getInstance().getCurrentUser();
-                                            String bloodBankID = mauth.getUid();
-                                            reference = rootNode.getReference("BloodBanks");
-                                            reference.child(bloodBankID).setValue(helper);
+
+
+                                            if(from_intent.equals("SignUp_BB")){
+                                                rootNode = FirebaseDatabase.getInstance();
+                                                FirebaseUser mauth = FirebaseAuth.getInstance().getCurrentUser();
+                                                String bloodBankID = mauth.getUid();
+                                                String bb_pin_code = helper.getbbPinCode();
+                                                reference = rootNode.getReference("BloodBanks");
+                                                reference.child(bb_pin_code).child(bloodBankID).setValue(helper);
+                                            }
                                             Intent intent = new Intent(getApplicationContext(), Homepage_BB.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             loadingBar.dismiss();
                                             Toast.makeText(verifyotp_BB.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
                                             startActivity(intent);
+
+
+
                                         } else {
                                             loadingBar.dismiss();
                                             Toast.makeText(verifyotp_BB.this, "Enter the correct OTP", Toast.LENGTH_SHORT).show();

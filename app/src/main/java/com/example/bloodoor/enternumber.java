@@ -77,6 +77,7 @@ public class enternumber extends AppCompatActivity {
                                         Intent intent = new Intent(getApplicationContext(), verifyotp_User.class);
                                         intent.putExtra("mobile", entermobilenumber.getText().toString());
                                         intent.putExtra("backendotp",backendotp);
+                                        intent.putExtra("from","enternumber");
                                         startActivity(intent);
                                     }
                                 }

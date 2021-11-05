@@ -168,13 +168,13 @@
                 android:paddingBottom="10dp"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#ECAB7A"
-                app:layout_constraintBottom_toTopOf="@+id/homeAddress"
+                app:layout_constraintBottom_toTopOf="@+id/bankAddress"
                 app:layout_constraintEnd_toEndOf="@+id/mobileNumber"
                 app:layout_constraintStart_toStartOf="@+id/mobileNumber"
                 app:layout_constraintTop_toBottomOf="@+id/mobileNumber" />
 
             <EditText
-                android:id="@+id/homeAddress"
+                android:id="@+id/bankAddress"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
@@ -193,25 +193,25 @@
                 android:paddingBottom="10dp"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#ECAB7A"
-                app:layout_constraintBottom_toTopOf="@+id/city"
+                app:layout_constraintBottom_toTopOf="@+id/bb_pin_code"
                 app:layout_constraintEnd_toEndOf="@+id/emailID"
                 app:layout_constraintStart_toStartOf="@+id/emailID"
                 app:layout_constraintTop_toBottomOf="@+id/emailID" />
 
             <EditText
-                android:id="@+id/city"
+                android:id="@+id/bb_pin_code"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/button"
-                android:drawableStart="@drawable/ic_home"
-                android:drawableLeft="@drawable/ic_home"
+                android:drawableStart="@drawable/ic_pin"
+                android:drawableLeft="@drawable/ic_pin"
                 android:drawablePadding="10dp"
                 android:drawableTint="@color/white"
                 android:ems="10"
-                android:hint="Your City..."
+                android:hint="Pin code of the area"
                 android:importantForAutofill="no"
-                android:inputType="text"
+                android:inputType="number"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
                 android:paddingRight="20dp"
@@ -219,9 +219,9 @@
                 android:textColor="#FFFFFF"
                 android:textColorHint="#ECAB7A"
                 app:layout_constraintBottom_toTopOf="@+id/signupcard"
-                app:layout_constraintEnd_toEndOf="@+id/homeAddress"
-                app:layout_constraintStart_toStartOf="@+id/homeAddress"
-                app:layout_constraintTop_toBottomOf="@+id/homeAddress" />
+                app:layout_constraintEnd_toEndOf="@+id/bankAddress"
+                app:layout_constraintStart_toStartOf="@+id/bankAddress"
+                app:layout_constraintTop_toBottomOf="@+id/bankAddress" />
 
             //Paste till here
             <androidx.cardview.widget.CardView

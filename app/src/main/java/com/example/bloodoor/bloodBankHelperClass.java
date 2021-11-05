@@ -4,19 +4,19 @@ import java.io.Serializable;
 
 public class bloodBankHelperClass implements Serializable {
 
-    String name, handlerName, mobileNo, phoneNo, email, address, city;
+    String name, handlerName, mobileNo, phoneNo, email, address, pinCode;
 
     public bloodBankHelperClass() {
     }
 
-    public bloodBankHelperClass(String name, String handlerName, String mobileNo, String phoneNo, String email, String address, String city) {
+    public bloodBankHelperClass(String name, String handlerName, String mobileNo, String phoneNo, String email, String address, String pinCode) {
         this.name = name;
         this.handlerName = handlerName;
         this.mobileNo = mobileNo;
         this.phoneNo = phoneNo;
         this.email = email;
         this.address = address;
-        this.city = city;
+        this.pinCode = pinCode;
     }
 
     public String getName() {
@@ -67,11 +67,11 @@ public class bloodBankHelperClass implements Serializable {
         this.address = address;
     }
 
-    public String getCity() {
-        return city;
+    public String getbbPinCode() {
+        return pinCode;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setbbPinCode(String pinCode) {
+        this.pinCode = pinCode;
     }
 }

@@ -72,7 +72,7 @@ public class profileBB extends AppCompatActivity {
                     String bb_phoneNo = profileBB.getPhoneNo();
                     String bb_email = profileBB.getEmail();
                     String bb_bandLocationAdd = profileBB.getAddress();
-                    String bb_city = profileBB.getCity();
+                    String bb_city = profileBB.getbbPinCode();
                     loadingBar.dismiss();
 
                     fullnameLabel.setText(bb_bloodBankname);

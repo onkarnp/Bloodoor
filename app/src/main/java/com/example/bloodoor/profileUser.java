@@ -48,7 +48,7 @@ public class profileUser extends AppCompatActivity {
         mobileNo = findViewById(R.id.mobile_number_profile);
         email = findViewById(R.id.email_id_profile);
         homeAdd = findViewById(R.id.home_address_profile);
-        city = findViewById(R.id.city_profile);
+        city = findViewById(R.id.pin_code_profile);
         dob = findViewById(R.id.dateOfBirth_profile);
         bloodGroup = findViewById(R.id.blood_gruop_profile);
         gender = findViewById(R.id.gender_profile);
@@ -70,7 +70,7 @@ public class profileUser extends AppCompatActivity {
                     String user_mobileNo = profileUser.getMobileNo();
                     String user_emailID = profileUser.getEmail();
                     String user_homeAdd = profileUser.getHomeAddress();
-                    String user_city = profileUser.getCity();
+                    String user_city = profileUser.getPinCode();
                     String user_dob = profileUser.getDate();
                     String user_bloodGroup = profileUser.getBloodgrp();
                     String user_gender = profileUser.getGender();

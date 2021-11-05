@@ -163,7 +163,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:hint="Full Name..."
+                    android:hint="Full Name"
                     android:textColorHint="@color/colortextsecond">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -239,11 +239,11 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/city_profile"
+                    android:id="@+id/pin_code_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:hint="City..."
+                    android:hint="Pin Code"
                     android:textColorHint="@color/colortextsecond">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -283,7 +283,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:hint="Gender..."
+                    android:hint="Gender"
                     android:textColorHint="@color/colortextsecond">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -303,7 +303,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:hint="Blood Group..."
+                    android:hint="Blood Group"
                     android:textColorHint="@color/colortextsecond">
 
                     <com.google.android.material.textfield.TextInputEditText

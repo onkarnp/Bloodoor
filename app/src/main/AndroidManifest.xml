@@ -10,11 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloodoor">
         <activity android:name=".allBloodBanks">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".allUsers" />
         <activity android:name=".live_events" />
@@ -35,7 +31,13 @@
         <activity android:name=".options" />
         <activity android:name=".Homepage_BB"/>
         <activity android:name=".Homepage_user" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".enternumber" />
         <activity android:name=".verifyotp_User" />
 

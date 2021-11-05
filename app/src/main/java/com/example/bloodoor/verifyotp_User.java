@@ -63,6 +63,7 @@ public class verifyotp_User extends AppCompatActivity {
         inputnumber6 = findViewById(R.id.inputotp6);
         blurLayout1 = findViewById(R.id.blurLayout);
         loadingBar = new ProgressDialog(this);
+        String from_intent = getIntent().getStringExtra("from");
 
         TextView textView = findViewById(R.id.textshowmobilenumber);
         textView.setText(String.format(
@@ -70,6 +71,7 @@ public class verifyotp_User extends AppCompatActivity {
         ));
 
         getotpbackend = getIntent().getStringExtra("backendotp");
+
 
         verify_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +83,13 @@ public class verifyotp_User extends AppCompatActivity {
                             inputnumber4.getText().toString() +
                             inputnumber5.getText().toString() +
                             inputnumber6.getText().toString();
+
+
+
+
+
+
+
 
                     if (getotpbackend != null) {
 //                        loadingBar.setTitle("Logging in");
@@ -96,16 +105,29 @@ public class verifyotp_User extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                                         if (task.isSuccessful()) {
-                                            rootNode = FirebaseDatabase.getInstance();
-                                            FirebaseUser mauth = FirebaseAuth.getInstance().getCurrentUser();
-                                            String userID = mauth.getUid();
-                                            reference = rootNode.getReference("users");
-                                            reference.child(userID).setValue(user);
+
+
+                                            if(from_intent.equals("SignUp_User"))
+                                            {
+                                                rootNode = FirebaseDatabase.getInstance();
+                                                FirebaseUser mauth = FirebaseAuth.getInstance().getCurrentUser();
+                                                String userID = mauth.getUid();
+                                                reference = rootNode.getReference("users");
+                                                String Bloodgrp = user.getBloodgrp();
+                                                String pin_code = user.getPinCode();
+                                                reference.child(Bloodgrp).child(pin_code).child(userID).setValue(user);
+//                                                Intent intent = new Intent(getApplicationContext(), Homepage_user.class);
+//                                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                                                loadingBar.dismiss();
+//                                                Toast.makeText(verifyotp_User.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
+//                                                startActivity(intent);
+                                            }
                                             Intent intent = new Intent(getApplicationContext(), Homepage_user.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             loadingBar.dismiss();
                                             Toast.makeText(verifyotp_User.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
                                             startActivity(intent);
+
                                         } else {
                                             loadingBar.dismiss();
                                             Toast.makeText(verifyotp_User.this, "Enter the correct OTP", Toast.LENGTH_SHORT).show();

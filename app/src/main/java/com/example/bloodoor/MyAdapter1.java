@@ -36,7 +36,7 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder>{
         holder.mobileNo.setText(user.getMobileNo());
         holder.email.setText(user.getEmail());
         holder.homeAddress.setText(user.getHomeAddress());
-        holder.city.setText(user.getCity());
+        holder.pin_code.setText(user.getPinCode());
         holder.dob.setText(user.getDate());
         holder.gender.setText(user.getGender());
         holder.bloodgrp.setText(user.getBloodgrp());
@@ -49,16 +49,16 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder>{
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView fullName, homeAddress, email, mobileNo, city, dob, gender, bloodgrp;
+        TextView fullName, homeAddress, email, mobileNo, pin_code, dob, gender, bloodgrp;
         Button button;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            fullName = itemView.findViewById(R.id.fullName1);;
+            fullName = itemView.findViewById(R.id.fullName1);
             mobileNo = itemView.findViewById(R.id.mobileNo1);
             email = itemView.findViewById(R.id.email1);
             homeAddress = itemView.findViewById(R.id.homeAddress1);
-            city = itemView.findViewById(R.id.city1);
+            pin_code = itemView.findViewById(R.id.pinCode1);
             dob = itemView.findViewById(R.id.dob1);
             gender = itemView.findViewById(R.id.gender1);
             bloodgrp = itemView.findViewById(R.id.bloodgrp1);

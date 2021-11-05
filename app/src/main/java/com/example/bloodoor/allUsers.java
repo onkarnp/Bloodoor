@@ -45,7 +45,7 @@ public class allUsers extends AppCompatActivity {
                 for (DataSnapshot snapshot : datasnapshot.getChildren()) {
                     User info = snapshot.getValue(User.class);
                     String s = "FullName : " + info.getFullName() + "\nHome Address : " + info.getHomeAddress() + "\nMobile No. : " + info.getMobileNo() + "\nEmail : " + info.getEmail() +
-                            "\nCity : " + info.getCity() + "\nDoB : " + info.getDate() + "\nBlood Group : " + info.getBloodgrp() + "\nGender : " + info.getGender();
+                            "\nPin Code : " + info.getPinCode() + "\nDoB : " + info.getDate() + "\nBlood Group : " + info.getBloodgrp() + "\nGender : " + info.getGender();
                     list.add(info);
                 }
                 myAdapter.notifyDataSetChanged();

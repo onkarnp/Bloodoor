@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-    private String fullName, homeAddress, mobileNo, email, date, bloodgrp, city, gender;
+    private String fullName, homeAddress, mobileNo, email, date, bloodgrp, pin_code, gender;
 
     public User() {
 
@@ -22,12 +22,12 @@ public class User implements Serializable {
         this.mobileNo = mobileNo;
     }
 
-    public User(String fullName, String homeAddress, String mobileNo, String email, String city, String date, String bloodgrp, String gender) {
+    public User(String fullName, String homeAddress, String mobileNo, String email, String pin_code, String date, String bloodgrp, String gender) {
         this.fullName = fullName;
         this.homeAddress = homeAddress;
         this.mobileNo = mobileNo;
         this.email = email;
-        this.city = city;
+        this.pin_code = pin_code;
         this.date = date;
         this.bloodgrp = bloodgrp;
         this.gender = gender;
@@ -57,8 +57,8 @@ public class User implements Serializable {
         return bloodgrp;
     }
 
-    public String getCity() {
-        return city;
+    public String getPinCode() {
+        return pin_code;
     }
 
     public String getGender() {
@@ -89,8 +89,8 @@ public class User implements Serializable {
         this.bloodgrp = bloodgrp;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setPinCode(String pin_code) {
+        this.pin_code = pin_code;
     }
 
     public void setGender(String gender) {

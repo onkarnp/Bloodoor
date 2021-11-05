@@ -187,7 +187,7 @@ public class profileUpdate_BB extends AppCompatActivity {
                     textPhone = profileUser.getPhoneNo();
                     textEmail = profileUser.getEmail();
                     textAddress = profileUser.getAddress();
-                    textCity = profileUser.getCity();
+                    textCity = profileUser.getbbPinCode();
 
                     fullname.setText(textFullName);
                     holderName.setText(textHolderName);

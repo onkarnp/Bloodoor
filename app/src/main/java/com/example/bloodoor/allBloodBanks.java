@@ -45,7 +45,7 @@ public class allBloodBanks extends AppCompatActivity {
                 for (DataSnapshot snapshot : datasnapshot.getChildren()) {
                     bloodBankHelperClass info = snapshot.getValue(bloodBankHelperClass.class);
                     String s = "Name : " + info.getName() + "\nHandler Name : " + info.getHandlerName() + "\nMobile No. : " + info.getMobileNo() + "\nPhone No. : " + info.getPhoneNo()
-                            + "\nEmail : " + info.getEmail() + "\nAddress : " + info.getAddress() + "\nCity : " + info.getCity();
+                            + "\nEmail : " + info.getEmail() + "\nAddress : " + info.getAddress() + "\nPin Code : " + info.getbbPinCode();
                     list.add(info);
                 }
                 myAdapter.notifyDataSetChanged();

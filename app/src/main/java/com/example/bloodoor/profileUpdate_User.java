@@ -228,7 +228,7 @@ public class profileUpdate_User extends AppCompatActivity {
                     textMobile = profileUser.getMobileNo();
                     textEmail = profileUser.getEmail();
                     textAddress = profileUser.getHomeAddress();
-                    textCity = profileUser.getCity();
+                    textCity = profileUser.getPinCode();
                     textDoB = profileUser.getDate();
                     textGender = profileUser.getGender();
                     textBloodGrp = profileUser.getBloodgrp();
