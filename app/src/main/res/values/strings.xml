@@ -51,6 +51,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="all_users_list">All Users List</string>
+    <string name="profile">Profile</string>
 
 
 </resources>

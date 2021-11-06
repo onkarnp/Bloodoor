@@ -26,7 +26,7 @@ import io.alterac.blurkit.BlurLayout;
 
 public class Homepage_user extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    CardView search_donor_card, request_blood_card, live_events_card, find_banks_card;
+    CardView search_donor_card, request_blood_card, live_events_card, find_banks_card, all_BloodBanks_Card;
     BlurLayout blurLayout1;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -76,6 +76,16 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
                 startActivity(intent);
             }
         });
+
+        all_BloodBanks_Card = (CardView) findViewById(R.id.all_BloodBanks);
+        all_BloodBanks_Card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), allBloodBanks.class);
+                startActivity(intent);
+            }
+        });
+
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);

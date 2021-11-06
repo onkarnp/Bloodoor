@@ -168,7 +168,8 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/ic_person"
                         android:drawablePadding="10dp"
@@ -187,7 +188,8 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/ic_person"
                         android:drawablePadding="10dp"
@@ -206,7 +208,8 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/mobiletwo"
                         android:drawablePadding="10dp"
@@ -225,7 +228,8 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/ic_phone"
                         android:drawablePadding="10dp"
@@ -244,7 +248,8 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/ic_email"
                         android:drawablePadding="10dp"
@@ -263,7 +268,8 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/ic_home"
                         android:drawablePadding="10dp"
@@ -282,7 +288,8 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/ic_home"
                         android:drawablePadding="10dp"
@@ -295,7 +302,7 @@
                     android:id="@+id/btn_update"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/buttonback"
+                    android:background="@color/material_500"
                     android:gravity="center"
                     android:text="UPDATE"
                     android:textColor="@color/colortextfirst"

@@ -10,7 +10,6 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -178,8 +177,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView">
-
-
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/search_donor"
@@ -349,6 +346,50 @@
                             android:layout_marginTop="0dp"
                             android:contentDescription="Find Banks"
                             android:text="Find Banks"
+                            android:textColor="#0353F4"
+                            android:textSize="17sp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/all_BloodBanks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill_horizontal"
+                    android:backgroundTint="@color/white"
+                    android:layout_margin="5dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="@drawable/card_effect"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="60dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:id="@+id/allBloodBanksIcon"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:contentDescription="Show All Blood Banks"
+                            android:src="@drawable/group" />
+
+                        <TextView
+                            android:id="@+id/allBloodBanksText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:contentDescription="Show All Blood Banks"
+                            android:text="All Blood Banks"
                             android:textColor="#0353F4"
                             android:textSize="17sp" />
 
