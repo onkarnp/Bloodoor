@@ -289,7 +289,7 @@
                         android:padding="16dp">
 
                         <ImageView
-                            android:id="@+id/profileIcon"
+                            android:id="@+id/searchDonorIcon"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:contentDescription="Live Events"
