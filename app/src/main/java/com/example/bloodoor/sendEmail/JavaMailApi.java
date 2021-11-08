@@ -1,4 +1,4 @@
-package com.example.bloodoor.email;
+package com.example.bloodoor.sendEmail;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -24,11 +24,11 @@ public class JavaMailApi extends AsyncTask<Void, Void, Void> {
 
     private Context context;
     private Session session;
-    private String email, message, subject;
+    private String emailID, message, subject;
 
-    public JavaMailApi(Context context, String email, String subject, String message) {
+    public JavaMailApi(Context context, String emailID, String subject, String message) {
         this.context = context;
-        this.email = email;
+        this.emailID = emailID;
         this.subject = subject;
         this.message = message;
     }
@@ -55,14 +55,14 @@ public class JavaMailApi extends AsyncTask<Void, Void, Void> {
 
         session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication () {
-                return new PasswordAuthentication(Util.Email, Util.Password);
+                return new PasswordAuthentication(Util.EmailID, Util.Password);
             }
         });
 
         MimeMessage mimeMessage = new MimeMessage(session);
         try {
-            mimeMessage.setFrom(new InternetAddress(Util.Email));
-            mimeMessage.addRecipients(Message.RecipientType.TO, String.valueOf(new InternetAddress(email)));
+            mimeMessage.setFrom(new InternetAddress(Util.EmailID));
+            mimeMessage.addRecipients(Message.RecipientType.TO, String.valueOf(new InternetAddress(emailID)));
             mimeMessage.setSubject(subject);
             mimeMessage.setText(message);
             Transport.send(mimeMessage);

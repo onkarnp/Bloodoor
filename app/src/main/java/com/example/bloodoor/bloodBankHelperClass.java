@@ -51,7 +51,7 @@ public class bloodBankHelperClass implements Serializable {
         this.phoneNo = phoneNo;
     }
 
-    public static String getEmail() {
+    public String getEmail() {
         return email;
     }
 
