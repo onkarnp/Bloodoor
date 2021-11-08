@@ -133,7 +133,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.bb_name0);
-            ;
             handlerName = itemView.findViewById(R.id.bb_holder_name0);
             mobileNo = itemView.findViewById(R.id.mobileNo0);
             phoneNo = itemView.findViewById(R.id.phoneNo0);
