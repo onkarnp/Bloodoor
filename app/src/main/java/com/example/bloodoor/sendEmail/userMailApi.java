@@ -20,13 +20,13 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class JavaMailApi extends AsyncTask<Void, Void, Void> {
+public class userMailApi extends AsyncTask<Void, Void, Void> {
 
     private Context context;
     private Session session;
     private String emailID, message, subject;
 
-    public JavaMailApi(Context context, String emailID, String subject, String message) {
+    public userMailApi(Context context, String emailID, String subject, String message) {
         this.context = context;
         this.emailID = emailID;
         this.subject = subject;
@@ -39,7 +39,7 @@ public class JavaMailApi extends AsyncTask<Void, Void, Void> {
     protected void onPreExecute() {
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Please wait as the email is being sent...");
-        progressDialog.setTitle("Sending Email to donor...");
+        progressDialog.setTitle("Sending Email to Blood Bank...");
         progressDialog.show();
         super.onPreExecute();
     }
@@ -55,13 +55,13 @@ public class JavaMailApi extends AsyncTask<Void, Void, Void> {
 
         session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication () {
-                return new PasswordAuthentication(BloodBankUtil.EmailID, BloodBankUtil.Password);
+                return new PasswordAuthentication(UserUtil.EmailID, UserUtil.Password);
             }
         });
 
         MimeMessage mimeMessage = new MimeMessage(session);
         try {
-            mimeMessage.setFrom(new InternetAddress(BloodBankUtil.EmailID));
+            mimeMessage.setFrom(new InternetAddress(UserUtil.EmailID));
             mimeMessage.addRecipients(Message.RecipientType.TO, String.valueOf(new InternetAddress(emailID)));
             mimeMessage.setSubject(subject);
             mimeMessage.setText(message);

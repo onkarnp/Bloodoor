@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,30 +32,34 @@ public class allBloodBanks extends AppCompatActivity {
         recyclerView = findViewById(R.id.userlist);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         list = new ArrayList<bloodBankHelperClass>();
         myAdapter = new MyAdapter(this, list);
         recyclerView.setAdapter(myAdapter);
 
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("BloodBanks");
-        reference.addValueEventListener(new ValueEventListener() {
+        DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("BloodBanks");
+        ValueEventListener postListener = new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 list.clear();
-                for (DataSnapshot snapshot : datasnapshot.getChildren()) {
-                    bloodBankHelperClass info = snapshot.getValue(bloodBankHelperClass.class);
-                    String s = "Name : " + info.getName() + "\nHandler Name : " + info.getHandlerName() + "\nMobile No. : " + info.getMobileNo() + "\nPhone No. : " + info.getPhoneNo()
-                            + "\nEmail : " + info.getEmail() + "\nAddress : " + info.getAddress() + "\nPin Code : " + info.getbbPinCode();
-                    list.add(info);
+                for (DataSnapshot pincode : dataSnapshot.getChildren()) {
+                    for (DataSnapshot user : pincode.getChildren()) {
+                        bloodBankHelperClass info = user.getValue(bloodBankHelperClass.class);
+                        String s = "Name : " + info.getName() + "\nHandler Name : " + info.getHandlerName() + "\nMobile No. : " + info.getMobileNo() + "\nPhone No. : " + info.getPhoneNo()
+                                + "\nEmail : " + info.getEmail() + "\nAddress : " + info.getAddress() + "\nPin Code : " + info.getbbPinCode();
+                        list.add(info);
+                    }
                 }
                 myAdapter.notifyDataSetChanged();
             }
 
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Toast.makeText(allBloodBanks.this, "Task Failed...", Toast.LENGTH_SHORT).show();
             }
-        });
+        };
+        root.addValueEventListener(postListener);
     }
 }
