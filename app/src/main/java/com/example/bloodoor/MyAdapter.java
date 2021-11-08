@@ -1,6 +1,8 @@
 package com.example.bloodoor;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +12,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bloodoor.email.JavaMailApi;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     Context context;
     ArrayList<bloodBankHelperClass> list;
@@ -25,7 +37,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.bloodbankdata,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.bloodbankdata, parent, false);
         return new MyViewHolder(v);
     }
 
@@ -39,6 +51,73 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         holder.email.setText(user.getEmail());
         holder.address.setText(user.getAddress());
         holder.bbPinCode.setText(user.getbbPinCode());
+
+        final String nameOFReceiver = user.getName();
+        final String idOfReceiver = user.getEmail();
+
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(context)
+                        .setTitle("Send Email")
+                        .setMessage("Send Email to " + user.getName() + "?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+                                        .child("BloodBanks").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                reference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        String nameOfBank = snapshot.child("name").getValue().toString();
+                                        String nameOfSender = snapshot.child("handlerName").getValue().toString();
+                                        String email = snapshot.child("email").getValue().toString();
+                                        String address = snapshot.child("address").getValue().toString();
+                                        String phoneNo = snapshot.child("phoneNo").getValue().toString();
+                                        String pinCode = snapshot.child("bbPinCode").getValue().toString();
+
+                                        String mEmail = user.getEmail();
+                                        String mSubject = "BLOOD REQUEST";
+                                        String mMessage = "Hello " + nameOFReceiver + "," + nameOfSender + "from" + nameOfBank + ","
+                                                + "Would like to Blood donation from you. Here's his/her details :\n"
+                                                + "Name : " + nameOfSender + "\n"
+                                                + "Phone Number : " + phoneNo + "\n"
+                                                + "Email : " + email + "\n"
+                                                + "Address : " + address + "\n"
+                                                + "City Pin Code : " + pinCode + "\n"
+                                                + "Kindly reach out to him/her. Thank You...\n"
+                                                + "BlooDoor... DONATE BLOOD, SAVE LIFE (:";
+
+                                        JavaMailApi javaMailApi = new JavaMailApi(context, mEmail, mSubject, mMessage);
+                                        javaMailApi.execute();
+
+                                        DatabaseReference senderRef = FirebaseDatabase.getInstance().getReference("email")
+                                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                        senderRef.child(idOfReceiver).setValue(true).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()){
+                                                    DatabaseReference receiverRef = FirebaseDatabase.getInstance().getReference("email")
+                                                            .child(idOfReceiver);
+                                                    receiverRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(true);
+                                                }
+                                            }
+                                        });
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+
+            }
+        });
     }
 
     @Override
@@ -46,14 +125,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         return list.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, handlerName, mobileNo, phoneNo, email, address, bbPinCode;
         Button button;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.bb_name0);;
+            name = itemView.findViewById(R.id.bb_name0);
+            ;
             handlerName = itemView.findViewById(R.id.bb_holder_name0);
             mobileNo = itemView.findViewById(R.id.mobileNo0);
             phoneNo = itemView.findViewById(R.id.phoneNo0);

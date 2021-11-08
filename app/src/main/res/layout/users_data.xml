@@ -137,9 +137,12 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/buttonback"
             android:gravity="center_horizontal"
+            android:clickable="true"
+            android:focusable="true"
             android:text="Email"
             android:textColor="@color/colortextfirst"
             android:textSize="14sp"
+            app:cornerRadius="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bloodgrp1" />
