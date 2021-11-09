@@ -106,7 +106,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/backgroundbox"
+                    android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Blood Bank Name..."
                     android:inputType="textPersonName"
@@ -143,7 +143,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/backgroundbox"
+                    android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Holder Name..."
                     android:inputType="textPersonName"
@@ -179,7 +179,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/backgroundbox"
+                    android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Mobile Number..."
                     android:inputType="phone"
@@ -216,7 +216,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/backgroundbox"
+                    android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Phone Number..."
                     android:inputType="phone"
@@ -253,7 +253,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/backgroundbox"
+                    android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Email ID..."
                     android:inputType="textEmailAddress"
@@ -290,7 +290,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/backgroundbox"
+                    android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Bank Location Address..."
                     android:inputType="text"
@@ -308,28 +308,28 @@
                         android:layout_width="30dp"
                         android:layout_height="25dp"
                         android:drawablePadding="10dp"
-                        android:src="@drawable/ic_home" />
+                        android:src="@drawable/ic_pin" />
 
                     <TextView
                         android:id="@+id/txv_city"
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
                         android:layout_marginLeft="8dp"
-                        android:text="Enter New City"
+                        android:text="Enter New City Pincode"
                         android:textColor="@color/colortextfirst"
                         android:textSize="18sp" />
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/updateCity"
+                    android:id="@+id/updateCityPincode"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/backgroundbox"
+                    android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
-                    android:hint="Enter City..."
+                    android:hint="Enter City Pincode..."
                     android:inputType="text"
                     android:paddingLeft="10dp"
                     android:textSize="18dp" />
@@ -353,7 +353,8 @@
                         android:gravity="center"
                         android:text="UPDATE"
                         android:textColor="@color/colortextfirst"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        app:backgroundTint="@color/colorPrimary" />
 
                 </LinearLayout>
 

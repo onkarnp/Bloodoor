@@ -105,7 +105,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/backgroundbox"
+                    android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Name..."
                     android:inputType="textPersonName"
@@ -142,7 +142,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/backgroundbox"
+                    android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Mobile Number..."
                     android:inputType="phone"
@@ -179,7 +179,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/backgroundbox"
+                    android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Email ID..."
                     android:inputType="textEmailAddress"
@@ -216,7 +216,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/backgroundbox"
+                    android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Home Address..."
                     android:inputType="text"
@@ -234,29 +234,29 @@
                         android:layout_width="30dp"
                         android:layout_height="25dp"
                         android:drawablePadding="10dp"
-                        android:src="@drawable/ic_home" />
+                        android:src="@drawable/ic_pin" />
 
                     <TextView
                         android:id="@+id/txv_city"
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
                         android:layout_marginLeft="8dp"
-                        android:text="Enter New City"
+                        android:text="Enter New City Pincode"
                         android:textColor="@color/colortextfirst"
                         android:textSize="18sp" />
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/updateCity"
+                    android:id="@+id/updateCityPincode"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/backgroundbox"
+                    android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
-                    android:hint="Enter City..."
-                    android:inputType="text"
+                    android:hint="Enter City Pincode..."
+                    android:inputType="number"
                     android:paddingLeft="10dp"
                     android:textSize="18dp" />
 
@@ -290,7 +290,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/backgroundbox"
+                    android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Date of Birth"
                     android:inputType="date"
@@ -326,7 +326,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:orientation="horizontal">
+                    android:layout_marginRight="15dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/input_bg">
 
                     <RadioButton
                         android:id="@+id/radio_female"
@@ -376,7 +378,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:orientation="vertical">
+                    android:layout_marginRight="15dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/input_bg" >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -387,7 +391,7 @@
                             android:id="@+id/radio_OP"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
+                            android:layout_marginLeft="20dp"
                             android:text="O+"
                             android:textColor="@color/colortextfirst"
                             android:textSize="18sp" />
@@ -429,7 +433,7 @@
                             android:id="@+id/radio_AP"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
+                            android:layout_marginLeft="20dp"
                             android:text="A+"
                             android:textColor="@color/colortextfirst"
                             android:textSize="18sp" />
@@ -482,7 +486,8 @@
                         android:gravity="center"
                         android:text="UPDATE"
                         android:textColor="@color/colortextfirst"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        app:backgroundTint="@color/colorPrimary" />
 
                 </LinearLayout>
 

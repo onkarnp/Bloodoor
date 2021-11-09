@@ -24,7 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,10 +32,10 @@ import io.alterac.blurkit.BlurLayout;
 public class profileUpdate_BB extends AppCompatActivity {
 
     BlurLayout blurLayout;
-    private EditText fullname, holderName, mobileNo, phoneNo, email, bankAdd, city;
+    private EditText fullname, holderName, mobileNo, phoneNo, email, bankAdd, pincode;
     private FirebaseAuth authProfile;
     private ProgressBar progressBar;
-    private String textFullName, textHolderName, textMobile, textPhone, textAddress, textCity, textEmail;
+    private String textFullName, textHolderName, textMobile, textPhone, textAddress, textPincode, textEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +54,7 @@ public class profileUpdate_BB extends AppCompatActivity {
         phoneNo = findViewById(R.id.updatePhoneNumber);
         email = findViewById(R.id.updateEmailID);
         bankAdd = findViewById(R.id.updateBankAdd);
-        city = findViewById(R.id.updateCity);
+        pincode = findViewById(R.id.updateCityPincode);
 
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
@@ -100,10 +99,10 @@ public class profileUpdate_BB extends AppCompatActivity {
             Toast.makeText(profileUpdate_BB.this, "Please enter your Home Address...", Toast.LENGTH_SHORT).show();
             bankAdd.setError("Home Address is required...");
             bankAdd.requestFocus();
-        } else if (TextUtils.isEmpty(textCity)) {
-            Toast.makeText(profileUpdate_BB.this, "Please enter your City...", Toast.LENGTH_SHORT).show();
-            city.setError("City is required...");
-            city.requestFocus();
+        } else if (TextUtils.isEmpty(textPincode)) {
+            Toast.makeText(profileUpdate_BB.this, "Please enter your City Pincode...", Toast.LENGTH_SHORT).show();
+            pincode.setError("City pincode is required...");
+            pincode.requestFocus();
         } else if (TextUtils.isEmpty(textMobile)) {
             Toast.makeText(profileUpdate_BB.this, "Please enter your Mobile Number...", Toast.LENGTH_SHORT).show();
             mobileNo.setError("Mobile Number is required...");
@@ -127,14 +126,14 @@ public class profileUpdate_BB extends AppCompatActivity {
             textMobile = mobileNo.getText().toString();
             textPhone = phoneNo.getText().toString();
             textAddress = bankAdd.getText().toString();
-            textCity = city.getText().toString();
+            textPincode = pincode.getText().toString();
             textEmail = email.getText().toString();
 
             //Enter user data into the firebase realtime database. Set up dependencies
-            bloodBankHelperClass writeUserDetails = new bloodBankHelperClass(textFullName, textHolderName, textMobile, textPhone, textEmail, textAddress, textCity);
+            bloodBankHelperClass writeUserDetails = new bloodBankHelperClass(textFullName, textHolderName, textMobile, textPhone, textEmail, textAddress, textPincode);
 
             //Extract data from the databse for "Registered User"...
-            DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("BloodBanks");
+            DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("ALLBloodbanks");
 
             String userID = firebaseUser.getUid();
 
@@ -145,15 +144,13 @@ public class profileUpdate_BB extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         //Setting new display name
-                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().
-                                setDisplayName(textFullName).build();
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName(textFullName).build();
                         firebaseUser.updateProfile(profileUpdates);
 
                         Toast.makeText(profileUpdate_BB.this, "Update Successfull...", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(profileUpdate_BB.this, profileUser.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                                Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         finish();
                     } else {
@@ -172,7 +169,7 @@ public class profileUpdate_BB extends AppCompatActivity {
     //fetch data from firebase and show accordingly...
     private void showProfile(FirebaseUser firebaseUser) {
         String userId = firebaseUser.getUid();
-        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("BloodBanks");
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("ALLBloodbanks");
 
         progressBar.setVisibility(View.VISIBLE);
 
@@ -187,7 +184,7 @@ public class profileUpdate_BB extends AppCompatActivity {
                     textPhone = profileUser.getPhoneNo();
                     textEmail = profileUser.getEmail();
                     textAddress = profileUser.getAddress();
-                    textCity = profileUser.getbbPinCode();
+                    textPincode = profileUser.getbbPinCode();
 
                     fullname.setText(textFullName);
                     holderName.setText(textHolderName);
@@ -195,7 +192,7 @@ public class profileUpdate_BB extends AppCompatActivity {
                     phoneNo.setText(textPhone);
                     email.setText(textEmail);
                     bankAdd.setText(textAddress);
-                    city.setText(textCity);
+                    pincode.setText(textPincode);
                 } else {
                     Toast.makeText(profileUpdate_BB.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
                 }

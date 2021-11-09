@@ -38,12 +38,12 @@ import io.alterac.blurkit.BlurLayout;
 public class profileUpdate_User extends AppCompatActivity {
 
     BlurLayout blurLayout;
-    private EditText fullname, mobileNo, email, homeAdd, city, dob;
+    private EditText fullname, mobileNo, email, homeAdd, pincode, dob;
     private RadioGroup radioGroupGenderUpdate, radioGroupBloodGruopUpdate;
     private RadioButton radioGroupUpdateSelectedGender, radioGroupUpdateSelectedBloodGruop;
     private FirebaseAuth authProfile;
     private ProgressBar progressBar;
-    private String textGender, textBloodGrp, textDoB, textMobile, textFullName, textAddress, textCity, textEmail;
+    private String textGender, textBloodGrp, textDoB, textMobile, textFullName, textAddress, textPincode, textEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class profileUpdate_User extends AppCompatActivity {
         mobileNo = findViewById(R.id.updateMobileNumber);
         email = findViewById(R.id.updateEmailID);
         homeAdd = findViewById(R.id.updateHomeAdd);
-        city = findViewById(R.id.updateCity);
+        pincode = findViewById(R.id.updateCityPincode);
         dob = findViewById(R.id.updateDOB);
 
         radioGroupGenderUpdate = findViewById(R.id.update_radio_gender);
@@ -133,10 +133,10 @@ public class profileUpdate_User extends AppCompatActivity {
             Toast.makeText(profileUpdate_User.this, "Please enter your Home Address...", Toast.LENGTH_SHORT).show();
             homeAdd.setError("Home Address is required...");
             homeAdd.requestFocus();
-        } else if (TextUtils.isEmpty(textCity)) {
-            Toast.makeText(profileUpdate_User.this, "Please enter your City...", Toast.LENGTH_SHORT).show();
-            city.setError("City is required...");
-            city.requestFocus();
+        } else if (TextUtils.isEmpty(textPincode)) {
+            Toast.makeText(profileUpdate_User.this, "Please enter your City Pincode...", Toast.LENGTH_SHORT).show();
+            pincode.setError("City pincode is required...");
+            pincode.requestFocus();
         } else if (TextUtils.isEmpty(textDoB)) {
             Toast.makeText(profileUpdate_User.this, "Please enter your Date of Birth...", Toast.LENGTH_SHORT).show();
             dob.setError("Date of Birth is required...");
@@ -169,14 +169,14 @@ public class profileUpdate_User extends AppCompatActivity {
             textDoB = dob.getText().toString();
             textMobile = mobileNo.getText().toString();
             textAddress = homeAdd.getText().toString();
-            textCity = city.getText().toString();
+            textPincode = pincode.getText().toString();
             textEmail = email.getText().toString();
 
             //Enter user data into the firebase realtime database. Set up dependencies
-            User writeUserDetails = new User(textDoB, textGender, textMobile);
+            User writeUserDetails = new User(textFullName, textAddress, textMobile, textEmail, textPincode, textDoB, textBloodGrp, textGender);
 
             //Extract data from the databse for "Registered User"...
-            DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("users");
+            DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("allusers");
 
             String userID = firebaseUser.getUid();
 
@@ -214,7 +214,7 @@ public class profileUpdate_User extends AppCompatActivity {
     //fetch data from firebase and show accordingly...
     private void showProfile(FirebaseUser firebaseUser) {
         String userId = firebaseUser.getUid();
-        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("users");
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("allusers");
 
         progressBar.setVisibility(View.VISIBLE);
 
@@ -227,7 +227,7 @@ public class profileUpdate_User extends AppCompatActivity {
                     textMobile = profileUser.getMobileNo();
                     textEmail = profileUser.getEmail();
                     textAddress = profileUser.getHomeAddress();
-                    textCity = profileUser.getPinCode();
+                    textPincode = profileUser.getPinCode();
                     textDoB = profileUser.getDate();
                     textGender = profileUser.getGender();
                     textBloodGrp = profileUser.getBloodgrp();
@@ -236,7 +236,7 @@ public class profileUpdate_User extends AppCompatActivity {
                     mobileNo.setText(textMobile);
                     email.setText(textEmail);
                     homeAdd.setText(textAddress);
-                    city.setText(textCity);
+                    pincode.setText(textPincode);
                     dob.setText(textDoB);
 
                     //Show gender through radio button

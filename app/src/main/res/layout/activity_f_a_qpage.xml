@@ -59,10 +59,9 @@
             android:id="@+id/cardView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#ffffff"
-            android:backgroundTint="@color/white"
             android:layout_margin="5dp"
-            app:cardCornerRadius="0dp">
+            android:backgroundTint="#00FAF5CA"
+            app:cardBackgroundColor="#ffffff">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,10 +94,10 @@
                     android:id="@+id/Ans1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginTop="0dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -106,7 +105,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/ans1"
-                        android:textColor="@color/teal_200"
+                        android:textColor="@color/colortextsecond"
                         android:textSize="20sp" />
 
                 </LinearLayout>
@@ -117,9 +116,9 @@
             android:id="@+id/cardView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#ffffff"
-            android:backgroundTint="@color/white"
             android:layout_margin="5dp"
+            android:backgroundTint="#00FFFFFF"
+            app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="0dp">
 
             <LinearLayout
@@ -152,10 +151,10 @@
                     android:id="@+id/Ans2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginTop="0dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -174,9 +173,9 @@
             android:id="@+id/cardView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#ffffff"
-            android:backgroundTint="@color/white"
             android:layout_margin="5dp"
+            android:backgroundTint="#00FFFFFF"
+            app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="0dp">
 
             <LinearLayout
@@ -209,10 +208,10 @@
                     android:id="@+id/Ans3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginTop="0dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -220,7 +219,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/ans3"
-                        android:textColor="@color/teal_200"
+                        android:textColor="@color/colortextsecond"
                         android:textSize="20sp" />
 
                 </LinearLayout>
@@ -231,9 +230,9 @@
             android:id="@+id/cardView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#ffffff"
-            android:backgroundTint="@color/white"
             android:layout_margin="5dp"
+            android:backgroundTint="#00FFFFFF"
+            app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="0dp">
 
             <LinearLayout
@@ -266,10 +265,10 @@
                     android:id="@+id/Ans4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginTop="0dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -277,7 +276,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/ans4"
-                        android:textColor="@color/teal_200"
+                        android:textColor="@color/colortextsecond"
                         android:textSize="20sp" />
 
                 </LinearLayout>
@@ -288,9 +287,9 @@
             android:id="@+id/cardView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#ffffff"
-            android:backgroundTint="@color/white"
             android:layout_margin="5dp"
+            android:backgroundTint="#00FFFFFF"
+            app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="0dp">
 
             <LinearLayout
@@ -323,10 +322,10 @@
                     android:id="@+id/Ans5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginTop="0dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -334,7 +333,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/ans5"
-                        android:textColor="@color/teal_200"
+                        android:textColor="@color/colortextsecond"
                         android:textSize="20sp" />
 
                 </LinearLayout>
@@ -345,9 +344,9 @@
             android:id="@+id/cardView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#ffffff"
-            android:backgroundTint="@color/white"
             android:layout_margin="5dp"
+            android:backgroundTint="#00FFFFFF"
+            app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="0dp">
 
             <LinearLayout
@@ -380,10 +379,10 @@
                     android:id="@+id/Ans6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginTop="0dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -391,7 +390,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/ans6"
-                        android:textColor="@color/teal_200"
+                        android:textColor="@color/colortextsecond"
                         android:textSize="20sp" />
 
                 </LinearLayout>
@@ -402,9 +401,9 @@
             android:id="@+id/cardView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#ffffff"
-            android:backgroundTint="@color/white"
             android:layout_margin="5dp"
+            android:backgroundTint="#00FFFFFF"
+            app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="0dp">
 
             <LinearLayout
@@ -437,10 +436,10 @@
                     android:id="@+id/Ans7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginTop="0dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -448,7 +447,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/ans7"
-                        android:textColor="@color/teal_200"
+                        android:textColor="@color/colortextsecond"
                         android:textSize="20sp" />
 
                 </LinearLayout>
@@ -459,9 +458,9 @@
             android:id="@+id/cardView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#ffffff"
-            android:backgroundTint="@color/white"
             android:layout_margin="5dp"
+            android:backgroundTint="#00FFFFFF"
+            app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="0dp">
 
             <LinearLayout
@@ -494,10 +493,10 @@
                     android:id="@+id/Ans8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginTop="0dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -505,7 +504,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/ans8"
-                        android:textColor="@color/teal_200"
+                        android:textColor="@color/colortextsecond"
                         android:textSize="20sp" />
 
                 </LinearLayout>
@@ -516,9 +515,9 @@
             android:id="@+id/cardView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#ffffff"
-            android:backgroundTint="@color/white"
             android:layout_margin="5dp"
+            android:backgroundTint="#00FFFFFF"
+            app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="0dp">
 
             <LinearLayout
@@ -551,10 +550,10 @@
                     android:id="@+id/Ans9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginTop="0dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -562,7 +561,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Care that a donor should take after donating blood... \n1. Eat and Drink the refreshment provided before leaving the blood bank. \n2. Drink more liquids than usual in next 4 hours. \n3. Avoid consuming alcohol until you have eaten something. \n4. Don\'t smoke for next 30 minutes. \n5. Avoid climbing stairs for next 30 minutes. \n6. If there is bleeding from the phlebotomy site, raise the arm and apply pressure. \n7. If fainting or dizziness occurs, either lie down or sit with the head between the knees."
-                        android:textColor="@color/teal_200"
+                        android:textColor="@color/colortextsecond"
                         android:textSize="20sp" />
 
                 </LinearLayout>

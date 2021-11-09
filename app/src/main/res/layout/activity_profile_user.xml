@@ -170,7 +170,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/button"
-                        android:padding="10dp"
                         android:drawableLeft="@drawable/ic_person"
                         android:drawablePadding="10dp"
                         android:text="Pranav Pawar"
@@ -189,7 +188,6 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/mobiletwo"
                         android:drawablePadding="10dp"
@@ -209,7 +207,6 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/ic_email"
                         android:drawablePadding="10dp"
@@ -229,7 +226,6 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/ic_home"
                         android:drawablePadding="10dp"
@@ -249,11 +245,10 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/ic_home"
                         android:drawablePadding="10dp"
-                        android:text="Pusad"
+                        android:text="445204"
                         android:textColor="@color/colortextfirst" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -269,7 +264,6 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
                         android:drawablePadding="10dp"
@@ -289,7 +283,6 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/gender"
                         android:drawablePadding="10dp"
@@ -309,7 +302,6 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:padding="10dp"
                         android:background="@drawable/button"
                         android:drawableLeft="@drawable/bloodgroup"
                         android:drawablePadding="10dp"
@@ -340,7 +332,8 @@
                         android:gravity="center"
                         android:text="UPDATE"
                         android:textColor="@color/colortextfirst"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        app:backgroundTint="@color/colorPrimary"/>
 
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
