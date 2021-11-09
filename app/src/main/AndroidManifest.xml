@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.bloodoor">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,9 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloodoor">
-        <activity android:name=".allBloodBanks">
-
-        </activity>
+        <activity android:name=".check_requests"/>
+        <activity android:name=".allBloodBanks"/>
         <activity android:name=".allUsers" />
         <activity android:name=".live_events" />
         <activity android:name=".create_donation_event" />
@@ -27,24 +28,34 @@
         <activity android:name=".AboutUS" />
         <activity android:name=".FAQpage" />
         <activity android:name=".SignUp_BB" />
-
         <activity android:name=".SignUp_User" />
         <activity android:name=".options" />
-        <activity android:name=".Homepage_BB"/>
-        <activity android:name=".Homepage_user" >
+        <activity android:name=".Homepage_BB" />
+        <activity android:name=".Homepage_user"/>
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
         <activity android:name=".enternumber" />
         <activity android:name=".verifyotp_User" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <service
+            android:name=".FirebaseMessagingService"
+            android:permission="TODO"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
+
+
 
 </manifest>

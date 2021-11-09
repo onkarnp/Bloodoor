@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,171 +7,218 @@
     android:background="@drawable/back7"
     tools:context=".request_blood">
 
-
-    <io.alterac.blurkit.BlurLayout
-        android:id="@+id/blurLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:blk_blurRadius="3"
-        app:blk_fps="0"/>
-
-    <!--    Your code goes here....-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@drawable/colorbg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <io.alterac.blurkit.BlurLayout
+            android:id="@+id/blurLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal"
+            app:blk_blurRadius="3"
+            app:blk_fps="0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--    Your code goes here....-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/colorbg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/requestDonorIcon"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:contentDescription="Search Donor"
-                android:src="@drawable/request_donor" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/requestDonorIcon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:contentDescription="Search Donor"
+                    android:src="@drawable/request_donor" />
+
+                <TextView
+                    android:id="@+id/requestDonorHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/baumans"
+                    android:text="Request Donor"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#FFDD"
+            android:orientation="vertical"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
 
             <TextView
-                android:id="@+id/requestDonorHeading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:fontFamily="@font/baumans"
-                android:text="Request Donor"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:padding="10dp"
+                android:text="Please fill the details:"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/blood_group"
+                android:textColorHint="@color/black"
+                android:padding="10dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/bloodgroup"
+                    android:drawableLeft="@drawable/bloodgroup"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/black"
+                    android:text="Blood Group"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <EditText
+                android:id="@+id/patientName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:drawableLeft="@drawable/ic_person"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/black"
+                android:hint="Patient's Name"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#999999" />
+
+            <EditText
+                android:id="@+id/patientNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:drawableLeft="@drawable/ic_phone"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/black"
+                android:hint="Phone Number"
+                android:inputType="number"
+                android:maxLength="10"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#999999" />
+
+            <EditText
+                android:id="@+id/patientEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/black"
+                android:hint="Your Email"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#999999" />
+
+            <EditText
+                android:id="@+id/hospitalName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:drawableLeft="@drawable/ic_hospital"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/black"
+                android:hint="Hospital Name"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#999999" />
+
+            <EditText
+                android:id="@+id/pinCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:drawableLeft="@drawable/ic_pin"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/black"
+                android:hint="Location Circle (Pin Code)"
+                android:inputType="number"
+                android:maxLength="6"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#999999" />
+
+            <EditText
+                android:id="@+id/requestReason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:drawableLeft="@drawable/ic_question"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/black"
+                android:hint="For Why (Reason)"
+                android:inputType="textMultiLine"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#999999" />
+
+            <Button
+                android:id="@+id/submitRequestButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:text="Submit Request"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
 
         </LinearLayout>
+        <!--    Your code goes here....-->
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="5dp"
-        android:background="#FFDD"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Please fill the details:"
-            android:fontFamily="@font/baumans"
-            android:layout_marginLeft="10dp"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            />
-
-        <EditText
-            android:id="@+id/namereq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:drawableLeft="@drawable/ic_person"
-            android:drawablePadding="10dp"
-            android:drawableTint="@color/black"
-            android:hint="Name"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="#999999" />
-
-        <EditText
-            android:id="@+id/reqphone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:drawableLeft="@drawable/ic_phone"
-            android:drawablePadding="10dp"
-            android:drawableTint="@color/black"
-            android:hint="Phone No"
-            android:inputType="number"
-            android:maxLength="10"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="#999999" />
-
-        <EditText
-            android:id="@+id/reqbloodgp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/bloodgroup"
-            android:drawablePadding="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:drawableTint="@color/black"
-            android:hint="Blood Group"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="#999999" />
-
-        <EditText
-            android:id="@+id/reqlocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:drawableLeft="@drawable/ic_pin"
-            android:padding="10dp"
-            android:drawablePadding="10dp"
-            android:drawableTint="@color/black"
-            android:hint="Location circle (pin code)"
-            android:inputType="number"
-            android:maxLength="6"
-            android:textColor="@color/black"
-            android:textColorHint="#999999" />
-
-        <EditText
-            android:id="@+id/reqreason"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:drawableLeft="@drawable/ic_question"
-            android:drawableTint="@color/black"
-            android:drawablePadding="10dp"
-            android:hint="For Why (reason)"
-            android:inputType="textMultiLine"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="#999999" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:text="Submit Request"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-    <!--    Your code goes here....-->
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

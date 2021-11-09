@@ -26,7 +26,7 @@ import io.alterac.blurkit.BlurLayout;
 
 public class Homepage_user extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    CardView search_donor_card, request_blood_card, live_events_card, find_banks_card, all_BloodBanks_Card;
+    CardView search_donor_card, request_blood_card, live_events_card, find_banks_card, all_BloodBanks_Card, check_request_card;
     BlurLayout blurLayout1;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -82,6 +82,15 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), allBloodBanks.class);
+                startActivity(intent);
+            }
+        });
+
+        check_request_card = (CardView) findViewById(R.id.check_requests);
+        check_request_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), check_requests.class);
                 startActivity(intent);
             }
         });
@@ -145,7 +154,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
                 alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getApplicationContext(),SignUp_User.class);
+                        Intent intent = new Intent(getApplicationContext(),options.class);
                         mAuth.signOut();
                         startActivity(intent);
                         Toast.makeText(Homepage_user.this,"Logged out successfully",Toast.LENGTH_LONG).show();

@@ -87,7 +87,7 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder>{
                                                 + "Address : " + address + "\n"
                                                 + "City Pin Code : " + pinCode + "\n"
                                                 + "Kindly reach out to him/her. Thank You...\n"
-                                                + "BlooDoor... DONATE BLOOD, SAVE LIFE (:";
+                                                + "BlooDoor... DONATE BLOOD, SAVE LIFE :)";
 
                                         userMailApi userMailApi = new userMailApi(context, mEmail, mSubject, mMessage);
                                         userMailApi.execute();
