@@ -52,7 +52,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.address.setText(user.getAddress());
         holder.bbPinCode.setText(user.getbbPinCode());
 
-        final String nameOFReceiver = user.getName();
+        final String nameOFReceiver = user.getHandlerName();
+        final String nameOfBank = user.getName();
         final String idOfReceiver = user.getEmail();
 
         holder.button.setOnClickListener(new View.OnClickListener() {
@@ -66,28 +67,28 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
-                                        .child("BloodBanks").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                        .child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 reference.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        String nameOfBank = snapshot.child("name").getValue().toString();
-                                        String nameOfSender = snapshot.child("handlerName").getValue().toString();
+                                        String fullname = snapshot.child("fullName").getValue().toString();
                                         String email = snapshot.child("email").getValue().toString();
-                                        String address = snapshot.child("address").getValue().toString();
-                                        String phoneNo = snapshot.child("phoneNo").getValue().toString();
-                                        String pinCode = snapshot.child("bbPinCode").getValue().toString();
+                                        String address = snapshot.child("homeAddress").getValue().toString();
+                                        String phoneNo = snapshot.child("mobileNo").getValue().toString();
+                                        String pinCode = snapshot.child("pinCode").getValue().toString();
 
                                         String mEmail = user.getEmail();
                                         String mSubject = "BLOOD REQUEST";
-                                        String mMessage = "Hello " + nameOFReceiver + "," + nameOfSender + "from" + nameOfBank + ","
-                                                + "Would like to Blood donation from you. Here's his/her details :\n"
-                                                + "Name : " + nameOfSender + "\n"
-                                                + "Phone Number : " + phoneNo + "\n"
+                                        String mMessage = "Hello " + nameOFReceiver + "," + fullname
+                                                + "would like to Blood Donation from you.\nHere's his/her details :\n"
+                                                + "Name : " + fullname + "\n"
+                                                + "Mobile Number : " + phoneNo + "\n"
                                                 + "Email : " + email + "\n"
                                                 + "Address : " + address + "\n"
                                                 + "City Pin Code : " + pinCode + "\n"
                                                 + "Kindly reach out to him/her. Thank You...\n"
                                                 + "BlooDoor... DONATE BLOOD, SAVE LIFE (:";
+
 
                                         JavaMailApi javaMailApi = new JavaMailApi(context, mEmail, mSubject, mMessage);
                                         javaMailApi.execute();
@@ -97,7 +98,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                                         senderRef.child(idOfReceiver).setValue(true).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
-                                                if(task.isSuccessful()){
+                                                if (task.isSuccessful()) {
                                                     DatabaseReference receiverRef = FirebaseDatabase.getInstance().getReference("email")
                                                             .child(idOfReceiver);
                                                     receiverRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(true);
@@ -115,7 +116,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                         })
                         .setNegativeButton("No", null)
                         .show();
-
             }
         });
     }

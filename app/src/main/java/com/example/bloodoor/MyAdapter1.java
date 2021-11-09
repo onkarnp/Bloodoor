@@ -67,21 +67,21 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder>{
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
-                                        .child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                        .child("BloodBanks").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 reference.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        String fullname = snapshot.child("fullName").getValue().toString();
+                                        String nameOfBank = snapshot.child("name").getValue().toString();
+                                        String nameOfSender = snapshot.child("handlerName").getValue().toString();
                                         String email = snapshot.child("email").getValue().toString();
-                                        String address = snapshot.child("homeAddress").getValue().toString();
-                                        String phoneNo = snapshot.child("mobileNo").getValue().toString();
-                                        String pinCode = snapshot.child("pinCode").getValue().toString();
-
+                                        String address = snapshot.child("address").getValue().toString();
+                                        String phoneNo = snapshot.child("phoneNo").getValue().toString();
+                                        String pinCode = snapshot.child("bbPinCode").getValue().toString();
                                         String mEmail = user.getEmail();
                                         String mSubject = "BLOOD REQUEST";
-                                        String mMessage = "Hello " + nameOFReceiver + "," + fullname
+                                        String mMessage = "Hello " + nameOFReceiver + "," + nameOfSender + "from" + nameOfBank + ","
                                                 + "Would like to Blood donation from you. Here's his/her details :\n"
-                                                + "Name : " + fullname + "\n"
+                                                + "Name : " + nameOfSender + "\n"
                                                 + "Phone Number : " + phoneNo + "\n"
                                                 + "Email : " + email + "\n"
                                                 + "Address : " + address + "\n"

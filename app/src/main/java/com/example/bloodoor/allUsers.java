@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,27 +37,31 @@ public class allUsers extends AppCompatActivity {
         recyclerView.setAdapter(myAdapter);
 
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        reference.addValueEventListener(new ValueEventListener() {
+        DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("users");
+        ValueEventListener postListener = new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 list.clear();
-                for (DataSnapshot snapshot : datasnapshot.getChildren()) {
-                    User info = snapshot.getValue(User.class);
-                    String s = "FullName : " + info.getFullName() + "\nHome Address : " + info.getHomeAddress() + "\nMobile No. : " + info.getMobileNo() + "\nEmail : " + info.getEmail() +
-                            "\nPin Code : " + info.getPinCode() + "\nDoB : " + info.getDate() + "\nBlood Group : " + info.getBloodgrp() + "\nGender : " + info.getGender();
-                    list.add(info);
+                for (DataSnapshot bloodgrp : dataSnapshot.getChildren()) {
+                    for (DataSnapshot pincode : bloodgrp.getChildren()) {
+                        for (DataSnapshot user : pincode.getChildren()) {
+                            User info = user.getValue(User.class);
+                            String s = "Name : " + info.getFullName() + "\nMobile No. : " + info.getMobileNo() + "\nEmail : " + info.getEmail()
+                                    + "\nAddress : " + info.getHomeAddress() + "\nPin Code : " + info.getPinCode() + "\nDate of birth : " + info.getDate()
+                                    + "\nGender : " + info.getPinCode() + "\nBlood Group : " + info.getBloodgrp();
+                            list.add(info);
+                        }
+                    }
                 }
                 myAdapter.notifyDataSetChanged();
             }
 
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Toast.makeText(allUsers.this, "Task Failed...", Toast.LENGTH_SHORT).show();
             }
-        });
-
-
+        };
+        root.addValueEventListener(postListener);
     }
 }

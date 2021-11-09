@@ -17,9 +17,7 @@
         <activity android:name=".create_donation_event" />
         <activity android:name=".find_nearby_bb" />
         <activity android:name=".request_blood" />
-        <activity android:name=".search_donor" >
-
-        </activity>
+        <activity android:name=".search_donor" />
         <activity android:name=".template" />
         <activity android:name=".verifyotp_BB" />
         <activity android:name=".profileBB" />
@@ -29,6 +27,7 @@
         <activity android:name=".AboutUS" />
         <activity android:name=".FAQpage" />
         <activity android:name=".SignUp_BB" />
+
         <activity android:name=".SignUp_User" />
         <activity android:name=".options" />
         <activity android:name=".Homepage_BB"/>
@@ -39,9 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".enternumber" />
         <activity android:name=".verifyotp_User" />
 
