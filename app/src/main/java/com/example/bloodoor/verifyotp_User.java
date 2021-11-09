@@ -26,8 +26,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -42,9 +45,10 @@ public class verifyotp_User extends AppCompatActivity {
     BlurLayout blurLayout1;
     private FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
-    DatabaseReference reference;
+    DatabaseReference reference,ref;
     private ProgressDialog loadingBar;
-
+    String userID;
+    int i=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,28 +109,67 @@ public class verifyotp_User extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                                         if (task.isSuccessful()) {
-
-
+                                            rootNode = FirebaseDatabase.getInstance();
+                                            FirebaseUser mauth = FirebaseAuth.getInstance().getCurrentUser();
+                                            userID = mauth.getUid();
+                                            ref=rootNode.getReference("allusers");
                                             if(from_intent.equals("SignUp_User"))
                                             {
-                                                rootNode = FirebaseDatabase.getInstance();
-                                                FirebaseUser mauth = FirebaseAuth.getInstance().getCurrentUser();
-                                                String userID = mauth.getUid();
+
                                                 reference = rootNode.getReference("users");
+
                                                 String Bloodgrp = user.getBloodgrp();
                                                 String pin_code = user.getPinCode();
                                                 reference.child(Bloodgrp).child(pin_code).child(userID).setValue(user);
+                                                ref.child(userID).setValue(user);
 //                                                Intent intent = new Intent(getApplicationContext(), Homepage_user.class);
 //                                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //                                                loadingBar.dismiss();
 //                                                Toast.makeText(verifyotp_User.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
 //                                                startActivity(intent);
+                                                Intent intent = new Intent(getApplicationContext(), Homepage_user.class);
+                                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                loadingBar.dismiss();
+                                                Toast.makeText(verifyotp_User.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
+                                                startActivity(intent);
                                             }
-                                            Intent intent = new Intent(getApplicationContext(), Homepage_user.class);
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            loadingBar.dismiss();
-                                            Toast.makeText(verifyotp_User.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
-                                            startActivity(intent);
+                                            else
+                                            {
+                                                ref.addValueEventListener(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                        for(DataSnapshot snapshot1:snapshot.getChildren())
+                                                        {
+                                                            if(snapshot1.getKey().equals(userID))
+                                                            {
+                                                                i=1;
+                                                            }
+                                                        }
+                                                        if(i==0) {
+                                                            Toast.makeText(verifyotp_User.this, "User not registered", Toast.LENGTH_SHORT).show();
+                                                            Intent intent = new Intent(getApplicationContext(), SignUp_User.class);
+                                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                            loadingBar.dismiss();
+                                                            startActivity(intent);
+                                                        }
+                                                        else
+                                                        {
+                                                            Intent intent = new Intent(getApplicationContext(), Homepage_user.class);
+                                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                            loadingBar.dismiss();
+                                                            Toast.makeText(verifyotp_User.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
+                                                            startActivity(intent);
+                                                        }
+
+                                                    }
+
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                                    }
+                                                });
+                                            }
+
 
                                         } else {
                                             loadingBar.dismiss();
