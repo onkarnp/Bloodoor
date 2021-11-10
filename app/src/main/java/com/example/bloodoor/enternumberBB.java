@@ -17,12 +17,11 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import io.alterac.blurkit.BlurLayout;
 
-public class enternumber extends AppCompatActivity {
+public class enternumberBB extends AppCompatActivity {
 
     EditText entermobilenumber;
     Button getotpbutton;
@@ -54,7 +53,7 @@ public class enternumber extends AppCompatActivity {
                                 "+91" + entermobilenumber.getText().toString(),
                                 90,
                                 TimeUnit.SECONDS,
-                                enternumber.this,
+                                enternumberBB.this,
                                 new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
                                     @Override
@@ -67,14 +66,14 @@ public class enternumber extends AppCompatActivity {
                                     public void onVerificationFailed(@NonNull FirebaseException e) {
                                         progressBar.setVisibility(View.INVISIBLE);
                                         getotpbutton.setVisibility(View.VISIBLE);
-                                        Toast.makeText(enternumber.this, "Network Error:(", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(enternumberBB.this, "Network Error:(", Toast.LENGTH_SHORT).show();
                                     }
 
                                     @Override
                                     public void onCodeSent(@NonNull String backendotp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                         progressBar.setVisibility(View.VISIBLE);
                                         getotpbutton.setVisibility(View.INVISIBLE);
-                                        Intent intent = new Intent(getApplicationContext(), verifyotp_User.class);
+                                        Intent intent = new Intent(getApplicationContext(), verifyotp_BB.class);
                                         intent.putExtra("mobile", entermobilenumber.getText().toString());
                                         intent.putExtra("backendotp",backendotp);
                                         intent.putExtra("from","enternumber");
@@ -88,10 +87,10 @@ public class enternumber extends AppCompatActivity {
 //                        startActivity(intent);
 
                     } else {
-                        Toast.makeText(enternumber.this, "Please enter correct number", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(enternumberBB.this, "Please enter correct number", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(enternumber.this, "Enter Mobile Number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(enternumberBB.this, "Enter Mobile Number", Toast.LENGTH_SHORT).show();
                 }
             }
         });

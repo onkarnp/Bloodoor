@@ -115,7 +115,6 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder>{
                         })
                         .setNegativeButton("No", null)
                         .show();
-
             }
         });
     }

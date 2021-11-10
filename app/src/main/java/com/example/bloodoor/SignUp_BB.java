@@ -177,7 +177,7 @@ public class SignUp_BB extends AppCompatActivity {
         signincard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), enternumber.class);
+                Intent intent = new Intent(getApplicationContext(), enternumberBB.class);
                 startActivity(intent);
             }
         });

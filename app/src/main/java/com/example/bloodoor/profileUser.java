@@ -22,8 +22,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Objects;
-
 public class profileUser extends AppCompatActivity {
 
     private TextInputEditText fullname, mobileNo, email, homeAdd, city, dob, bloodGroup, gender;
@@ -41,7 +39,7 @@ public class profileUser extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_profile_user);
 
-        reference = FirebaseDatabase.getInstance().getReference("users");
+        reference = FirebaseDatabase.getInstance().getReference("allusers");
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
         fullname = findViewById(R.id.user_name_profile);
