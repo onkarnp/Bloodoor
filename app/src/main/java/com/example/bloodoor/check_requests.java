@@ -2,9 +2,13 @@ package com.example.bloodoor;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -32,6 +36,8 @@ public class check_requests extends AppCompatActivity {
     ArrayList<RequestBlood> requestList;
     BloodRequestAdapter bloodRequestAdapter;
 
+    static int PERMISSION_CODE = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +45,11 @@ public class check_requests extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         blurLayout = findViewById(R.id.blurLayout);         //for blurring background
         setContentView(R.layout.activity_check_requests);
+
+        if(ContextCompat.checkSelfPermission(check_requests.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(check_requests.this,new String[]{Manifest.permission.CALL_PHONE},PERMISSION_CODE);
+        }
+
         pin_code = findViewById(R.id.pin_code);
         search_button = (Button) findViewById(R.id.search_requests);
         recyclerView = findViewById(R.id.blood_requests);

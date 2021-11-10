@@ -20,11 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:blk_blurRadius="3"
-            app:blk_fps="0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:blk_fps="0"/>
 
         <!--    Your code goes here....-->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,6 +64,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -96,8 +93,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/blood_group"
-                android:textColorHint="@color/black"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:textColorHint="@color/black">
 
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTextView"

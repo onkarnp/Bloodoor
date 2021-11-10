@@ -4,6 +4,8 @@
     package="com.example.bloodoor">
 <!--    Permission for notification vibration-->
     <uses-permission android:name="android.permission.VIBRATE" />
+<!--    Permission for making calls-->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -33,7 +35,9 @@
         <activity android:name=".SignUp_User" />
         <activity android:name=".options" />
         <activity android:name=".Homepage_BB" />
-        <activity android:name=".Homepage_user"/>
+        <activity android:name=".Homepage_user">
+
+        </activity>
         <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

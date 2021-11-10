@@ -3,14 +3,18 @@ package com.example.bloodoor;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bloodoor.sendEmail.userMailApi;
@@ -44,20 +48,31 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
         return new BloodRequestAdapter.MyViewHolder(v);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull BloodRequestAdapter.MyViewHolder holder, int position) {
         RequestBlood requestBlood = list.get(position);
         holder.requestBloodgrp.setText(requestBlood.getBloodgrp());
-        holder.requestStatus.setText(requestBlood.getRequestStatus());
+        if(requestBlood.getRequestStatus().equals("Pending")) {
+            holder.requestStatus.setText(requestBlood.getRequestStatus());
+            holder.requestStatus.setTextColor(android.graphics.Color.RED);
+        }
+        else{
+            holder.requestStatus.setText(requestBlood.getRequestStatus());
+            holder.requestStatus.setTextColor(android.graphics.Color.GREEN);
+        }
         holder.patientName.setText(requestBlood.getPatientName());
-        holder.patientNumber.setText(requestBlood.getPatientNumber());
-        holder.patientEmail.setText(requestBlood.getPatientEmail());
+//        holder.patientNumber.setText(requestBlood.getPatientNumber());
+//        holder.patientEmail.setText(requestBlood.getPatientEmail());
         holder.hospitalName.setText(requestBlood.getHospitalName()+", "+requestBlood.getPinCode());
 //        holder.pinCode.setText(requestBlood.getPinCode());
         holder.requestReason.setText(requestBlood.getRequestReason());
 
         final String nameOFReceiver = requestBlood.getPatientName();
         final String idOfReceiver = requestBlood.getPatientEmail();
+
+        final String patientNumber = requestBlood.getPatientNumber();
+        final String patientEmail = requestBlood.getPatientEmail();
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +82,7 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
                 alertDialogBuilder.setTitle("Request For Blood!!");
                 alertDialogBuilder.setIcon(R.drawable.ic_flag);
                 alertDialogBuilder.setMessage("Change status ?");
-                alertDialogBuilder.setCancelable(false);
+                alertDialogBuilder.setCancelable(true);
                 alertDialogBuilder.setPositiveButton("Fulfilled", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -86,6 +101,14 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
             }
         });
 
+
+        holder.make_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+patientNumber));
+                context.startActivity(intent);
+            }
+        });
 
 
 //        holder.helpButton.setOnClickListener(new View.OnClickListener() {
@@ -161,14 +184,19 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot snap : snapshot.getChildren()){
-                    for(DataSnapshot snap1 : snap.getChildren()){
-                    if (snap1.getKey().equals(current_user)) {
-                        String patient_name = String.valueOf(snap1.child("patientName").getValue());
-                        String patient_number = String.valueOf(snap1.child("patientNumber").getValue());
-                        if (name.equals(patient_name) && number.equals(patient_number))
-                            reference.child(snap1.getKey()).child("requestStatus").setValue(s);
-                        }
+                for(DataSnapshot snap: snapshot.getChildren()){
+                    for(DataSnapshot snap2: snap.getChildren()){
+                            if(snap2.getKey().matches(current_user)){
+                                String patientName= String.valueOf(snap2.child("patientName").getValue());
+                                String patientNumber= String.valueOf(snap2.child("patientNumber").getValue());
+                                if(patientName.equals(name) && patientNumber.equals(number)){
+                                    reference.child(holder.pinCode.getText().toString()).child(snap2.getKey()).child("requestStatus").setValue(s);
+                                    Toast.makeText(context, "Request status changed successfully", Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    Toast.makeText(context, "Kindly only change status of the requests submitted by you", Toast.LENGTH_SHORT).show();
+                                }
+                            }
                     }
                 }
             }
@@ -189,7 +217,7 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView requestBloodgrp, requestStatus, patientName, patientNumber, patientEmail, hospitalName, pinCode, requestReason;
-        Button helpButton;
+        CardView make_call, send_mail;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -201,7 +229,8 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
             hospitalName = itemView.findViewById(R.id.hospitalName);
             pinCode = itemView.findViewById(R.id.pinCode);
             requestReason = itemView.findViewById(R.id.requestReason);
-            helpButton = itemView.findViewById(R.id.helpButton);
+            make_call = itemView.findViewById(R.id.make_call);
+            send_mail = itemView.findViewById(R.id.send_mail);
         }
     }
 }
