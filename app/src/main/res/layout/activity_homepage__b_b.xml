@@ -11,12 +11,12 @@
     tools:openDrawer="start">
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
+        android:id="@+id/nav_view"
         app:headerLayout="@layout/header"
-        app:menu="@menu/menu" />
+        app:menu="@menu/menu"
+        android:layout_gravity="start"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -49,8 +49,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:title="BlooDoor"
-                app:titleTextColor="@color/black"
-                app:titleMarginStart="0dp" />
+                app:titleMarginStart="0dp"
+                app:titleTextColor="@color/black" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview"
@@ -165,7 +165,106 @@
                 </ViewFlipper>
             </androidx.cardview.widget.CardView>
 
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alignmentMode="alignMargins"
+                android:background="#0000ffff"
+                android:backgroundTint="#0000ffff"
+                android:columnCount="2"
+                android:columnOrderPreserved="false"
+                android:padding="5dp"
+                android:rowCount="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView">
 
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/create_event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="@drawable/card_effect"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="60dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:id="@+id/eventIcon"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:contentDescription="Create Event"
+                            android:src="@drawable/search_donor" />
+
+                        <TextView
+                            android:id="@+id/orderText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:contentDescription="Create Event"
+                            android:text="Create Event"
+                            android:textColor="#0353F4"
+                            android:textSize="17sp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/show_all_event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_margin="5dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="@drawable/card_effect"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="60dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/historyIcon"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:contentDescription="Show All Event"
+                            android:src="@drawable/request_donor" />
+
+                        <TextView
+                            android:id="@+id/historyText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:contentDescription="Show All Event"
+                            android:text="Show All Event"
+                            android:textColor="#0353F4"
+                            android:textSize="17sp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </GridLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>

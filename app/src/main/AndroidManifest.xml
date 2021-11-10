@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.bloodoor">
-<!--    Permission for notification vibration-->
+    <!-- Permission for notification vibration -->
     <uses-permission android:name="android.permission.VIBRATE" />
 <!--    Permission for making calls-->
     <uses-permission android:name="android.permission.CALL_PHONE"/>
@@ -14,11 +14,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloodoor">
-        <activity android:name=".enternumberBB"/>
-        <activity android:name=".check_requests"/>
-        <activity android:name=".allBloodBanks"/>
+        <activity android:name=".AllEvents"></activity>
+        <activity android:name=".enternumberBB" />
+        <activity android:name=".check_requests" />
+        <activity android:name=".allBloodBanks" />
         <activity android:name=".allUsers" />
-        <activity android:name=".live_events" />
+        <activity android:name=".live_events" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".create_donation_event" />
         <activity android:name=".find_nearby_bb" />
         <activity android:name=".request_blood" />
@@ -45,15 +53,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Homepage_user" />
+        <activity android:name=".MainActivity"/>
         <activity android:name=".enternumberUser" />
         <activity android:name=".verifyotp_User" />
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-
-<!--        Needed for sending notifications-->
-
+            android:resource="@array/preloaded_fonts" /> <!-- Needed for sending notifications -->
         <service
             android:name=".FirebaseMessagingService"
             android:permission="TODO"
