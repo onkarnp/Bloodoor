@@ -88,6 +88,8 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
                     public void onClick(DialogInterface dialog, int which) {
                         //Function to change status in the database
                         setRequestStatus(holder, "Fulfilled");
+                        holder.requestStatus.setText("Fulfilled");
+                        Toast.makeText(context, "Status changed to fulfilled", Toast.LENGTH_SHORT).show();
                     }
                 });
                 alertDialogBuilder.setNegativeButton("Pending", new DialogInterface.OnClickListener() {
@@ -95,6 +97,8 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
                     public void onClick(DialogInterface dialog, int which) {
                         //Function to change status in the database
                         setRequestStatus(holder, "Pending");
+                        holder.requestStatus.setText("Pending");
+                        Toast.makeText(context, "Status changed to pending", Toast.LENGTH_SHORT).show();
                     }
                 });
                 alertDialogBuilder.show();
@@ -175,28 +179,26 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
 //        });
     }
 
-    public void setRequestStatus(MyViewHolder holder, String s){
-        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-        String current_user  = mUser.getUid();
+    public void setRequestStatus(BloodRequestAdapter.MyViewHolder holder, String s) {
         String name = holder.patientName.getText().toString();
         String number = holder.patientNumber.getText().toString();
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("bloodRequests");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("bloodRequests");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot snap: snapshot.getChildren()){
-                    for(DataSnapshot snap2: snap.getChildren()){
-                            if(snap2.getKey().matches(current_user)){
-                                String patientName= String.valueOf(snap2.child("patientName").getValue());
-                                String patientNumber= String.valueOf(snap2.child("patientNumber").getValue());
-                                if(patientName.equals(name) && patientNumber.equals(number)){
-                                    reference.child(holder.pinCode.getText().toString()).child(snap2.getKey()).child("requestStatus").setValue(s);
-                                    Toast.makeText(context, "Request status changed successfully", Toast.LENGTH_SHORT).show();
-                                }
-                                else{
-                                    Toast.makeText(context, "Kindly only change status of the requests submitted by you", Toast.LENGTH_SHORT).show();
-                                }
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                        String p_name = String.valueOf(snap.child("patientName").getValue());
+                        String p_number = String.valueOf(snap.child("patientNumber").getValue());
+                        String p_pin_code = String.valueOf(snap.child("pinCode").getValue());
+                        if (name.equals(p_name) && number.equals(p_number)) {
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("bloodRequests");
+                            if (s.equals("Fulfilled")) {
+                                ref.child(p_pin_code).child(snap.getKey()).child("requestStatus").setValue("Fulfilled");
+                            } else {
+                                ref.child(p_pin_code).child(snap.getKey()).child("requestStatus").setValue("Pending");
                             }
+                        }
                     }
                 }
             }
