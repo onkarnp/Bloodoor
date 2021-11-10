@@ -332,7 +332,8 @@
                         android:gravity="center"
                         android:text="UPDATE"
                         android:textColor="@color/colortextfirst"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        app:backgroundTint="@color/colorPrimary"/>
 
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
