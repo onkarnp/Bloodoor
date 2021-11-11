@@ -1,7 +1,7 @@
 package com.example.bloodoor;
 
 public class Events {
-    private String bankName, startDate, endData, description, status, duration, venue;
+    private String bankName, name, startDate, endData, description, status, duration, venue;
 
     public Events() {
     }
@@ -15,8 +15,9 @@ public class Events {
         this.venue = venue;
     }
 
-    public Events(String bankName, String startDate, String endData, String description, String status, String duration, String venue) {
+    public Events(String bankName, String name, String startDate, String endData, String description, String status, String duration, String venue) {
         this.bankName = bankName;
+        this.name = name;
         this.startDate = startDate;
         this.endData = endData;
         this.description = description;
@@ -31,6 +32,14 @@ public class Events {
 
     public void setBankName(String bankName) {
         this.bankName = bankName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getStartDate() {

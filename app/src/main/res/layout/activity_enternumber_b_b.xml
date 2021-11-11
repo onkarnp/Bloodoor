@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
                 android:layout_marginEnd="60dp"
-                android:background="@drawable/backgroundbox"
+                android:background="@drawable/input_bg"
                 android:gravity="center"
                 android:orientation="horizontal">
 

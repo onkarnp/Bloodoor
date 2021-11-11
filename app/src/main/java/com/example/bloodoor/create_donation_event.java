@@ -27,7 +27,7 @@ public class create_donation_event extends AppCompatActivity {
 
     private BlurLayout blurLayout;
     private Button createEvent;
-    private EditText bankName, startDate, endDate, description, duration, venue;
+    private EditText bankName, name, startDate, endDate, description, duration, venue;
     private ProgressDialog loadingBar;
 
     //Initiation of Firebase attributes
@@ -44,6 +44,7 @@ public class create_donation_event extends AppCompatActivity {
         setContentView(R.layout.activity_create_donation_event);
 
         bankName = findViewById(R.id.eventBloodBankName);
+        name = findViewById(R.id.eventName);
         startDate = findViewById(R.id.eventStartDate);
         endDate = findViewById(R.id.eventEndDate);
         description = findViewById(R.id.eventDescription);
@@ -110,52 +111,60 @@ public class create_donation_event extends AppCompatActivity {
                     bankName.setError("Blood Bank name is required...");
                     bankName.requestFocus();
                 } else {
-                    String textStartDate = startDate.getText().toString();
-                    if (TextUtils.isEmpty(startDate.getText())) {
+                    String textEventName = name.getText().toString();
+                    if (TextUtils.isEmpty(name.getText())) {
                         loadingBar.dismiss();
-                        Toast.makeText(create_donation_event.this, "Please enter start date of event...", Toast.LENGTH_SHORT).show();
-                        startDate.setError("Start date of event is required...");
-                        startDate.requestFocus();
+                        Toast.makeText(create_donation_event.this, "Please enter name of event...", Toast.LENGTH_SHORT).show();
+                        name.setError("Name of event is required...");
+                        name.requestFocus();
                     } else {
-                        String textEndDate = endDate.getText().toString();
-                        if (TextUtils.isEmpty(endDate.getText())) {
+                        String textStartDate = startDate.getText().toString();
+                        if (TextUtils.isEmpty(startDate.getText())) {
                             loadingBar.dismiss();
-                            Toast.makeText(create_donation_event.this, "Please enter end date of event...", Toast.LENGTH_SHORT).show();
-                            endDate.setError("End date of event is required...");
-                            endDate.requestFocus();
+                            Toast.makeText(create_donation_event.this, "Please enter start date of event...", Toast.LENGTH_SHORT).show();
+                            startDate.setError("Start date of event is required...");
+                            startDate.requestFocus();
                         } else {
-                            String textDescription = description.getText().toString();
-                            if (TextUtils.isEmpty(description.getText())) {
+                            String textEndDate = endDate.getText().toString();
+                            if (TextUtils.isEmpty(endDate.getText())) {
                                 loadingBar.dismiss();
-                                Toast.makeText(create_donation_event.this, "Please enter description of event...", Toast.LENGTH_SHORT).show();
-                                description.setError("Description of event is required...");
-                                description.requestFocus();
+                                Toast.makeText(create_donation_event.this, "Please enter end date of event...", Toast.LENGTH_SHORT).show();
+                                endDate.setError("End date of event is required...");
+                                endDate.requestFocus();
                             } else {
-                                String textDuration = duration.getText().toString();
-                                if (TextUtils.isEmpty(duration.getText())) {
+                                String textDescription = description.getText().toString();
+                                if (TextUtils.isEmpty(description.getText())) {
                                     loadingBar.dismiss();
-                                    Toast.makeText(create_donation_event.this, "Please enter duration of event...", Toast.LENGTH_SHORT).show();
-                                    duration.setError("Duration of event is required...");
-                                    duration.requestFocus();
+                                    Toast.makeText(create_donation_event.this, "Please enter description of event...", Toast.LENGTH_SHORT).show();
+                                    description.setError("Description of event is required...");
+                                    description.requestFocus();
                                 } else {
-                                    String textVenue = venue.getText().toString();
-                                    if (TextUtils.isEmpty(venue.getText())) {
+                                    String textDuration = duration.getText().toString();
+                                    if (TextUtils.isEmpty(duration.getText())) {
                                         loadingBar.dismiss();
-                                        Toast.makeText(create_donation_event.this, "Please enter venue of event...", Toast.LENGTH_SHORT).show();
-                                        venue.setError("Venue of event is required...");
-                                        venue.requestFocus();
-                                    } else{
-                                        String status = "Upcoming";
-                                        rootNode = FirebaseDatabase.getInstance();
-                                        mAuth = FirebaseAuth.getInstance();
-                                        String userID = mAuth.getCurrentUser().getUid();
-                                        reference = rootNode.getReference("Events");
-                                        Events events = new Events(textBankName, textStartDate, textEndDate, textDescription, status, textDuration, textVenue);
-                                        reference.child(textBankName).child(userID).setValue(events);
-                                        loadingBar.dismiss();
-                                        Toast.makeText(create_donation_event.this, "Order placed successfully :)", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), Homepage_BB.class);
-                                        startActivity(intent);
+                                        Toast.makeText(create_donation_event.this, "Please enter duration of event...", Toast.LENGTH_SHORT).show();
+                                        duration.setError("Duration of event is required...");
+                                        duration.requestFocus();
+                                    } else {
+                                        String textVenue = venue.getText().toString();
+                                        if (TextUtils.isEmpty(venue.getText())) {
+                                            loadingBar.dismiss();
+                                            Toast.makeText(create_donation_event.this, "Please enter venue of event...", Toast.LENGTH_SHORT).show();
+                                            venue.setError("Venue of event is required...");
+                                            venue.requestFocus();
+                                        } else {
+                                            String status = "Upcoming or Live";
+                                            rootNode = FirebaseDatabase.getInstance();
+                                            mAuth = FirebaseAuth.getInstance();
+                                            String userID = mAuth.getCurrentUser().getUid();
+                                            reference = rootNode.getReference("Events");
+                                            Events events = new Events(textBankName, textEventName, textStartDate, textEndDate, textDescription, status, textDuration, textVenue);
+                                            reference.child(textStartDate).child(userID).setValue(events);
+                                            loadingBar.dismiss();
+                                            Toast.makeText(create_donation_event.this, "Event created successfully (:", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(getApplicationContext(), Homepage_BB.class);
+                                            startActivity(intent);
+                                        }
                                     }
                                 }
                             }

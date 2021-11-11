@@ -17,7 +17,14 @@
         <activity android:name=".check_requests" />
         <activity android:name=".allBloodBanks" />
         <activity android:name=".allUsers" />
-        <activity android:name=".live_events" />
+        <activity android:name=".live_events" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".create_donation_event" />
         <activity android:name=".find_nearby_bb" />
         <activity android:name=".request_blood" />
@@ -35,13 +42,7 @@
         <activity android:name=".options" />
         <activity android:name=".Homepage_BB" />
         <activity android:name=".Homepage_user" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".enternumberUser" />
         <activity android:name=".verifyotp_User" />
 

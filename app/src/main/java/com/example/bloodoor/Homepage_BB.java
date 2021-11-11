@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -32,6 +33,8 @@ public class Homepage_BB extends AppCompatActivity implements NavigationView.OnN
     Toolbar toolbar;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
+    CardView create_event_card, show_all_event_card;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,25 @@ public class Homepage_BB extends AppCompatActivity implements NavigationView.OnN
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         blurLayout1 = findViewById(R.id.blurLayout1);
         setContentView(R.layout.activity_homepage__b_b);
+
+        create_event_card = (CardView) findViewById(R.id.create_event);
+        create_event_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), create_donation_event.class);
+                startActivity(intent);
+            }
+        });
+
+        show_all_event_card = (CardView) findViewById(R.id.show_all_event);
+        show_all_event_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AllEvents.class);
+                startActivity(intent);
+            }
+        });
+
         cardView = (CardView) findViewById(R.id.cardview);
 
         drawerLayout = findViewById(R.id.drawer_layout);
