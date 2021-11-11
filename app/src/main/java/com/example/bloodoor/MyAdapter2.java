@@ -62,16 +62,15 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ///Function to change status in the database
-                        setOrderStatus(holder, "Done");
+                        setEventStatus(holder, "Done");
                         holder.eventStatus.setText("Done");
-
                         Toast.makeText(context, "Status changed to Done.", Toast.LENGTH_LONG).show();
                     }
                 }).setNegativeButton("Upcoming/Live", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ///Function  to change status in the database
-                        setOrderStatus(holder, "Upcoming/Live");
+                        setEventStatus(holder, "Upcoming/Live");
                         holder.eventStatus.setText("Upcoming/Live");
                         Toast.makeText(context, "Status changed to Upcoming/Live.", Toast.LENGTH_LONG).show();
                     }
@@ -79,11 +78,9 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                 alertDialogBuilder.show();
             }
         });
-
-
     }
 
-    public void setOrderStatus(MyViewHolder holder, String s) {
+    public void setEventStatus(MyViewHolder holder, String s) {
         String bbn = holder.bloodBankName.getText().toString();
         String sdt = holder.eventStartDate.getText().toString();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events");
