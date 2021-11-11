@@ -81,7 +81,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/bloodbankName"
+                    android:id="@+id/eventBloodBankName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -100,10 +100,11 @@
                     android:textColorHint="@color/colortextsecond" />
 
                 <EditText
-                    android:id="@+id/startDate"
+                    android:id="@+id/eventStartDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:clickable="true"
                     android:background="@drawable/input_bg"
                     android:drawableStart="@drawable/startdate"
                     android:drawableLeft="@drawable/startdate"
@@ -119,10 +120,11 @@
                     android:textColorHint="@color/colortextsecond" />
 
                 <EditText
-                    android:id="@+id/endDate"
+                    android:id="@+id/eventEndDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:clickable="true"
                     android:background="@drawable/input_bg"
                     android:drawableStart="@drawable/enddate"
                     android:drawableLeft="@drawable/enddate"
@@ -137,7 +139,7 @@
                     android:textColorHint="@color/colortextsecond" />
 
                 <EditText
-                    android:id="@+id/inputEventDescription"
+                    android:id="@+id/eventDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -157,7 +159,7 @@
                     android:textColorHint="@color/colortextsecond" />
 
                 <EditText
-                    android:id="@+id/inputDuration"
+                    android:id="@+id/eventDuration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -166,9 +168,9 @@
                     android:drawableLeft="@drawable/duration"
                     android:drawablePadding="10dp"
                     android:ems="10"
-                    android:hint="Enter Duration"
+                    android:hint="Enter Time Duration (from - to)"
                     android:importantForAutofill="no"
-                    android:inputType="text"
+                    android:inputType="time"
                     android:paddingLeft="20dp"
                     android:paddingTop="10dp"
                     android:paddingRight="20dp"
@@ -177,7 +179,7 @@
                     android:textColorHint="@color/colortextsecond" />
 
                 <EditText
-                    android:id="@+id/inputAddress"
+                    android:id="@+id/eventAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -204,7 +206,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/placeOrderButton"
+                        android:id="@+id/createEventButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/buttonback"

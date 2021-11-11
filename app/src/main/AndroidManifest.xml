@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.bloodoor">
-<!--    Permission for notification vibration-->
+    <!-- Permission for notification vibration -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -12,9 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloodoor">
-        <activity android:name=".enternumberBB"/>
-        <activity android:name=".check_requests"/>
-        <activity android:name=".allBloodBanks"/>
+        <activity android:name=".AllEvents"></activity>
+        <activity android:name=".enternumberBB" />
+        <activity android:name=".check_requests" />
+        <activity android:name=".allBloodBanks" />
         <activity android:name=".allUsers" />
         <activity android:name=".live_events" />
         <activity android:name=".create_donation_event" />
@@ -33,8 +34,8 @@
         <activity android:name=".SignUp_User" />
         <activity android:name=".options" />
         <activity android:name=".Homepage_BB" />
-        <activity android:name=".Homepage_user"/>
-        <activity android:name=".MainActivity" >
+        <activity android:name=".Homepage_user" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,10 +47,7 @@
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-
-<!--        Needed for sending notifications-->
-
+            android:resource="@array/preloaded_fonts" /> <!-- Needed for sending notifications -->
         <service
             android:name=".FirebaseMessagingService"
             android:permission="TODO"
