@@ -116,6 +116,10 @@ public class verifyotp_BB extends AppCompatActivity {
                                                 Toast.makeText(verifyotp_BB.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
                                                 startActivity(intent);
                                             } else {
+                                                String bb_pin_code = helper.getbbPinCode();
+                                                reference = rootNode.getReference("BloodBanks");
+                                                reference.child(bb_pin_code).child(bloodBankID).setValue(helper);
+                                                ref = rootNode.getReference("ALLBloodbanks");
                                                 ref.addValueEventListener(new ValueEventListener() {
                                                     @Override
                                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
