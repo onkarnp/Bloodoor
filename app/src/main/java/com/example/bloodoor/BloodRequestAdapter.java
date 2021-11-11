@@ -188,15 +188,15 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                        String p_name = String.valueOf(snap.child("patientName").getValue());
-                        String p_number = String.valueOf(snap.child("patientNumber").getValue());
-                        String p_pin_code = String.valueOf(snap.child("pinCode").getValue());
-                        if (name.equals(p_name) && number.equals(p_number)) {
+                        String n = String.valueOf(snap.child("patientName").getValue());
+                        String d = String.valueOf(snap.child("patientNumber").getValue());
+                        String p = String.valueOf(snap.child("pinCode").getValue());
+                        if (name.equals(n) && number.equals(d)) {
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("bloodRequests");
                             if (s.equals("Fulfilled")) {
-                                ref.child(p_pin_code).child(snap.getKey()).child("requestStatus").setValue("Fulfilled");
+                                ref.child(p).child(snap.getKey()).child("requestStatus").setValue("Fulfilled");
                             } else {
-                                ref.child(p_pin_code).child(snap.getKey()).child("requestStatus").setValue("Pending");
+                                ref.child(p).child(snap.getKey()).child("requestStatus").setValue("Pending");
                             }
                         }
                     }

@@ -153,7 +153,7 @@ public class create_donation_event extends AppCompatActivity {
                                             venue.setError("Venue of event is required...");
                                             venue.requestFocus();
                                         } else {
-                                            String status = "Upcoming or Live";
+                                            String status = "Upcoming";
                                             rootNode = FirebaseDatabase.getInstance();
                                             mAuth = FirebaseAuth.getInstance();
                                             String userID = mAuth.getCurrentUser().getUid();

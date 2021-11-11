@@ -57,7 +57,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                 alertDialogBuilder.setTitle("Event Details..!!");
                 alertDialogBuilder.setIcon(R.drawable.ic_flag);
                 alertDialogBuilder.setMessage("Change Event status ?");
-                alertDialogBuilder.setCancelable(false);
+                alertDialogBuilder.setCancelable(true);
                 alertDialogBuilder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -70,10 +70,30 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                 }).setNegativeButton("Upcoming/Live", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ///Function  to change status in the database
-                        setOrderStatus(holder, "Upcoming/Live");
-                        holder.eventStatus.setText("Upcoming/Live");
-                        Toast.makeText(context, "Status changed to Upcoming/Live.", Toast.LENGTH_LONG).show();
+
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                        alertDialogBuilder.setTitle("Event Details..!!");
+                        alertDialogBuilder.setIcon(R.drawable.ic_flag);
+                        alertDialogBuilder.setMessage("Change Event status ?");
+                        alertDialogBuilder.setCancelable(true);
+                        alertDialogBuilder.setPositiveButton("Live", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Function  to change status in the database
+                                setOrderStatus(holder, "Live");
+                                holder.eventStatus.setText("Live");
+                                Toast.makeText(context, "Status changed to Live.", Toast.LENGTH_LONG).show();
+                            }
+                        }).setNegativeButton("Upcoming", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Function  to change status in the database
+                                setOrderStatus(holder, "Upcoming");
+                                holder.eventStatus.setText("Upcoming");
+                                Toast.makeText(context, "Status changed to Upcoming.", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                        alertDialogBuilder.show();
                     }
                 });
                 alertDialogBuilder.show();
@@ -98,8 +118,10 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
                             if (s.equals("Done")) {
                                 ref.child(d).child(snap.getKey()).child("status").setValue("Done");
-                            } else {
-                                ref.child(d).child(snap.getKey()).child("status").setValue("Uncoming/Live");
+                            } else if(s.equals("Live")) {
+                                ref.child(d).child(snap.getKey()).child("status").setValue("Live");
+                            } else{
+                                ref.child(d).child(snap.getKey()).child("status").setValue("Upcoming");
                             }
                         }
                     }

@@ -69,7 +69,7 @@ public class verifyotp_BB extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.textshowmobilenumber);
         textView.setText(String.format(
-                "+91~%s", getIntent().getStringExtra("mobileNo")
+                "+91 %s", getIntent().getStringExtra("mobile")
         ));
 
         getotpbackend = getIntent().getStringExtra("backendotp");

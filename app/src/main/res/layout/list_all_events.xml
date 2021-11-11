@@ -27,7 +27,7 @@
             android:textSize="15sp"
             app:drawableLeftCompat="@drawable/bloodbank"
             app:drawableTint="#6200EE"
-            android:drawablePadding="10dp"
+            android:drawablePadding="5dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,7 +40,7 @@
             android:textColor="#3F51B5"
             android:textSize="15sp"
             app:drawableLeftCompat="@drawable/ic_person"
-            android:drawablePadding="10dp"
+            android:drawablePadding="5dp"
             app:drawableTint="#3F51B5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/showBloodBankName" />
@@ -54,7 +54,7 @@
             android:textColor="#3F51B5"
             android:textSize="15sp"
             app:drawableLeftCompat="@drawable/startdate"
-            android:drawablePadding="10dp"
+            android:drawablePadding="5dp"
             app:drawableTint="#3F51B5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/showEventName" />
@@ -68,7 +68,7 @@
             android:textColor="#3F51B5"
             android:textSize="15sp"
             app:drawableLeftCompat="@drawable/enddate"
-            android:drawablePadding="10dp"
+            android:drawablePadding="5dp"
             app:drawableTint="#3F51B5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/showEventStartDate" />
@@ -82,7 +82,7 @@
             android:textColor="#3F51B5"
             android:textSize="15sp"
             app:drawableLeftCompat="@drawable/eventdescription"
-            android:drawablePadding="10dp"
+            android:drawablePadding="5dp"
             app:drawableTint="#3F51B5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/showEventEndDate" />
@@ -96,7 +96,7 @@
             android:textColor="#3F51B5"
             android:textSize="15sp"
             app:drawableLeftCompat="@drawable/eventdescription"
-            android:drawablePadding="10dp"
+            android:drawablePadding="5dp"
             app:drawableTint="#3F51B5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/showEventDescription" />
@@ -110,7 +110,7 @@
             android:textColor="#3F51B5"
             android:textSize="15sp"
             app:drawableLeftCompat="@drawable/eventdescription"
-            android:drawablePadding="10dp"
+            android:drawablePadding="5dp"
             app:drawableTint="#3F51B5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/showEventDuration" />
@@ -124,7 +124,7 @@
             android:layout_marginEnd="48dp"
             android:layout_marginRight="48dp"
             app:drawableLeftCompat="@drawable/ic_flag"
-            android:drawablePadding="10dp"
+            android:drawablePadding="5dp"
             app:drawableTint="#3F51B5"
             android:text="Status"
             android:textColor="#3F51B5"
