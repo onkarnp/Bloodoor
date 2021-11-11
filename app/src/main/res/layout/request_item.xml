@@ -53,11 +53,10 @@
                 android:drawablePadding="5dp"
                 android:layout_weight="1"
                 android:text="Status"
-                android:textColor="#00FF00"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:drawableLeftCompat="@drawable/ic_flag"
-                app:drawableTint="#00FF00" />
+                app:drawableTint="#0E6B0E" />
 
         </LinearLayout>
 
@@ -76,36 +75,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-        <TextView
-            android:id="@+id/patientNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:drawableStart="@drawable/ic_phone"
-            android:drawablePadding="5dp"
-            android:text="Patient's Number"
-            android:textColor="#3F51B5"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:drawableTint="#3F51B5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientName" />
+<!--        <TextView-->
+<!--            android:id="@+id/patientNumber"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="5dp"-->
+<!--            android:drawableStart="@drawable/ic_phone"-->
+<!--            android:drawablePadding="5dp"-->
+<!--            android:text="Patient's Number"-->
+<!--            android:textColor="#3F51B5"-->
+<!--            android:textSize="15sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:drawableTint="#3F51B5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/patientName" />-->
 
 
-        <TextView
-            android:id="@+id/patientEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:drawableStart="@drawable/ic_email"
-            android:drawablePadding="5dp"
-            android:text="Patient's Email"
-            android:textColor="#3F51B5"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:drawableTint="#3F51B5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientNumber" />
+<!--        <TextView-->
+<!--            android:id="@+id/patientEmail"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="5dp"-->
+<!--            android:drawableStart="@drawable/ic_email"-->
+<!--            android:drawablePadding="5dp"-->
+<!--            android:text="Patient's Email"-->
+<!--            android:textColor="#3F51B5"-->
+<!--            android:textSize="15sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:drawableTint="#3F51B5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/patientNumber" />-->
 
         <TextView
             android:id="@+id/hospitalName"
@@ -120,7 +119,7 @@
             android:textStyle="bold"
             app:drawableTint="#3F51B5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patientEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/patientName" />
 
 
         <TextView
@@ -138,15 +137,71 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hospitalName" />
 
-        <Button
-            android:id="@+id/helpButton"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="I Can Help!"
+            android:orientation="horizontal"
+            android:layout_marginRight="5dp"
+            android:gravity="center_vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/requestReason" />
+            app:layout_constraintTop_toBottomOf="@+id/requestReason">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Contact"
+                android:textColor="#3F51B5"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:drawableTint="#3F51B5"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/make_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:layout_marginRight="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="@drawable/card_effect"
+                app:cardBackgroundColor="@color/white">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/phone_call" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/send_mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:layout_marginLeft="5dp"
+                android:focusable="true"
+                android:foreground="@drawable/card_effect"
+                app:cardBackgroundColor="@color/white">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/gmail" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+<!--        <Button-->
+<!--            android:id="@+id/helpButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="I Can Help!"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/requestReason" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

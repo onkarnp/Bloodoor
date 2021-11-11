@@ -92,7 +92,7 @@
                 android:inputType="number"
                 android:maxLength="6"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black" />
+                android:textColorHint="#999999"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

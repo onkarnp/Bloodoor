@@ -199,7 +199,6 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
             hospitalName = itemView.findViewById(R.id.hospitalName);
             pinCode_ = itemView.findViewById(R.id.pinCode);
             requestReason = itemView.findViewById(R.id.requestReason);
-            helpButton = itemView.findViewById(R.id.helpButton);
         }
     }
 }
