@@ -69,7 +69,7 @@ public class verifyotp_BB extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.textshowmobilenumber);
         textView.setText(String.format(
-                "+91~%s", getIntent().getStringExtra("mobileNo")
+                "+91 %s", getIntent().getStringExtra("mobile")
         ));
 
         getotpbackend = getIntent().getStringExtra("backendotp");
@@ -102,13 +102,12 @@ public class verifyotp_BB extends AppCompatActivity {
                                             rootNode = FirebaseDatabase.getInstance();
                                             FirebaseUser mauth = FirebaseAuth.getInstance().getCurrentUser();
                                             String bloodBankID = mauth.getUid();
-
+                                            ref = rootNode.getReference("ALLBloodbanks");
                                             if (from_intent.equals("SignUp_BB")) {
 
                                                 String bb_pin_code = helper.getbbPinCode();
                                                 reference = rootNode.getReference("BloodBanks");
                                                 reference.child(bb_pin_code).child(bloodBankID).setValue(helper);
-                                                ref = rootNode.getReference("ALLBloodbanks");
                                                 ref.child(bloodBankID).setValue(helper);
                                                 Intent intent = new Intent(getApplicationContext(), Homepage_BB.class);
                                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

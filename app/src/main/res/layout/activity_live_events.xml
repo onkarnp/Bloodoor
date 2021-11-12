@@ -27,7 +27,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:background="@drawable/colorbg"
             android:padding="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginLeft="30dp"
                 android:contentDescription="Live Events"
-                android:src="@drawable/live_events"
+                android:src="@drawable/tent2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -72,16 +72,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:orientation="vertical">
-
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/liveEventList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:dividerHeight="15dp"
-                android:padding="10dp" />
+                android:dividerHeight="15dp" />
 
         </LinearLayout>
     </LinearLayout>

@@ -208,7 +208,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:contentDescription="Create Event"
-                            android:src="@drawable/search_donor" />
+                            android:src="@drawable/create_donation_event" />
 
                         <TextView
                             android:id="@+id/orderText"
@@ -250,7 +250,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:contentDescription="Show All Event"
-                            android:src="@drawable/request_donor" />
+                            android:src="@drawable/all_donation__events" />
 
                         <TextView
                             android:id="@+id/historyText"

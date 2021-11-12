@@ -146,7 +146,7 @@ public class SignUp_BB extends AppCompatActivity {
                                         Intent intent = new Intent(getApplicationContext(), verifyotp_BB.class);
                                         bloodBankHelperClass helper = new bloodBankHelperClass(regName, regHandlerName, regMobileNo,
                                                 regPhoneNo, regEmail, regAddress, regPinCode);
-                                        intent.putExtra("mobileNo", mobileNo.getText().toString());
+                                        intent.putExtra("mobile", mobileNo.getText().toString());
                                         intent.putExtra("backendotp", backendotp);
                                         intent.putExtra("Helper", helper);
                                         intent.putExtra("from","SignUp_BB");

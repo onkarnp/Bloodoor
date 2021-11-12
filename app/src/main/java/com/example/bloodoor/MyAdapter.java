@@ -1,8 +1,11 @@
 package com.example.bloodoor;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bloodoor.sendEmail.JavaMailApi;
@@ -41,27 +45,102 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return new MyViewHolder(v);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         bloodBankHelperClass user = list.get(position);
         holder.name.setText(user.getName());
-        holder.handlerName.setText(user.getHandlerName());
-        holder.mobileNo.setText(user.getMobileNo());
-        holder.phoneNo.setText(user.getPhoneNo());
+//        holder.handlerName.setText(user.getHandlerName());
+        holder.mobileNo.setText(user.getMobileNo()+" / "+user.getPhoneNo());
+//        holder.phoneNo.setText(user.getPhoneNo());
         holder.email.setText(user.getEmail());
-        holder.address.setText(user.getAddress());
-        holder.bbPinCode.setText(user.getbbPinCode());
+        holder.address.setText(user.getAddress()+", "+user.getbbPinCode());
+//        holder.bbPinCode.setText(user.getbbPinCode());
 
         final String nameOFReceiver = user.getHandlerName();
         final String nameOfBank = user.getName();
         final String idOfReceiver = user.getEmail();
+        final String bankNumber = user.getPhoneNo();
+        final String bankEmail = user.getEmail();
 
-        holder.button.setOnClickListener(new View.OnClickListener() {
+//        holder.button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                new AlertDialog.Builder(context)
+//                        .setTitle("Send Email")
+//                        .setMessage("Send Email to " + nameOfBank + "?")
+//                        .setCancelable(false)
+//                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+//                                        .child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+//                                reference.addValueEventListener(new ValueEventListener() {
+//                                    @Override
+//                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                        String fullname = snapshot.child("fullName").getValue().toString();
+//                                        String email = snapshot.child("email").getValue().toString();
+//                                        String address = snapshot.child("homeAddress").getValue().toString();
+//                                        String phoneNo = snapshot.child("mobileNo").getValue().toString();
+//                                        String pinCode = snapshot.child("pinCode").getValue().toString();
+//
+//                                        String mEmail = user.getEmail();
+//                                        String mSubject = "BLOOD REQUEST";
+//                                        String mMessage = "Hello " + nameOFReceiver + "," + fullname
+//                                                + "would like to Blood Donation from you.\nHere's his/her details :\n"
+//                                                + "Name : " + fullname + "\n"
+//                                                + "Mobile Number : " + phoneNo + "\n"
+//                                                + "Email : " + email + "\n"
+//                                                + "Address : " + address + "\n"
+//                                                + "City Pin Code : " + pinCode + "\n"
+//                                                + "Kindly reach out to him/her. Thank You...\n"
+//                                                + "BlooDoor... DONATE BLOOD, SAVE LIFE (:";
+//
+//
+//                                        JavaMailApi javaMailApi = new JavaMailApi(context, mEmail, mSubject, mMessage);
+//                                        javaMailApi.execute();
+//
+//                                        DatabaseReference senderRef = FirebaseDatabase.getInstance().getReference("email")
+//                                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+//                                        senderRef.child(idOfReceiver).setValue(true).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                            @Override
+//                                            public void onComplete(@NonNull Task<Void> task) {
+//                                                if (task.isSuccessful()) {
+//                                                    DatabaseReference receiverRef = FirebaseDatabase.getInstance().getReference("email")
+//                                                            .child(idOfReceiver);
+//                                                    receiverRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(true);
+//                                                }
+//                                            }
+//                                        });
+//                                    }
+//
+//                                    @Override
+//                                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                                    }
+//                                });
+//                            }
+//                        })
+//                        .setNegativeButton("No", null)
+//                        .show();
+//            }
+//        });
+
+
+        holder.call_bank.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+bankNumber));
+                context.startActivity(intent);
+            }
+        });
+
+        holder.mail_bank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(context)
                         .setTitle("Send Email")
-                        .setMessage("Send Email to " + user.getName() + "?")
+                        .setMessage("Send Email to " + nameOfBank + "?")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
@@ -129,17 +208,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         TextView name, handlerName, mobileNo, phoneNo, email, address, bbPinCode;
         Button button;
+        CardView call_bank, mail_bank;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.bb_name0);
-            handlerName = itemView.findViewById(R.id.bb_holder_name0);
+//            handlerName = itemView.findViewById(R.id.bb_holder_name0);
             mobileNo = itemView.findViewById(R.id.mobileNo0);
-            phoneNo = itemView.findViewById(R.id.phoneNo0);
+//            phoneNo = itemView.findViewById(R.id.phoneNo0);
             email = itemView.findViewById(R.id.email0);
             address = itemView.findViewById(R.id.homeAddress0);
-            bbPinCode = itemView.findViewById(R.id.bb_pin_code0);
-            button = itemView.findViewById(R.id.btn_email);
+//            bbPinCode = itemView.findViewById(R.id.bb_pin_code0);
+//            button = itemView.findViewById(R.id.btn_email);
+            call_bank = itemView.findViewById(R.id.call_bank);
+            mail_bank = itemView.findViewById(R.id.mail_bank);
         }
     }
 }
