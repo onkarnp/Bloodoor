@@ -52,8 +52,6 @@ public class profileUpdate_User extends AppCompatActivity {
         blurLayout = findViewById(R.id.blurLayout);         //for blurring background
         setContentView(R.layout.activity_profile_update__user);
 
-        getSupportActionBar().setTitle("Update Profile");
-
         progressBar = findViewById(R.id.progressbar_Update_Profile);
 
         fullname = findViewById(R.id.updateFullName);

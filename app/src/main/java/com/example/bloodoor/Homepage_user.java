@@ -1,5 +1,6 @@
 package com.example.bloodoor;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -128,6 +129,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
@@ -154,9 +156,9 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
                 alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getApplicationContext(),options.class);
+                        Intent intent3 = new Intent(getApplicationContext(),options.class);
                         mAuth.signOut();
-                        startActivity(intent);
+                        startActivity(intent3);
                         Toast.makeText(Homepage_user.this,"Logged out successfully",Toast.LENGTH_LONG).show();
                         finish();
                     }
@@ -168,6 +170,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
                     }
                 });
                 alertDialogBuilder.show();
+                break;
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

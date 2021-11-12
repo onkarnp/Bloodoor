@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class profileUser extends AppCompatActivity {
 
-    private TextInputEditText fullname, mobileNo, email, homeAdd, city, dob, bloodGroup, gender;
+    private EditText fullname, mobileNo, email, homeAdd, city, dob, bloodGroup, gender;
     private TextView fullnameLabel, usernameLabel;
     private DatabaseReference reference;
     private FirebaseUser user;

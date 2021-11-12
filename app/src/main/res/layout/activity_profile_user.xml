@@ -158,162 +158,163 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/user_name_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/input_bg"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawableLeft="@drawable/ic_person"
+                    app:drawableTint="@color/colortextfirst"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
                     android:hint="Full Name"
-                    android:textColorHint="@color/colortextsecond">
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/colortextfirst"
+                    android:textColorHint="@color/colortextsecond" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/button"
-                        android:drawableLeft="@drawable/ic_person"
-                        android:drawablePadding="10dp"
-                        android:text="Pranav Pawar"
-                        android:textColor="@color/colortextfirst" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/mobile_number_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="@string/mobile_number"
-                    android:textColorHint="@color/colortextsecond">
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/input_bg"
+                    android:drawableStart="@drawable/mobiletwo"
+                    android:drawableLeft="@drawable/mobiletwo"
+                    app:drawableTint="@color/colortextfirst"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:hint="Mobile Number"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/colortextfirst"
+                    android:textColorHint="@color/colortextsecond" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/button"
-                        android:drawableLeft="@drawable/mobiletwo"
-                        android:drawablePadding="10dp"
-                        android:text="9307637570"
-                        android:textColor="@color/colortextfirst" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/email_id_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/input_bg"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawableLeft="@drawable/ic_email"
+                    app:drawableTint="@color/colortextfirst"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
                     android:hint="@string/email_id"
-                    android:textColorHint="@color/colortextsecond">
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/colortextfirst"
+                    android:textColorHint="@color/colortextsecond" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/button"
-                        android:drawableLeft="@drawable/ic_email"
-                        android:drawablePadding="10dp"
-                        android:text="pranavpawar309@gmail.com"
-                        android:textColor="@color/colortextfirst" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/home_address_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/input_bg"
+                    android:drawableStart="@drawable/ic_home"
+                    android:drawableLeft="@drawable/ic_home"
+                    app:drawableTint="@color/colortextfirst"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
                     android:hint="@string/home_address"
-                    android:textColorHint="@color/colortextsecond">
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/colortextfirst"
+                    android:textColorHint="@color/colortextsecond" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/button"
-                        android:drawableLeft="@drawable/ic_home"
-                        android:drawablePadding="10dp"
-                        android:text="Shreeram, Pusad"
-                        android:textColor="@color/colortextfirst" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/pin_code_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/input_bg"
+                    android:drawableStart="@drawable/ic_home"
+                    android:drawableLeft="@drawable/ic_home"
+                    app:drawableTint="@color/colortextfirst"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
                     android:hint="Pin Code"
-                    android:textColorHint="@color/colortextsecond">
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/colortextfirst"
+                    android:textColorHint="@color/colortextsecond" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/button"
-                        android:drawableLeft="@drawable/ic_home"
-                        android:drawablePadding="10dp"
-                        android:text="445204"
-                        android:textColor="@color/colortextfirst" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/dateOfBirth_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/input_bg"
+                    android:drawableStart="@drawable/ic_baseline_calendar_today_24"
+                    android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+                    app:drawableTint="@color/colortextfirst"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
                     android:hint="Date of Birth..."
-                    android:textColorHint="@color/colortextsecond">
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/colortextfirst"
+                    android:textColorHint="@color/colortextsecond" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/button"
-                        android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
-                        android:drawablePadding="10dp"
-                        android:text="30/09/2001"
-                        android:textColor="@color/colortextfirst" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/gender_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/input_bg"
+                    android:drawableStart="@drawable/gender"
+                    android:drawableLeft="@drawable/gender"
+                    app:drawableTint="@color/colortextfirst"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
                     android:hint="Gender"
-                    android:textColorHint="@color/colortextsecond">
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/colortextfirst"
+                    android:textColorHint="@color/colortextsecond" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/button"
-                        android:drawableLeft="@drawable/gender"
-                        android:drawablePadding="10dp"
-                        android:text="Male"
-                        android:textColor="@color/colortextfirst" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/blood_gruop_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/input_bg"
+                    android:drawableStart="@drawable/bloodgroup"
+                    android:drawableLeft="@drawable/bloodgroup"
+                    app:drawableTint="@color/colortextfirst"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
                     android:hint="Blood Group"
-                    android:textColorHint="@color/colortextsecond">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/button"
-                        android:drawableLeft="@drawable/bloodgroup"
-                        android:drawablePadding="10dp"
-                        android:text="AB+"
-                        android:textColor="@color/colortextfirst" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/colortextfirst"
+                    android:textColorHint="@color/colortextsecond" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/signincard_profile"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
                     app:layout_constraintBottom_toBottomOf="@+id/blurLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

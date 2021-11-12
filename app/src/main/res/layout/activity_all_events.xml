@@ -39,9 +39,9 @@
                     android:id="@+id/userProfileHeading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/wellfleet"
-                    android:text="All Events"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/baumans"
+                    android:text="All Events"
                     android:textColor="#FFFFFF"
                     android:textSize="25sp"
                     android:textStyle="bold" />

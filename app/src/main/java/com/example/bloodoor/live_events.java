@@ -51,7 +51,7 @@ public class live_events extends AppCompatActivity {
                 list.clear();
                 for (DataSnapshot snapshot : datasnapshot.getChildren()) {
                     for (DataSnapshot snap : snapshot.getChildren()) {
-                        if (String.valueOf(snap.child("status").getValue()).equals("Upcoming/Live")) {
+                        if ((String.valueOf(snap.child("status").getValue()).equals("Upcoming")) | (String.valueOf(snap.child("status").getValue()).equals("Live"))) {
                             Events info = snap.getValue(Events.class);
                             String sp = "Blood Bank Name : " + info.getBankName() + "\nEvent Name : " + info.getName() + "\nStart Date : " + info.getStartDate()
                                     + "\nEnd Date : " + info.getEndData() + "\nDescription : " + info.getDescription() + "\nTime Duration : " + info.getDuration()
