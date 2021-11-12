@@ -1,4 +1,4 @@
-package com.example.bloodoor;
+package com.example.bloodoor.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bloodoor.R;
+import com.example.bloodoor.models.bloodBankHelperClass;
 import com.example.bloodoor.sendEmail.JavaMailApi;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

@@ -25,40 +25,40 @@
             android:drawablePadding="10dp"
             android:text="Full Name"
             android:textColor="@color/design_default_color_primary"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:drawableLeftCompat="@drawable/ic_person"
             app:drawableTint="#6200EE"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/mobileNo1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:drawablePadding="10dp"
-            android:text="@string/mobile_number"
-            android:textColor="#3F51B5"
-            android:textSize="15sp"
-            app:drawableLeftCompat="@drawable/mobiletwo"
-            app:drawableTint="#3F51B5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fullName1" />
+<!--        <TextView-->
+<!--            android:id="@+id/mobileNo1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="5dp"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:text="@string/mobile_number"-->
+<!--            android:textColor="#3F51B5"-->
+<!--            android:textSize="15sp"-->
+<!--            app:drawableLeftCompat="@drawable/mobiletwo"-->
+<!--            app:drawableTint="#3F51B5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/fullName1" />-->
 
-        <TextView
-            android:id="@+id/email1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:drawablePadding="10dp"
-            android:text="@string/email_id"
-            android:textColor="#3F51B5"
-            android:textSize="15sp"
-            app:drawableLeftCompat="@drawable/ic_email"
-            app:drawableTint="#3F51B5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mobileNo1" />
+<!--        <TextView-->
+<!--            android:id="@+id/email1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="5dp"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:text="@string/email_id"-->
+<!--            android:textColor="#3F51B5"-->
+<!--            android:textSize="15sp"-->
+<!--            app:drawableLeftCompat="@drawable/ic_email"-->
+<!--            app:drawableTint="#3F51B5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/mobileNo1" />-->
 
         <TextView
             android:id="@+id/homeAddress1"
@@ -69,24 +69,25 @@
             android:text="@string/home_address"
             android:textColor="#3F51B5"
             android:textSize="15sp"
+            android:textStyle="bold"
             app:drawableLeftCompat="@drawable/ic_home"
             app:drawableTint="#3F51B5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email1" />
+            app:layout_constraintTop_toBottomOf="@+id/fullName1" />
 
-        <TextView
-            android:id="@+id/pinCode1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:drawablePadding="10dp"
-            android:text="Pin Code"
-            android:textColor="#3F51B5"
-            android:textSize="15sp"
-            app:drawableLeftCompat="@drawable/ic_pin"
-            app:drawableTint="#3F51B5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/homeAddress1" />
+<!--        <TextView-->
+<!--            android:id="@+id/pinCode1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="5dp"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:text="Pin Code"-->
+<!--            android:textColor="#3F51B5"-->
+<!--            android:textSize="15sp"-->
+<!--            app:drawableLeftCompat="@drawable/ic_pin"-->
+<!--            app:drawableTint="#3F51B5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/homeAddress1" />-->
 
         <TextView
             android:id="@+id/dob1"
@@ -97,55 +98,101 @@
             android:text="@string/date_of_birth"
             android:textColor="#3F51B5"
             android:textSize="15sp"
+            android:textStyle="bold"
             app:drawableLeftCompat="@drawable/ic_baseline_calendar_today_24"
             app:drawableTint="#3F51B5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pinCode1" />
+            app:layout_constraintTop_toBottomOf="@+id/homeAddress1" />
 
-        <TextView
-            android:id="@+id/gender1"
+<!--        <TextView-->
+<!--            android:id="@+id/gender1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="5dp"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:text="Gender"-->
+<!--            android:textColor="#3F51B5"-->
+<!--            android:textSize="15sp"-->
+<!--            app:drawableLeftCompat="@drawable/gender"-->
+<!--            app:drawableTint="#3F51B5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/dob1" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/bloodgrp1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="5dp"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:text="@string/blood_group"-->
+<!--            android:textColor="#3F51B5"-->
+<!--            android:textSize="15sp"-->
+<!--            app:drawableLeftCompat="@drawable/bloodgroup"-->
+<!--            app:drawableTint="#3F51B5"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/gender1" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_email1"-->
+<!--            android:layout_width="90dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/buttonback"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"-->
+<!--            android:text="Email"-->
+<!--            android:textColor="@color/colortextfirst"-->
+<!--            android:textSize="14sp"-->
+<!--            app:cornerRadius="50dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/bloodgrp1" />-->
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:drawablePadding="10dp"
-            android:text="Gender"
-            android:textColor="#3F51B5"
-            android:textSize="15sp"
-            app:drawableLeftCompat="@drawable/gender"
-            app:drawableTint="#3F51B5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dob1" />
-
-        <TextView
-            android:id="@+id/bloodgrp1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:drawablePadding="10dp"
-            android:text="@string/blood_group"
-            android:textColor="#3F51B5"
-            android:textSize="15sp"
-            app:drawableLeftCompat="@drawable/bloodgroup"
-            app:drawableTint="#3F51B5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gender1" />
-
-        <Button
-            android:id="@+id/btn_email1"
-            android:layout_width="90dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/buttonback"
-            android:gravity="center_horizontal"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="Email"
-            android:textColor="@color/colortextfirst"
-            android:textSize="14sp"
-            app:cornerRadius="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bloodgrp1" />
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/make_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="@drawable/card_effect"
+                app:cardBackgroundColor="@color/white">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/phone_call" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/send_mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="@drawable/card_effect"
+                app:cardBackgroundColor="@color/white">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/gmail" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

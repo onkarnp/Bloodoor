@@ -1,4 +1,4 @@
-package com.example.bloodoor;
+package com.example.bloodoor.models;
 
 import java.io.Serializable;
 

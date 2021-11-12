@@ -1,4 +1,4 @@
-package com.example.bloodoor;
+package com.example.bloodoor.models;
 
 public class RequestBlood {
     String bloodgrp;

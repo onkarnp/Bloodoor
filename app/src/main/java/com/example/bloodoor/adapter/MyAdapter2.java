@@ -1,5 +1,6 @@
-package com.example.bloodoor;
+package com.example.bloodoor.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
@@ -12,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bloodoor.models.Events;
+import com.example.bloodoor.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,18 +41,32 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
         return new MyViewHolder(v);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Events order = list.get(position);
         holder.bloodBankName.setText(order.getBankName());
         holder.eventName.setText(order.getName());
-        holder.eventStartDate.setText(order.getStartDate());
-        holder.eventEndDate.setText(order.getEndData());
+        holder.eventStartDate.setText(order.getStartDate() + " to " + order.getEndData());
+//        holder.eventEndDate.setText(order.getEndData());
         holder.eventDescription.setText(order.getDescription());
-        holder.eventDuration.setText(order.getDuration());
+
+        String s = order.getDuration();
+        String[] split = s.split("::");
+        String firstSubString = split[0];
+        String secondSubString = split[1];
+        holder.eventDuration.setText(firstSubString + " to " + secondSubString + " (Daytime)");
         holder.eventVenue.setText(order.getVenue());
         holder.eventStatus.setText(order.getStatus());
 
+        if(order.getStatus().equals("Live")) {
+            holder.eventStatus.setText(order.getStatus());
+            holder.eventStatus.setTextColor(android.graphics.Color.GREEN);
+        }
+        else{
+            holder.eventStatus.setText(order.getStatus());
+            holder.eventStatus.setTextColor(android.graphics.Color.RED);
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,14 +75,14 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                 alertDialogBuilder.setIcon(R.drawable.ic_flag);
                 alertDialogBuilder.setMessage("Change Event status ?");
                 alertDialogBuilder.setCancelable(true);
-                alertDialogBuilder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setPositiveButton("Over", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ///Function to change status in the database
-                        setOrderStatus(holder, "Done");
-                        holder.eventStatus.setText("Done");
+                        setOrderStatus(holder, "Over");
+                        holder.eventStatus.setText("Over");
 
-                        Toast.makeText(context, "Status changed to Done.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Status changed to Over.", Toast.LENGTH_LONG).show();
                     }
                 }).setNegativeButton("Upcoming/Live", new DialogInterface.OnClickListener() {
                     @Override
@@ -106,6 +123,8 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
     public void setOrderStatus(MyViewHolder holder, String s) {
         String bbn = holder.bloodBankName.getText().toString();
         String sdt = holder.eventStartDate.getText().toString();
+        String[] split = sdt.split(" to ");
+        String firstSubString = split[0];
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -114,15 +133,10 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                     for (DataSnapshot snap : dataSnapshot.getChildren()) {
                         String n = String.valueOf(snap.child("bankName").getValue());
                         String d = String.valueOf(snap.child("startDate").getValue());
-                        if (bbn.equals(n) && sdt.equals(d)) {
+                        if (bbn.equals(n) && firstSubString.equals(d)) {
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
-                            if (s.equals("Done")) {
-                                ref.child(d).child(snap.getKey()).child("status").setValue("Done");
-                            } else if(s.equals("Live")) {
-                                ref.child(d).child(snap.getKey()).child("status").setValue("Live");
-                            } else{
-                                ref.child(d).child(snap.getKey()).child("status").setValue("Upcoming");
-                            }
+                                ref.child(d).child(snap.getKey()).child("status").setValue(s);
+                                return;
                         }
                     }
                 }
@@ -151,7 +165,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
             bloodBankName = itemView.findViewById(R.id.showBloodBankName);
             eventName = itemView.findViewById(R.id.showEventName);
             eventStartDate = itemView.findViewById(R.id.showEventStartDate);
-            eventEndDate = itemView.findViewById(R.id.showEventEndDate);
+//            eventEndDate = itemView.findViewById(R.id.showEventEndDate);
             eventDescription = itemView.findViewById(R.id.showEventDescription);
             eventDuration = itemView.findViewById(R.id.showEventDuration);
             eventVenue = itemView.findViewById(R.id.showEventVenue);

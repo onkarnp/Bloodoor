@@ -1,8 +1,11 @@
-package com.example.bloodoor;
+package com.example.bloodoor.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +13,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bloodoor.R;
+import com.example.bloodoor.models.User;
 import com.example.bloodoor.sendEmail.userMailApi;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,11 +29,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder>{
 
     Context context;
     ArrayList<User> list;
+    static Calendar calendar = Calendar.getInstance();
 
     public MyAdapter1(Context context, ArrayList<User> list) {
         this.context = context;
@@ -41,22 +49,33 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder>{
         return new MyViewHolder(v);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         User user = list.get(position);
+        int len = user.getDate().length();
+        String age = "" + (calendar.get(Calendar.YEAR) - Integer.parseInt(user.getDate().substring(len - 4)));
         holder.fullName.setText(user.getFullName());
-        holder.mobileNo.setText(user.getMobileNo());
-        holder.email.setText(user.getEmail());
-        holder.homeAddress.setText(user.getHomeAddress());
-        holder.pin_code.setText(user.getPinCode());
-        holder.dob.setText(user.getDate());
-        holder.gender.setText(user.getGender());
-        holder.bloodgrp.setText(user.getBloodgrp());
+//        holder.mobileNo.setText(user.getMobileNo());
+//        holder.email.setText(user.getEmail());
+        holder.homeAddress.setText(user.getHomeAddress() + ", " + user.getPinCode());
+//        holder.pin_code.setText(user.getPinCode());
+        holder.dob.setText(user.getGender() + ", " + age + " years");
+//        holder.gender.setText(user.getGender() + ", " + age + " years");
+//        holder.bloodgrp.setText(user.getBloodgrp());
 
         final String nameOFReceiver = user.getFullName();
         final String idOfReceiver = user.getEmail();
 
-        holder.button.setOnClickListener(new View.OnClickListener() {
+        holder.make_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+user.getMobileNo()));
+                context.startActivity(intent);
+            }
+        });
+
+        holder.send_mail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(context)
@@ -128,18 +147,21 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder>{
 
         TextView fullName, homeAddress, email, mobileNo, pin_code, dob, gender, bloodgrp;
         Button button;
+        CardView make_call, send_mail;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             fullName = itemView.findViewById(R.id.fullName1);
-            mobileNo = itemView.findViewById(R.id.mobileNo1);
-            email = itemView.findViewById(R.id.email1);
+//            mobileNo = itemView.findViewById(R.id.mobileNo1);
+//            email = itemView.findViewById(R.id.email1);
             homeAddress = itemView.findViewById(R.id.homeAddress1);
-            pin_code = itemView.findViewById(R.id.pinCode1);
+//            pin_code = itemView.findViewById(R.id.pinCode1);
             dob = itemView.findViewById(R.id.dob1);
-            gender = itemView.findViewById(R.id.gender1);
-            bloodgrp = itemView.findViewById(R.id.bloodgrp1);
-            button = itemView.findViewById(R.id.btn_email1);
+//            gender = itemView.findViewById(R.id.gender1);
+//            bloodgrp = itemView.findViewById(R.id.bloodgrp1);
+//            button = itemView.findViewById(R.id.btn_email1);
+            make_call = itemView.findViewById(R.id.make_call);
+            send_mail = itemView.findViewById(R.id.send_mail);
         }
     }
 }

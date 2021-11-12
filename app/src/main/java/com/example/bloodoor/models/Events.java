@@ -1,4 +1,4 @@
-package com.example.bloodoor;
+package com.example.bloodoor.models;
 
 public class Events {
     private String bankName, name, startDate, endData, description, status, duration, venue;
