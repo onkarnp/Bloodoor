@@ -13,8 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bloodoor.models.Events;
 import com.example.bloodoor.R;
+import com.example.bloodoor.models.Events;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -59,14 +59,14 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
         holder.eventVenue.setText(order.getVenue());
         holder.eventStatus.setText(order.getStatus());
 
-        if(order.getStatus().equals("Live")) {
+        if (order.getStatus().equals("Live")) {
             holder.eventStatus.setText(order.getStatus());
             holder.eventStatus.setTextColor(android.graphics.Color.GREEN);
-        }
-        else{
+        } else {
             holder.eventStatus.setText(order.getStatus());
             holder.eventStatus.setTextColor(android.graphics.Color.RED);
         }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,13 +81,11 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                         ///Function to change status in the database
                         setOrderStatus(holder, "Over");
                         holder.eventStatus.setText("Over");
-
                         Toast.makeText(context, "Status changed to Over.", Toast.LENGTH_LONG).show();
                     }
                 }).setNegativeButton("Upcoming/Live", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
                         alertDialogBuilder.setTitle("Event Details..!!");
                         alertDialogBuilder.setIcon(R.drawable.ic_flag);
@@ -116,8 +114,6 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                 alertDialogBuilder.show();
             }
         });
-
-
     }
 
     public void setOrderStatus(MyViewHolder holder, String s) {
@@ -132,11 +128,18 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     for (DataSnapshot snap : dataSnapshot.getChildren()) {
                         String n = String.valueOf(snap.child("bankName").getValue());
-                        String d = String.valueOf(snap.child("startDate").getValue());
-                        if (bbn.equals(n) && firstSubString.equals(d)) {
+                        String sd = String.valueOf(snap.child("startDate").getValue());
+                        if (bbn.equals(n) && sdt.equals(sd)) {
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
-                                ref.child(d).child(snap.getKey()).child("status").setValue(s);
-                                return;
+                            if (s.equals("Over")) {
+                                ref.child(sd).child(snap.getKey()).child("status").setValue("Over");
+                            }
+                            if (s.equals("Live")) {
+                                ref.child(sd).child(snap.getKey()).child("status").setValue("Live");
+                            }
+                            if (s.equals("Upcoming")) {
+                                ref.child(sd).child(snap.getKey()).child("status").setValue("Upcoming");
+                            }
                         }
                     }
                 }

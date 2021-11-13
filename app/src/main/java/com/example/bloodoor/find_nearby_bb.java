@@ -39,6 +39,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import io.alterac.blurkit.BlurLayout;
 
@@ -113,7 +114,7 @@ public class find_nearby_bb extends AppCompatActivity {
                 int i = spType.getSelectedItemPosition();
                 String url = "https://maps.googleapis.com/maps/api/place/nearbyserch/json"
                         + "?location=" + currentLat + "," + currentLong
-                        + "&radius=10000"
+                        + "&radius=50000"
                         + "&types=" + placeTypeList[i]
                         + "&sensor=true"
                         + "&key=" + getResources().getString(google_map_key);
@@ -146,7 +147,6 @@ public class find_nearby_bb extends AppCompatActivity {
         super.onStop();
     }
 
-    @SuppressLint("StaticFieldLeak")
     private class PlaceTask extends AsyncTask<String, Integer, String> {
 
         @Override
@@ -175,7 +175,7 @@ public class find_nearby_bb extends AppCompatActivity {
         InputStream stream = connection.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
         StringBuilder builder = new StringBuilder();
-        String line = "";
+        String line = " ";
 
         while ((line = reader.readLine()) != null) {
             builder.append(line);
@@ -186,7 +186,6 @@ public class find_nearby_bb extends AppCompatActivity {
         return data;
     }
 
-    @SuppressLint("StaticFieldLeak")
     private class ParserTask extends AsyncTask<String,Integer, List<HashMap<String,String>>> {
         @Override
         protected List<HashMap<String, String>> doInBackground(String... strings) {
@@ -205,19 +204,18 @@ public class find_nearby_bb extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<HashMap<String, String>> hashMaps) {
             map.clear();
-            for(int i=0; i<hashMaps.size(); i++){
+            for(int i=0; i<hashMaps.size(); i++) {
                 HashMap<String, String> hashMapList = hashMaps.get(i);
-                double lat = Double.parseDouble(hashMapList.get("lat"));
-                double lng = Double.parseDouble(hashMapList.get("lng"));
-                String name =  hashMapList.get("name");
+                double lat = Double.parseDouble(Objects.requireNonNull(hashMapList.get("lat")));
+                double lng = Double.parseDouble(Objects.requireNonNull(hashMapList.get("lng")));
+                String name = hashMapList.get("name");
 
                 LatLng latLng = new LatLng(lat, lng);
-                MarkerOptions options =  new MarkerOptions();
+                MarkerOptions options = new MarkerOptions();
                 options.position(latLng);
                 options.title(name);
                 map.addMarker(options);
             }
-
         }
     }
 }
