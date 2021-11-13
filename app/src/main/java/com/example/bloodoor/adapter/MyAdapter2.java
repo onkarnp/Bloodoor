@@ -81,7 +81,6 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                         ///Function to change status in the database
                         setOrderStatus(holder, "Over");
                         holder.eventStatus.setText("Over");
-
                         Toast.makeText(context, "Status changed to Over.", Toast.LENGTH_LONG).show();
                     }
                 }).setNegativeButton("Upcoming/Live", new DialogInterface.OnClickListener() {

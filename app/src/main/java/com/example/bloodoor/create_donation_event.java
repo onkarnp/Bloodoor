@@ -27,7 +27,6 @@ import io.alterac.blurkit.BlurLayout;
 public class create_donation_event extends AppCompatActivity {
 
     private BlurLayout blurLayout;
-    private Button createEvent;
     private EditText bankName, name, startDate, endDate, description, duration, venue;
     private ProgressDialog loadingBar;
 
@@ -51,7 +50,7 @@ public class create_donation_event extends AppCompatActivity {
         description = findViewById(R.id.eventDescription);
         duration = findViewById(R.id.eventDuration);
         venue = findViewById(R.id.eventAddress);
-        createEvent = findViewById(R.id.createEventButton);
+        Button createEvent = findViewById(R.id.createEventButton);
 
         loadingBar = new ProgressDialog(this);
         Calendar cal = Calendar.getInstance();

@@ -9,6 +9,9 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Objects;
 
 import io.alterac.blurkit.BlurLayout;
@@ -24,6 +27,7 @@ public class options extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         blurLayout = findViewById(R.id.blurLayout);         //for blurring background
         setContentView(R.layout.activity_options);
+
 
         bbcard = (CardView) findViewById(R.id.option_bb);
         bbcard.setOnClickListener(new View.OnClickListener() {
