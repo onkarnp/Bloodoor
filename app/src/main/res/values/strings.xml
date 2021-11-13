@@ -53,6 +53,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="all_users_list">All Users List</string>
     <string name="profile">Profile</string>
+    <string name="google_map_key">AIzaSyB_qsP8AOP_P0MdlPz-48TDaJYjTP3vbjo</string>
 
 
 </resources>
