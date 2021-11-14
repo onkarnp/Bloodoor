@@ -58,9 +58,6 @@ public class AllEvents extends AppCompatActivity {
                         String key=snap.getKey();
                         if (key.equals(userID)) {
                             Events info = snap.getValue(Events.class);
-                            String s = "Blood Bank Name : " + info.getBankName() + "\nEvent Name:" + info.getName() + "\nStart Date : " + info.getStartDate()
-                                    + "\nEnd Date : " + info.getEndData() + "\nDescription : " + info.getDescription() + "\nTime Duration : " + info.getDuration()
-                                    + "\nVenue : " + info.getVenue();
                             list.add(info);
                         }
                     }

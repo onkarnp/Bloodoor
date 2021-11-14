@@ -3,6 +3,7 @@ package com.example.bloodoor.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bloodoor.R;
 import com.example.bloodoor.models.Events;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -122,34 +125,28 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
         String[] split = sdt.split(" to ");
         String firstSubString = split[0];
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events");
-        reference.addValueEventListener(new ValueEventListener() {
+
+        reference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                        String n = String.valueOf(snap.child("bankName").getValue());
-                        String sd = String.valueOf(snap.child("startDate").getValue());
-                        if (bbn.equals(n) && sdt.equals(sd)) {
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
-                            if (s.equals("Over")) {
-                                ref.child(sd).child(snap.getKey()).child("status").setValue("Over");
-                            }
-                            if (s.equals("Live")) {
-                                ref.child(sd).child(snap.getKey()).child("status").setValue("Live");
-                            }
-                            if (s.equals("Upcoming")) {
-                                ref.child(sd).child(snap.getKey()).child("status").setValue("Upcoming");
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (DataSnapshot dataSnapshot : task.getResult().getChildren()) {
+                        for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                            String n = String.valueOf(snap.child("bankName").getValue());
+                            String sd = String.valueOf(snap.child("startDate").getValue());
+                            if (bbn.equals(n) && firstSubString.equals(sd)) {
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
+                                ref.child(sd).child(snap.getKey()).child("status").setValue(s);
                             }
                         }
                     }
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+                else {
+                    Toast.makeText(context, "Couldn't update status", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
     }
 
 

@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bloodoor.R;
 import com.example.bloodoor.models.RequestBlood;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapter.MyViewHolder>{
 
@@ -85,16 +88,12 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
                     public void onClick(DialogInterface dialog, int which) {
                         //Function to change status in the database
                         setRequestStatus(holder, "Fulfilled");
-                        holder.requestStatus.setText("Fulfilled");
-                        Toast.makeText(context, "Status changed to fulfilled", Toast.LENGTH_SHORT).show();
                     }
                 }).setNegativeButton("Pending", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Function to change status in the database
                         setRequestStatus(holder, "Pending");
-                        holder.requestStatus.setText("Pending");
-                        Toast.makeText(context, "Status changed to pending", Toast.LENGTH_SHORT).show();
                     }
                 });
                 alertDialogBuilder.show();
@@ -175,57 +174,37 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
 //        });
     }
 
-    /*public void setRequestStatus(BloodRequestAdapter.MyViewHolder holder, String s) {
-        String name = holder.patientName.getText().toString();
-        String number = holder.patientNumber.getText().toString();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("bloodRequests");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                        String n = String.valueOf(snap.child("patientName").getValue());
-                        String d = String.valueOf(snap.child("patientNumber").getValue());
-                        String p = String.valueOf(snap.child("pinCode").getValue());
-                        if (name.equals(n) && number.equals(d)) {
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("bloodRequests");
-                            if (s.equals("Fulfilled")) {
-                                ref.child(p).child(snap.getKey()).child("requestStatus").setValue("Fulfilled");
-                            } else {
-                                ref.child(p).child(snap.getKey()).child("requestStatus").setValue("Pending");
-                            }
-                        }
-                    }
-                }
-            }*/
 
     public void setRequestStatus(MyViewHolder holder, String s) {
         String name = holder.patientName.getText().toString();
 //        String number = holder.patientNumber.getText().toString();
+        final int[] flag = {0};
+        mAuth = FirebaseAuth.getInstance();
+        String userID = mAuth.getCurrentUser().getUid();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("bloodRequests");
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                        String n = String.valueOf(snap.child("patientName").getValue());
- //                       String d = String.valueOf(snap.child("patientNumber").getValue());
-                        String p = String.valueOf(snap.child("pinCode").getValue());
-                        if (name.equals(n)) {
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("bloodRequests");
-                            if (s.equals("Fulfilled")) {
-                                ref.child(p).child(snap.getKey()).child("requestStatus").setValue("Fulfilled");
-                            } else {
-                                ref.child(p).child(snap.getKey()).child("requestStatus").setValue("Pending");
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DataSnapshot dataSnapshot : task.getResult().getChildren()){
+                        for(DataSnapshot snap: dataSnapshot.getChildren()){
+                            String n = String.valueOf(snap.child("patientName").getValue());
+                            String p = String.valueOf(snap.child("pinCode").getValue());
+                            if(name.equals(n) && Objects.equals(snap.getKey(), userID)) {
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("bloodRequests");
+                                ref.child(p).child(userID).child("requestStatus").setValue(s);
+                                flag[0] = 1;
+                                Toast.makeText(context, "Status changed to " + s, Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
+                    if(flag[0] == 0) {
+                        Toast.makeText(context, "This is not your request", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+                else{
+                    Toast.makeText(context, "Couldn't update status", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
