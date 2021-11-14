@@ -129,7 +129,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                     for (DataSnapshot snap : dataSnapshot.getChildren()) {
                         String n = String.valueOf(snap.child("bankName").getValue());
                         String sd = String.valueOf(snap.child("startDate").getValue());
-                        if (bbn.equals(n) && sdt.equals(sd)) {
+                        if (bbn.equals(n) && firstSubString.equals(sd)) {
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
                             if (s.equals("Over")) {
                                 ref.child(sd).child(snap.getKey()).child("status").setValue("Over");

@@ -9,20 +9,21 @@ import java.util.HashMap;
 import java.util.List;
 
 public class JsonParser {
+
     private HashMap<String, String> parseJsonObject(JSONObject object) {
-        HashMap<String, String> datalist = new HashMap<>();
+        HashMap<String, String> dataList = new HashMap<>();
         try {
             String name = object.getString("name");
             String latitude = object.getJSONObject("geometry").getJSONObject("location").getString("lat");
             String longitude = object.getJSONObject("geometry").getJSONObject("location").getString("lng");
 
-            datalist.put("name", name);
-            datalist.put("lat", latitude);
-            datalist.put("lng", longitude);
+            dataList.put("name", name);
+            dataList.put("lat", latitude);
+            dataList.put("lng", longitude);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return datalist;
+        return dataList;
     }
 
     private List<HashMap<String, String>> parseJsonArray(JSONArray jsonArray) {
@@ -38,7 +39,7 @@ public class JsonParser {
         return dataList;
     }
 
-    public List<HashMap<String, String>> parseResult(JSONObject object){
+    public List<HashMap<String, String>> parseResult(JSONObject object) {
         JSONArray jsonArray = null;
         try {
             jsonArray = object.getJSONArray("results");
