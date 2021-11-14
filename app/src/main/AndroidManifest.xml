@@ -2,13 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.bloodoor">
+
     <!-- Permission for notification vibration -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- Permission for making calls -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 
     <application
         android:allowBackup="true"
@@ -18,18 +19,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloodoor">
 
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_map_key"/>
+            android:value="@string/google_map_key" />
 
-        <activity android:name=".check_requests"/>
+        <activity android:name=".check_requests" />
         <activity android:name=".AllEvents" />
         <activity android:name=".enternumberBB" />
         <activity android:name=".allBloodBanks" />
         <activity android:name=".allUsers" />
         <activity android:name=".live_events" />
         <activity android:name=".create_donation_event" />
-        <activity android:name=".find_nearby_bb" />
+        <activity android:name=".find_nearby_bb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".request_blood" />
         <activity android:name=".search_donor" />
         <activity android:name=".template" />
@@ -43,15 +58,9 @@
         <activity android:name=".SignUp_BB" />
         <activity android:name=".SignUp_User" />
         <activity android:name=".options" />
-        <activity android:name=".Homepage_BB"/>
+        <activity android:name=".Homepage_BB" />
         <activity android:name=".Homepage_user" />
-        <activity android:name=".MainActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".enternumberUser" />
         <activity android:name=".verifyotp_User" />
 

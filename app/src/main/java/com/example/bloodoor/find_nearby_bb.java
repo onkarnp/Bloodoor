@@ -39,11 +39,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 import io.alterac.blurkit.BlurLayout;
-
-import static com.example.bloodoor.R.string.google_map_key;
 
 public class find_nearby_bb extends AppCompatActivity {
 
@@ -70,39 +67,21 @@ public class find_nearby_bb extends AppCompatActivity {
                 .findFragmentById(R.id.google_map);
 
         //Initialize array of place type
-        String[] placeTypeList = {"hospitals", "bloodbanks", "atm"};
+        String[] placeTypeList = {"blood_banks", "hospital", "atm", "bank"};
 
         //Initialize array of place name
-        String[] placeNameList = {"Hospitals", "Blood Banks", "ATM"};
+        String[] placeNameList = {"Blood Banks", "Hospitals", "ATM", "Banks"};
 
         //Set adapter on spinner
         spType.setAdapter(new ArrayAdapter<>(find_nearby_bb.this, android.R.layout.simple_spinner_dropdown_item, placeNameList));
 
         //Initialize fused location provider client
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(find_nearby_bb.this);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         //Check permission
         if (ActivityCompat.checkSelfPermission(find_nearby_bb.this,
                 Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            Task<Location> task = fusedLocationProviderClient.getLastLocation();
-            task.addOnSuccessListener(new OnSuccessListener<Location>() {
-                @Override
-                public void onSuccess(Location location) {
-                    if (location != null) {
-                        currentLat = location.getLatitude();
-                        currentLong = location.getLongitude();
-                        supportMapFragment.getMapAsync(new OnMapReadyCallback() {
-                            @Override
-                            public void onMapReady(@NonNull GoogleMap googleMap) {
-                                map = googleMap;
-                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                        new LatLng(currentLat, currentLong), 10
-                                ));
-                            }
-                        });
-                    }
-                }
-            });
+            getCurrentLocation();
         } else {
             ActivityCompat.requestPermissions(find_nearby_bb.this
                     , new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
@@ -117,7 +96,32 @@ public class find_nearby_bb extends AppCompatActivity {
                         + "&radius=50000"
                         + "&types=" + placeTypeList[i]
                         + "&sensor=true"
-                        + "&key=" + getResources().getString(google_map_key);
+                        + "&key=" + getResources().getString(R.string.google_map_key);
+
+                new PlaceTask().execute(url);
+            }
+        });
+    }
+
+    private void getCurrentLocation() {
+        @SuppressLint("MissingPermission")
+        Task<Location> task = fusedLocationProviderClient.getLastLocation();
+        task.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location != null) {
+                    currentLat = location.getLatitude();
+                    currentLong = location.getLongitude();
+                    supportMapFragment.getMapAsync(new OnMapReadyCallback() {
+                        @Override
+                        public void onMapReady(GoogleMap googleMap) {
+                            map = googleMap;
+                            map.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                                    new LatLng(currentLat, currentLong), 10
+                            ));
+                        }
+                    });
+                }
             }
         });
     }
@@ -127,7 +131,7 @@ public class find_nearby_bb extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == 44) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getCurrentFocus();
+                getCurrentLocation();
             }
         }
     }
@@ -175,7 +179,7 @@ public class find_nearby_bb extends AppCompatActivity {
         InputStream stream = connection.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
         StringBuilder builder = new StringBuilder();
-        String line = " ";
+        String line = "";
 
         while ((line = reader.readLine()) != null) {
             builder.append(line);
@@ -186,7 +190,7 @@ public class find_nearby_bb extends AppCompatActivity {
         return data;
     }
 
-    private class ParserTask extends AsyncTask<String,Integer, List<HashMap<String,String>>> {
+    private class ParserTask extends AsyncTask<String, Integer, List<HashMap<String, String>>> {
         @Override
         protected List<HashMap<String, String>> doInBackground(String... strings) {
             JsonParser jsonParser = new JsonParser();
@@ -204,10 +208,10 @@ public class find_nearby_bb extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<HashMap<String, String>> hashMaps) {
             map.clear();
-            for(int i=0; i<hashMaps.size(); i++) {
+            for (int i = 0; i < hashMaps.size(); i++) {
                 HashMap<String, String> hashMapList = hashMaps.get(i);
-                double lat = Double.parseDouble(Objects.requireNonNull(hashMapList.get("lat")));
-                double lng = Double.parseDouble(Objects.requireNonNull(hashMapList.get("lng")));
+                double lat = Double.parseDouble(hashMapList.get("lat"));
+                double lng = Double.parseDouble(hashMapList.get("lng"));
                 String name = hashMapList.get("name");
 
                 LatLng latLng = new LatLng(lat, lng);

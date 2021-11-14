@@ -46,14 +46,14 @@
                 android:id="@+id/bt_find"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Find"
+                android:layout_marginStart="10dp"
+                android:text="@string/find"
                 android:textColor="@color/colortextfirst"
                 app:backgroundTint="@color/colorPrimary" />
 
         </LinearLayout>
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/google_map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"

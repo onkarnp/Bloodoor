@@ -64,7 +64,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
         live_events_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), live_events.class);
+                Intent intent = new Intent(getApplicationContext(), find_nearby_bb.class);
                 startActivity(intent);
             }
         });
