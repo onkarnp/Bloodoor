@@ -14,9 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.bloodoor.models.bloodBankHelperClass;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,6 +36,9 @@ public class SignUp_BB extends AppCompatActivity {
     CardView signupcard, signincard;
     private EditText name, handlerName, mobileNo, phoneNo, email, address, bbPinCode;
     private ProgressDialog loadingBar;
+    private FirebaseAuth mAuth;
+    FirebaseDatabase database;
+    DatabaseReference ref;
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -54,6 +61,30 @@ public class SignUp_BB extends AppCompatActivity {
         signupcard = (CardView) findViewById(R.id.signupcard);
         signincard = (CardView) findViewById(R.id.signincard);
         loadingBar = new ProgressDialog(this);
+
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() != null){
+            loadingBar.setMessage("Fetching Your Data");
+            loadingBar.setCanceledOnTouchOutside(false);
+            loadingBar.show();
+            mAuth = FirebaseAuth.getInstance();
+            String userID = mAuth.getCurrentUser().getUid();
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("ALLBloodbanks");
+            ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if(task.isSuccessful()){
+                        for(DataSnapshot dataSnapshot : task.getResult().getChildren()){
+                            if(userID.equals(dataSnapshot.getKey())){
+                                startActivity(new Intent(SignUp_BB.this,Homepage_BB.class));
+                                loadingBar.dismiss();
+                                finish();
+                            }
+                        }
+                    }
+                }
+            });
+        }
 
 
 

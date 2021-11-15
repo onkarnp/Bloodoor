@@ -120,7 +120,7 @@ public class Homepage_BB extends AppCompatActivity implements NavigationView.OnN
                 alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getApplicationContext(), SignUp_BB.class);
+                        Intent intent = new Intent(getApplicationContext(), options.class);
                         mAuth.signOut();
                         startActivity(intent);
                         Toast.makeText(Homepage_BB.this, "Logged out successfully", Toast.LENGTH_LONG).show();

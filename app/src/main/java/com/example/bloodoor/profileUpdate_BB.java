@@ -146,7 +146,7 @@ public class profileUpdate_BB extends AppCompatActivity {
                         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName(textFullName).build();
                         firebaseUser.updateProfile(profileUpdates);
 
-                        Toast.makeText(profileUpdate_BB.this, "Update Successfull...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(profileUpdate_BB.this, "Update Successful...", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(profileUpdate_BB.this, profileUser.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

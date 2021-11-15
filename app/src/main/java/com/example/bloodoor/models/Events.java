@@ -1,7 +1,15 @@
 package com.example.bloodoor.models;
 
 public class Events {
-    private String bankName, name, startDate, endData, description, status, duration, venue;
+    private String bankName;
+    private String name;
+    private String startDate;
+    private String endData;
+    private String description;
+    private String status;
+    private String duration;
+    private String venue;
+    private String pin;
 
     public Events() {
     }
@@ -15,7 +23,7 @@ public class Events {
         this.venue = venue;
     }
 
-    public Events(String bankName, String name, String startDate, String endData, String description, String status, String duration, String venue) {
+    public Events(String bankName, String name, String startDate, String endData, String description, String status, String duration, String venue, String pin) {
         this.bankName = bankName;
         this.name = name;
         this.startDate = startDate;
@@ -24,6 +32,7 @@ public class Events {
         this.status = status;
         this.duration = duration;
         this.venue = venue;
+        this.pin = pin;
     }
 
     public String getBankName() {
@@ -89,4 +98,8 @@ public class Events {
     public void setVenue(String venue) {
         this.venue = venue;
     }
+
+    public String getPin() { return pin; }
+
+    public void setPin(String pin) { this.pin = pin; }
 }

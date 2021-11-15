@@ -1,8 +1,11 @@
 package com.example.bloodoor;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +30,8 @@ public class live_events extends AppCompatActivity {
     BlurLayout blurLayout;
     RecyclerView recyclerView;
     MyAdapter3 myAdapter;
+    EditText pin_code;
+    Button search_events;
     ArrayList<Events> list;
     private FirebaseAuth mAuth;
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events");
@@ -39,6 +44,8 @@ public class live_events extends AppCompatActivity {
         blurLayout = findViewById(R.id.blurLayout);         //for blurring background
         setContentView(R.layout.activity_live_events);
 
+        pin_code = findViewById(R.id.pin_code);
+        search_events = (Button) findViewById(R.id.search_events);
         recyclerView = findViewById(R.id.liveEventList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -47,29 +54,62 @@ public class live_events extends AppCompatActivity {
         recyclerView.setAdapter(myAdapter);
 
         mAuth = FirebaseAuth.getInstance();
-        reference.addValueEventListener(new ValueEventListener() {
+
+
+        search_events.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                list.clear();
-                for (DataSnapshot snapshot : datasnapshot.getChildren()) {
-                    for (DataSnapshot snap : snapshot.getChildren()) {
-                        if ((String.valueOf(snap.child("status").getValue()).equals("Upcoming")) | (String.valueOf(snap.child("status").getValue()).equals("Live"))) {
-                            Events info = snap.getValue(Events.class);
-                            String sp = "Blood Bank Name : " + info.getBankName() + "\nEvent Name : " + info.getName() + "\nStart Date : " + info.getStartDate()
-                                    + "\nEnd Date : " + info.getEndData() + "\nDescription : " + info.getDescription() + "\nTime Duration : " + info.getDuration()
-                                    + "\nVenue : " + info.getVenue();
-                            list.add(info);
+            public void onClick(View v) {
+                String pin = pin_code.getText().toString();
+                if(!pin.isEmpty()){
+                    reference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            list.clear();
+                            for (DataSnapshot snapshot : datasnapshot.getChildren()) {
+                                for (DataSnapshot snap : snapshot.getChildren()) {
+                                    if((String.valueOf(snap.child("pin").getValue()).equals(pin)))
+                                    {
+                                        if ((String.valueOf(snap.child("status").getValue()).equals("Upcoming")) | (String.valueOf(snap.child("status").getValue()).equals("Live"))) {
+                                            Events info = snap.getValue(Events.class);
+                                            list.add(info);
+                                        }
+                                    }
+                                }
+                            }
+                            myAdapter.notifyDataSetChanged();
                         }
-                    }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
-                myAdapter.notifyDataSetChanged();
-            }
+                else{
+                    reference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            list.clear();
+                            for (DataSnapshot snapshot : datasnapshot.getChildren()) {
+                                for (DataSnapshot snap : snapshot.getChildren()) {
+                                    if ((String.valueOf(snap.child("status").getValue()).equals("Upcoming")) | (String.valueOf(snap.child("status").getValue()).equals("Live"))) {
+                                        Events info = snap.getValue(Events.class);
+                                        list.add(info);
+                                    }
+                                }
+                            }
+                            myAdapter.notifyDataSetChanged();
+                        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
+                        }
+                    });
+                }
             }
         });
+
     }
 
     //Functions for making background blurr
