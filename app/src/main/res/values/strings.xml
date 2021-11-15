@@ -54,5 +54,7 @@
     <string name="all_users_list">All Users List</string>
     <string name="profile">Profile</string>
     <string name="find">Find</string>
-    <string name="google_map_key">AIzaSyBiatmFBVSvgYGqmWT9Gru3aySRPyAISLA</string>
+    <string name="google_map_ke">AIzaSyBiatmFBVSvgYGqmWT9Gru3aySRPyAISLA</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="google_map_key1">AIzaSyBiatmFBVSvgYGqmWT9Gru3aySRPyAISLA</string>
 </resources>
