@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class JsonParser {
 
@@ -46,6 +47,6 @@ public class JsonParser {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return parseJsonArray(jsonArray);
+        return parseJsonArray(Objects.requireNonNull(jsonArray));
     }
 }

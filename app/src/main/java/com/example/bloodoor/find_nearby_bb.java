@@ -1,7 +1,6 @@
 package com.example.bloodoor;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.AsyncTask;
@@ -12,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -67,10 +67,10 @@ public class find_nearby_bb extends AppCompatActivity {
                 .findFragmentById(R.id.google_map);
 
         //Initialize array of place type
-        String[] placeTypeList = {"blood_banks", "hospital", "atm", "bank"};
+        String[] placeTypeList = {"atm", "bank", "hospital", "blood_bank"};
 
         //Initialize array of place name
-        String[] placeNameList = {"Blood Banks", "Hospitals", "ATM", "Banks"};
+        String[] placeNameList = {"ATM", "Banks", "Hospitals", "Blood Banks"};
 
         //Set adapter on spinner
         spType.setAdapter(new ArrayAdapter<>(find_nearby_bb.this, android.R.layout.simple_spinner_dropdown_item, placeNameList));
@@ -91,7 +91,7 @@ public class find_nearby_bb extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int i = spType.getSelectedItemPosition();
-                String url = "https://maps.googleapis.com/maps/api/place/nearbyserch/json"
+                String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
                         + "?location=" + currentLat + "," + currentLong
                         + "&radius=50000"
                         + "&types=" + placeTypeList[i]
@@ -104,55 +104,40 @@ public class find_nearby_bb extends AppCompatActivity {
     }
 
     private void getCurrentLocation() {
-        @SuppressLint("MissingPermission")
-        Task<Location> task = fusedLocationProviderClient.getLastLocation();
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    currentLat = location.getLatitude();
-                    currentLong = location.getLongitude();
-                    supportMapFragment.getMapAsync(new OnMapReadyCallback() {
-                        @Override
-                        public void onMapReady(GoogleMap googleMap) {
-                            map = googleMap;
-                            map.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(currentLat, currentLong), 10
-                            ));
-                        }
-                    });
+        if (ActivityCompat.checkSelfPermission(find_nearby_bb.this,
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            Task<Location> task = fusedLocationProviderClient.getLastLocation();
+            task.addOnSuccessListener(new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    if (location != null) {
+                        currentLat = location.getLatitude();
+                        currentLong = location.getLongitude();
+                        supportMapFragment.getMapAsync(new OnMapReadyCallback() {
+                            @Override
+                            public void onMapReady(GoogleMap googleMap) {
+                                map = googleMap;
+                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentLat, currentLong), 10));
+                            }
+                        });
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
-    @SuppressLint("MissingSuperCall")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == 44) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getCurrentLocation();
             }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
-    //Functions for making background blurr
-    @Override
-    protected void onStart() {
-        super.onStart();
-        blurLayout = findViewById(R.id.blurLayout);
-        blurLayout.startBlur();
-    }
-
-    //FUnctions for making background blurr
-    @Override
-    protected void onStop() {
-        blurLayout.pauseBlur();
-        super.onStop();
-    }
-
     private class PlaceTask extends AsyncTask<String, Integer, String> {
-
         @Override
         protected String doInBackground(String... strings) {
             String data = null;
@@ -167,7 +152,7 @@ public class find_nearby_bb extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             new ParserTask().execute(s);
-
+            Toast.makeText(find_nearby_bb.this, "Failed in getting the place...", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -221,5 +206,20 @@ public class find_nearby_bb extends AppCompatActivity {
                 map.addMarker(options);
             }
         }
+    }
+
+    //Functions for making background blurr
+    @Override
+    protected void onStart() {
+        super.onStart();
+        blurLayout = findViewById(R.id.blurLayout);
+        blurLayout.startBlur();
+    }
+
+    //FUnctions for making background blurr
+    @Override
+    protected void onStop() {
+        blurLayout.pauseBlur();
+        super.onStop();
     }
 }

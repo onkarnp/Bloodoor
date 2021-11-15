@@ -38,7 +38,7 @@
         <activity android:name=".allUsers" />
         <activity android:name=".live_events" />
         <activity android:name=".create_donation_event" />
-        <activity android:name=".find_nearby_bb">
+        <activity android:name=".find_nearby_bb" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
