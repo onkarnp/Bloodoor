@@ -67,7 +67,7 @@ public class SignUp_BB extends AppCompatActivity {
             loadingBar.setMessage("Fetching Your Data");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
-            mAuth = FirebaseAuth.getInstance();
+            final int[] flag = {0};
             String userID = mAuth.getCurrentUser().getUid();
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("ALLBloodbanks");
             ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -76,11 +76,17 @@ public class SignUp_BB extends AppCompatActivity {
                     if(task.isSuccessful()){
                         for(DataSnapshot dataSnapshot : task.getResult().getChildren()){
                             if(userID.equals(dataSnapshot.getKey())){
+                                flag[0] = 1;
                                 startActivity(new Intent(SignUp_BB.this,Homepage_BB.class));
                                 loadingBar.dismiss();
                                 finish();
+                                break;
                             }
                         }
+                    }
+                    if(flag[0] != 1){
+                        loadingBar.dismiss();
+                        Toast.makeText(SignUp_BB.this, "You are not a registered user :(\n Please sign up", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

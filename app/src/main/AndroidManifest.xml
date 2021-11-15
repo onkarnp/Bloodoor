@@ -43,9 +43,6 @@
         <activity android:name=".live_events" />
         <activity android:name=".create_donation_event" />
         <activity android:name=".find_nearby_bb"/>
-        <activity android:name=".find_nearby_bb" >
-
-        </activity>
         <activity android:name=".request_blood" />
         <activity android:name=".search_donor" />
         <activity android:name=".template" />
