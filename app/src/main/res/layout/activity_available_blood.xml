@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back7"
+    tools:context=".available_blood">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <io.alterac.blurkit.BlurLayout
+        android:id="@+id/blurLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:blk_blurRadius="3"
+        app:blk_fps="0"/>
+
+    <!--    Your code goes here....-->
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="@drawable/colorbg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/bloodAvailabilityIcon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="Search Donor"
+                android:src="@drawable/request_donor" />
+
+            <TextView
+                android:id="@+id/bloodAvailabilityHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baumans"
+                android:text="Blood Availability"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/colorbg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/baumans"
+                android:padding="5dp"
+                android:text="Please update Blood Availability"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/bloodgroup"
+                app:drawableTint="@color/black" />
+
+            <TextView
+                android:id="@+id/bankName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:hint="Name of blood bank"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textColor="#0000FF"
+                android:textColorHint="#0000FF"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O +ve units: "
+                    android:textColor="#0000FF"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/o_pos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="O +ve"
+                    android:inputType="number"
+                    android:textColor="#800000"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="O -ve units: "
+                    android:textColor="#0000FF"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/o_neg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="O -ve"
+                    android:inputType="number"
+                    android:textColor="#800000"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A +ve units: "
+                    android:textColor="#0000FF"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/a_pos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="A +ve"
+                    android:inputType="number"
+                    android:textColor="#800000"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A -ve units: "
+                    android:textColor="#0000FF"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/a_neg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="A -ve"
+                    android:inputType="number"
+                    android:textColor="#800000"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B +ve units: "
+                    android:textColor="#0000FF"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/b_pos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="B +ve"
+                    android:inputType="number"
+                    android:textColor="#800000"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B -ve units: "
+                    android:textColor="#0000FF"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/b_neg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="B -ve"
+                    android:inputType="number"
+                    android:textColor="#800000"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AB +ve units: "
+                    android:textColor="#0000FF"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/AB_pos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="AB +ve"
+                    android:inputType="number"
+                    android:textColor="#800000"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AB -ve units: "
+                    android:textColor="#0000FF"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/AB_neg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="AB -ve"
+                    android:inputType="number"
+                    android:textColor="#800000"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/updateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="UPDATE"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    <!--    Your code goes here....-->
+    </LinearLayout>
+</ScrollView>

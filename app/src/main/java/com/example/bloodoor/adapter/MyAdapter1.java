@@ -62,7 +62,7 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder>{
 //        holder.pin_code.setText(user.getPinCode());
         holder.dob.setText(user.getGender() + ", " + age + " years");
 //        holder.gender.setText(user.getGender() + ", " + age + " years");
-//        holder.bloodgrp.setText(user.getBloodgrp());
+        holder.bloodgrp.setText(user.getBloodgrp());
 
         final String nameOFReceiver = user.getFullName();
         final String idOfReceiver = user.getEmail();
@@ -158,7 +158,7 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder>{
 //            pin_code = itemView.findViewById(R.id.pinCode1);
             dob = itemView.findViewById(R.id.dob1);
 //            gender = itemView.findViewById(R.id.gender1);
-//            bloodgrp = itemView.findViewById(R.id.bloodgrp1);
+            bloodgrp = itemView.findViewById(R.id.bloodgrp1);
 //            button = itemView.findViewById(R.id.btn_email1);
             make_call = itemView.findViewById(R.id.make_call);
             send_mail = itemView.findViewById(R.id.send_mail);

@@ -264,6 +264,90 @@
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/blood_available"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_margin="5dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="@drawable/card_effect"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="60dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/bloodAvailableIcon"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:contentDescription="Blood Available"
+                            android:src="@drawable/request_donor" />
+
+                        <TextView
+                            android:id="@+id/bloodAvailableText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:contentDescription="Blood Availability"
+                            android:text="Blood Availability"
+                            android:textColor="#0353F4"
+                            android:textSize="17sp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/all_users"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill_horizontal"
+                    android:layout_margin="5dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="@drawable/card_effect"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="60dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/allUsresIcon"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:contentDescription="All Users"
+                            android:src="@drawable/group" />
+
+                        <TextView
+                            android:id="@+id/allUsersText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:contentDescription="All Users"
+                            android:text="All Users"
+                            android:textColor="#0353F4"
+                            android:textSize="17sp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
             </GridLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

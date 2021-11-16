@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.bloodoor.models.BloodAvailable;
 import com.example.bloodoor.models.bloodBankHelperClass;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -110,6 +111,9 @@ public class verifyotp_BB extends AppCompatActivity {
                                                 reference = rootNode.getReference("BloodBanks");
                                                 reference.child(bb_pin_code).child(bloodBankID).setValue(helper);
                                                 ref.child(bloodBankID).setValue(helper);
+                                                reference = rootNode.getReference("BloodAvailability");
+                                                BloodAvailable bloodAvailable = new BloodAvailable(helper.getName(),"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" ,"0" );
+                                                reference.child(bloodBankID).setValue(bloodAvailable);
                                                 Intent intent = new Intent(getApplicationContext(), Homepage_BB.class);
                                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                 loadingBar.dismiss();

@@ -1,8 +1,11 @@
 package com.example.bloodoor;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,6 +28,10 @@ public class allUsers extends AppCompatActivity {
     RecyclerView recyclerView;
     MyAdapter1 myAdapter;
     ArrayList<User> list;
+    FirebaseDatabase root;
+    DatabaseReference ref;
+    EditText pin_code;
+    Button search_users;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,33 +44,84 @@ public class allUsers extends AppCompatActivity {
         list = new ArrayList<User>();
         myAdapter = new MyAdapter1(this, list);
         recyclerView.setAdapter(myAdapter);
+        pin_code = findViewById(R.id.pin_code);
+        search_users = (Button) findViewById(R.id.search_users);
 
-
-        DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("users");
-        ValueEventListener postListener = new ValueEventListener() {
+        search_users.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                list.clear();
-                for (DataSnapshot bloodgrp : dataSnapshot.getChildren()) {
-                    for (DataSnapshot pincode : bloodgrp.getChildren()) {
-                        for (DataSnapshot user : pincode.getChildren()) {
-                            User info = user.getValue(User.class);
-                            String s = "Name : " + info.getFullName() + "\nMobile No. : " + info.getMobileNo() + "\nEmail : " + info.getEmail()
-                                    + "\nAddress : " + info.getHomeAddress() + "\nPin Code : " + info.getPinCode() + "\nDate of birth : " + info.getDate()
-                                    + "\nGender : " + info.getPinCode() + "\nBlood Group : " + info.getBloodgrp();
-                            list.add(info);
+            public void onClick(View v) {
+                String pin = pin_code.getText().toString();
+                if(pin.isEmpty()){
+                    ref = FirebaseDatabase.getInstance().getReference().child("users");
+                    ref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            list.clear();
+                            for (DataSnapshot bloodgrp : dataSnapshot.getChildren()) {
+                                for (DataSnapshot pincode : bloodgrp.getChildren()) {
+                                    for (DataSnapshot user : pincode.getChildren()) {
+                                        User info = user.getValue(User.class);
+                                        list.add(info);
+                                    }
+                                }
+                            }
+                            myAdapter.notifyDataSetChanged();
                         }
-                    }
-                }
-                myAdapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Toast.makeText(allUsers.this, "Task Failed...", Toast.LENGTH_SHORT).show();
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            // Getting Post failed, log a message
+                            Toast.makeText(allUsers.this, "Task Failed...", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                else{
+                    ref = FirebaseDatabase.getInstance().getReference().child("allusers");
+                    ref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            list.clear();
+                            for (DataSnapshot user : dataSnapshot.getChildren()) {
+                                        User info = user.getValue(User.class);
+                                        if(info.getPinCode().equals(pin)){
+                                            list.add(info);
+                                        }
+                            }
+                            myAdapter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            // Getting Post failed, log a message
+                            Toast.makeText(allUsers.this, "Task Failed...", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
-        };
-        root.addValueEventListener(postListener);
+        });
+
+
+//        ValueEventListener postListener = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                list.clear();
+//                for (DataSnapshot bloodgrp : dataSnapshot.getChildren()) {
+//                    for (DataSnapshot pincode : bloodgrp.getChildren()) {
+//                        for (DataSnapshot user : pincode.getChildren()) {
+//                            User info = user.getValue(User.class);
+//                            list.add(info);
+//                        }
+//                    }
+//                }
+//                myAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                // Getting Post failed, log a message
+//                Toast.makeText(allUsers.this, "Task Failed...", Toast.LENGTH_SHORT).show();
+//            }
+//        };
+
     }
 }
