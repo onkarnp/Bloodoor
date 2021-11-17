@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".profileUpdate_User">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/back7">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -59,7 +64,8 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/back7">
+            android:background="@drawable/colorbg"
+            android:layout_margin="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -71,32 +77,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="@string/general_information"
-                    android:textColor="@color/colortextfirst"
-                    android:textSize="16sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="GENERAL INFO"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colortextfirst"
+                    android:textSize="18sp" />
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="25dp"
-                        android:drawablePadding="10dp"
-                        android:src="@drawable/ic_person" />
 
                     <TextView
                         android:id="@+id/txv_name"
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="@string/enter_new_name"
-                        android:textColor="@color/colortextfirst"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:drawableStart="@drawable/ic_person"
+                        android:drawableTint="@color/black"
+                        android:drawablePadding="5dp"
+                        android:text="Enter New Name"
+                        android:textColor="@color/black"
                         android:textSize="18sp" />
-                </LinearLayout>
 
                 <EditText
                     android:id="@+id/updateFullName"
@@ -112,28 +114,20 @@
                     android:paddingLeft="10dp"
                     android:textSize="18dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="25dp"
-                        android:drawablePadding="10dp"
-                        android:src="@drawable/mobiletwo" />
 
                     <TextView
                         android:id="@+id/txv_mobileNumber"
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="15dp"
+                        android:drawableStart="@drawable/mobiletwo"
+                        android:drawableTint="@color/black"
+                        android:drawablePadding="5dp"
                         android:text="Enter New Mobile Number"
-                        android:textColor="@color/colortextfirst"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                        android:textColor="@color/black"
+                        android:textSize="18sp"  />
 
                 <EditText
                     android:id="@+id/updateMobileNumber"
@@ -149,28 +143,20 @@
                     android:paddingLeft="10dp"
                     android:textSize="18dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="25dp"
-                        android:drawablePadding="10dp"
-                        android:src="@drawable/ic_email" />
 
                     <TextView
                         android:id="@+id/txv_emailId"
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="Enter New Email ID"
-                        android:textColor="@color/colortextfirst"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="15dp"
+                        android:drawableStart="@drawable/ic_email"
+                        android:drawableTint="@color/black"
+                        android:drawablePadding="5dp"
+                        android:text="Enter New Mail ID"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"  />
 
                 <EditText
                     android:id="@+id/updateEmailID"
@@ -186,28 +172,21 @@
                     android:paddingLeft="10dp"
                     android:textSize="18dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="25dp"
-                        android:drawablePadding="10dp"
-                        android:src="@drawable/ic_home" />
 
                     <TextView
                         android:id="@+id/txv_homeAdd"
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="8dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="15dp"
+                        android:drawableStart="@drawable/ic_home"
+                        android:drawableTint="@color/black"
+                        android:drawablePadding="5dp"
                         android:text="Enter New Home Address"
-                        android:textColor="@color/colortextfirst"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                        android:textColor="@color/black"
+                        android:textSize="18sp"   />
+
 
                 <EditText
                     android:id="@+id/updateHomeAdd"
@@ -223,28 +202,21 @@
                     android:paddingLeft="10dp"
                     android:textSize="18dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="25dp"
-                        android:drawablePadding="10dp"
-                        android:src="@drawable/ic_pin" />
 
                     <TextView
                         android:id="@+id/txv_city"
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="Enter New City Pincode"
-                        android:textColor="@color/colortextfirst"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="15dp"
+                        android:drawableStart="@drawable/ic_pin"
+                        android:drawableTint="@color/black"
+                        android:drawablePadding="5dp"
+                        android:text="Enter New City Pin Code"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"  />
 
                 <EditText
                     android:id="@+id/updateCityPincode"
@@ -260,28 +232,21 @@
                     android:paddingLeft="10dp"
                     android:textSize="18dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="25dp"
-                        android:drawablePadding="10dp"
-                        android:src="@drawable/ic_baseline_calendar_today_24" />
 
                     <TextView
                         android:id="@+id/txv_DOB"
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="Enter New Date of Birth"
-                        android:textColor="@color/colortextfirst"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="15dp"
+                        android:drawableStart="@drawable/ic_baseline_calendar_today_24"
+                        android:drawableTint="@color/black"
+                        android:drawablePadding="5dp"
+                        android:text="Enter Corrected DOB"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"  />
 
                 <EditText
                     android:id="@+id/updateDOB"
@@ -297,29 +262,21 @@
                     android:paddingLeft="10dp"
                     android:textSize="18dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="25dp"
-                        android:drawablePadding="10dp"
-                        android:src="@drawable/gender" />
 
                     <TextView
                         android:id="@+id/update_gender"
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="Select Gender"
-                        android:textColor="@color/colortextfirst"
-                        android:textSize="18sp" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="15dp"
+                        android:drawableStart="@drawable/gender"
+                        android:drawableTint="@color/black"
+                        android:drawablePadding="5dp"
+                        android:text="Select Correct Gender"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"   />
 
-                </LinearLayout>
 
                 <RadioGroup
                     android:id="@+id/update_radio_gender"
@@ -349,29 +306,21 @@
                         android:textSize="18sp" />
                 </RadioGroup>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="25dp"
-                        android:drawablePadding="10dp"
-                        android:src="@drawable/bloodgroup" />
 
                     <TextView
                         android:id="@+id/update_bloodGroup"
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="Select Blood Group"
-                        android:textColor="@color/colortextfirst"
-                        android:textSize="18sp" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="15dp"
+                        android:drawableStart="@drawable/bloodgroup"
+                        android:drawableTint="@color/black"
+                        android:drawablePadding="5dp"
+                        android:text="Select Correct Blood Group"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"   />
 
-                </LinearLayout>
 
                 <RadioGroup
                     android:id="@+id/update_radio_bloodGroup"
@@ -505,4 +454,5 @@
 
     </LinearLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
