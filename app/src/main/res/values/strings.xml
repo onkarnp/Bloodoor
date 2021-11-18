@@ -57,4 +57,7 @@
     <string name="google_map_ke">AIzaSyBiatmFBVSvgYGqmWT9Gru3aySRPyAISLA</string>
     <string name="title_activity_maps">Map</string>
     <string name="google_map_key1">AIzaSyBiatmFBVSvgYGqmWT9Gru3aySRPyAISLA</string>
+
+    <string name="access_token">sk.eyJ1IjoiZ3Jwbm8yNCIsImEiOiJja3cwbTdzb2QwbGIxMm5yb202YzBsamY1In0.41vL7ZBnwdfF2afHtVnpCw</string>
+    <string name="start_navigation">Start Navigation</string>
 </resources>
