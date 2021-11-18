@@ -73,7 +73,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
         find_banks_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), find_nearby_bb.class);
+                Intent intent = new Intent(getApplicationContext(), mapBox.class);
                 startActivity(intent);
             }
         });
