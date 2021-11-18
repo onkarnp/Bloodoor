@@ -218,6 +218,27 @@
                     android:textColor="@color/colortextfirst"
                     android:textColorHint="@color/colortextsecond" />
 
+                <EditText
+                    android:id="@+id/eventPin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/input_bg"
+                    android:drawableStart="@drawable/venue"
+                    android:drawableLeft="@drawable/venue"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:hint="Enter Venue"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/colortextfirst"
+                    android:textColorHint="@color/colortextsecond" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

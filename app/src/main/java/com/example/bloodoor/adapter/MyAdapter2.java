@@ -59,7 +59,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
         String firstSubString = split[0];
         String secondSubString = split[1];
         holder.eventDuration.setText(firstSubString + " to " + secondSubString + " (Daytime)");
-        holder.eventVenue.setText(order.getVenue());
+        holder.eventVenue.setText(order.getVenue() + ", " + order.getPin());
         holder.eventStatus.setText(order.getStatus());
 
         if (order.getStatus().equals("Live")) {

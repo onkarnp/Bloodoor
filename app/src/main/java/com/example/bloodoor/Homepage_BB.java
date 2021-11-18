@@ -33,7 +33,7 @@ public class Homepage_BB extends AppCompatActivity implements NavigationView.OnN
     Toolbar toolbar;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-    CardView create_event_card, show_all_event_card;
+    CardView create_event_card, show_all_event_card, blood_available_card, all_users_card, check_request_card;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +57,33 @@ public class Homepage_BB extends AppCompatActivity implements NavigationView.OnN
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AllEvents.class);
+                startActivity(intent);
+            }
+        });
+
+        blood_available_card = (CardView) findViewById(R.id.blood_available);
+        blood_available_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), available_blood.class);
+                startActivity(intent);
+            }
+        });
+
+        all_users_card = (CardView) findViewById(R.id.all_users);
+        all_users_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), allUsers.class);
+                startActivity(intent);
+            }
+        });
+
+        check_request_card = (CardView) findViewById(R.id.check_requests);
+        check_request_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), check_requests.class);
                 startActivity(intent);
             }
         });
@@ -120,7 +147,7 @@ public class Homepage_BB extends AppCompatActivity implements NavigationView.OnN
                 alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getApplicationContext(), SignUp_BB.class);
+                        Intent intent = new Intent(getApplicationContext(), options.class);
                         mAuth.signOut();
                         startActivity(intent);
                         Toast.makeText(Homepage_BB.this, "Logged out successfully", Toast.LENGTH_LONG).show();

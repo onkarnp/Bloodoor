@@ -20,10 +20,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.bloodoor.models.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
@@ -39,6 +44,9 @@ public class SignUp_User extends AppCompatActivity {
     private EditText date, name, pincode, address, Email, phoneno;
     AutoCompleteTextView gender, bloodgrp;
     private ProgressDialog loadingBar;
+    private FirebaseAuth mAuth;
+    FirebaseDatabase database;
+    DatabaseReference ref;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     //this annotation because dropdown menu code requires minimum android jelly bean...
@@ -71,6 +79,38 @@ public class SignUp_User extends AppCompatActivity {
         signupcard = (CardView) findViewById(R.id.signupcard);
         signincard = (CardView) findViewById(R.id.signincard);
         loadingBar = new ProgressDialog(this);
+
+
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() != null){
+            loadingBar.setMessage("Fetching Your Data");
+            loadingBar.setCanceledOnTouchOutside(false);
+            loadingBar.show();
+            final int[] flag = {0};
+            String userID = mAuth.getCurrentUser().getUid();
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("allusers");
+            ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if(task.isSuccessful()){
+                        for(DataSnapshot dataSnapshot : task.getResult().getChildren()){
+                            if(userID.equals(dataSnapshot.getKey())){
+                                flag[0] = 1;
+                                startActivity(new Intent(SignUp_User.this,Homepage_user.class));
+                                loadingBar.dismiss();
+                                finish();
+                                break;
+                            }
+                        }
+                    }
+                    if(flag[0] != 1){
+                        loadingBar.dismiss();
+                        Toast.makeText(SignUp_User.this, "You are not a registered user :(\n Please sign up", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+
 
         signupcard.setOnClickListener(new View.OnClickListener() {
             @Override

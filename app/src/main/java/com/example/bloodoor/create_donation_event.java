@@ -27,7 +27,7 @@ import io.alterac.blurkit.BlurLayout;
 public class create_donation_event extends AppCompatActivity {
 
     private BlurLayout blurLayout;
-    private EditText bankName, name, startDate, endDate, description, duration, venue;
+    private EditText bankName, name, startDate, endDate, description, duration, venue, pin;
     private ProgressDialog loadingBar;
 
     //Initiation of Firebase attributes
@@ -50,6 +50,7 @@ public class create_donation_event extends AppCompatActivity {
         description = findViewById(R.id.eventDescription);
         duration = findViewById(R.id.eventDuration);
         venue = findViewById(R.id.eventAddress);
+        pin = findViewById(R.id.eventPin);
         Button createEvent = findViewById(R.id.createEventButton);
 
         loadingBar = new ProgressDialog(this);
@@ -153,17 +154,34 @@ public class create_donation_event extends AppCompatActivity {
                                             venue.setError("Venue of event is required...");
                                             venue.requestFocus();
                                         } else {
-                                            String status = "Upcoming";
-                                            rootNode = FirebaseDatabase.getInstance();
-                                            mAuth = FirebaseAuth.getInstance();
-                                            String userID = mAuth.getCurrentUser().getUid();
-                                            reference = rootNode.getReference("Events");
-                                            Events events = new Events(textBankName, textEventName, textStartDate, textEndDate, textDescription, status, textDuration, textVenue);
-                                            reference.child(textStartDate).child(userID).setValue(events);
-                                            loadingBar.dismiss();
-                                            Toast.makeText(create_donation_event.this, "Event created successfully (:", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(getApplicationContext(), Homepage_BB.class);
-                                            startActivity(intent);
+                                            String textVenuePin = pin.getText().toString();
+                                            if (TextUtils.isEmpty(pin.getText()) | textVenuePin.length() != 6) {
+                                                loadingBar.dismiss();
+                                                Toast.makeText(create_donation_event.this, "Please enter pin for the venue...", Toast.LENGTH_SHORT).show();
+                                                pin.setError("Please enter correct pin...");
+                                                pin.requestFocus();
+                                            } else {
+                                                String status = "Upcoming";
+                                                rootNode = FirebaseDatabase.getInstance();
+                                                mAuth = FirebaseAuth.getInstance();
+                                                String userID = mAuth.getCurrentUser().getUid();
+                                                reference = rootNode.getReference("Events");
+                                                Events events = new Events(textBankName, textEventName, textStartDate, textEndDate, textDescription, status, textDuration, textVenue, textVenuePin);
+                                                reference.child(textStartDate).child(userID).setValue(events);
+
+                                                String s = textDuration;
+                                                String[] split = s.split("::");
+                                                String firstSubString = split[0];
+                                                String secondSubString = split[1];
+                                                FcmNotificationsSender notificationsSender = new FcmNotificationsSender("/topics/all",
+                                                        "Blood Donation Event", textBankName + " is organising a blood donation event on " + textStartDate + " from " + firstSubString + " to " + secondSubString + ". \nDo come at " + textVenue + ", " + textVenuePin + " and Donate blood.", getApplicationContext(), create_donation_event.this);
+                                                notificationsSender.SendNotifications();
+
+                                                loadingBar.dismiss();
+                                                Toast.makeText(create_donation_event.this, "Event created successfully (:", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(getApplicationContext(), Homepage_BB.class);
+                                                startActivity(intent);
+                                            }
                                         }
                                     }
                                 }

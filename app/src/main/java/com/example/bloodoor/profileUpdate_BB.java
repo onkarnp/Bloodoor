@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -41,7 +43,8 @@ public class profileUpdate_BB extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_update__b_b);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         blurLayout = findViewById(R.id.blurLayout);         //for blurring background
         setContentView(R.layout.activity_profile_update__b_b);
 
@@ -146,7 +149,7 @@ public class profileUpdate_BB extends AppCompatActivity {
                         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName(textFullName).build();
                         firebaseUser.updateProfile(profileUpdates);
 
-                        Toast.makeText(profileUpdate_BB.this, "Update Successfull...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(profileUpdate_BB.this, "Update Successful...", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(profileUpdate_BB.this, profileUser.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -204,5 +207,20 @@ public class profileUpdate_BB extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
             }
         });
+    }
+
+    //Functions for making background blurr
+    @Override
+    protected void onStart() {
+        super.onStart();
+        blurLayout = findViewById(R.id.blurLayout);
+        blurLayout.startBlur();
+    }
+
+    //FUnctions for making background blur
+    @Override
+    protected void onStop() {
+        blurLayout.pauseBlur();
+        super.onStop();
     }
 }
