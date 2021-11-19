@@ -39,7 +39,7 @@ public class JavaMailApi extends AsyncTask<Void, Void, Void> {
     protected void onPreExecute() {
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Please wait as the email is being sent...");
-        progressDialog.setTitle("Sending Email to donor...");
+//        progressDialog.setTitle("Sending Email to donor...");
         progressDialog.show();
         super.onPreExecute();
     }

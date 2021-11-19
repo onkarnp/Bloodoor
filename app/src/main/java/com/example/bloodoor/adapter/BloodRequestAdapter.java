@@ -134,15 +134,15 @@ public class BloodRequestAdapter extends RecyclerView.Adapter<BloodRequestAdapte
                                         String pinCode = snapshot.child("bbPinCode").getValue().toString();
                                         String mEmail = idOfReceiver;
                                         String mSubject = "BLOOD REQUEST";
-                                        String mMessage = "Hello " + nameOFReceiver + ", " + nameOfSender + " from " + nameOfBank + ", "
-                                                + "would like a Blood donation from you. \nHere's his/her details :\n"
+                                        String mMessage = "Hello " + nameOFReceiver + ",\n" + nameOfSender
+                                                + " is ready to fulfill your blood request. \n\nHere's his/her details :\n"
                                                 + "Name : " + nameOfSender + "\n"
                                                 + "Phone Number : " + phoneNo + "\n"
                                                 + "Email : " + email + "\n"
                                                 + "Address : " + address + "\n"
                                                 + "City Pin Code : " + pinCode + "\n"
-                                                + "Kindly reach out to him/her. Thank You...\n"
-                                                + "BlooDoor... DONATE BLOOD, SAVE LIFE :)";
+                                                + "Kindly reach out to him/her. \nThank You!\n\n"
+                                                + "With Regards,\nTeam BlooDoor \nDONATE BLOOD, SAVE LIFE :)";
 
                                         userMailApi userMailApi = new userMailApi(context, mEmail, mSubject, mMessage);
                                         userMailApi.execute();

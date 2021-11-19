@@ -81,7 +81,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:contentDescription="All Blood Banks"
-                    android:src="@drawable/group" />
+                    android:src="@drawable/blood_testtubes" />
 
                 <TextView
                     android:id="@+id/historyText"

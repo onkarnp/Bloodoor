@@ -113,15 +113,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
                                         String mEmail = idOfReceiver;
                                         String mSubject = "BLOOD REQUEST";
-                                        String mMessage = "Hello " + nameOFReceiver + ", " + fullname
-                                                + " would like a Blood Donation from you.\nHere's his/her details :\n"
+                                        String mMessage = "Hello " + nameOFReceiver + ",\n" + fullname
+                                                + " is in the need of blood.\n\nHere's his/her details :\n"
                                                 + "Name : " + fullname + "\n"
                                                 + "Mobile Number : " + phoneNo + "\n"
                                                 + "Email : " + email + "\n"
                                                 + "Address : " + address + "\n"
                                                 + "City Pin Code : " + pinCode + "\n"
-                                                + "Kindly reach out to him/her. Thank You...\n"
-                                                + "BlooDoor... DONATE BLOOD, SAVE LIFE (:";
+                                                + "Kindly reach out to him/her. \nThank You!\n\n"
+                                                + "With Regards,\nTeam BlooDoor\nDONATE BLOOD, SAVE LIFE (:";
 
                                         JavaMailApi javaMailApi = new JavaMailApi(context, mEmail, mSubject, mMessage);
                                         javaMailApi.execute();

@@ -150,8 +150,9 @@
             app:layout_constraintTop_toBottomOf="@+id/homeAddress0">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:weightSum="3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/ConstraintLayout"
                 app:layout_constraintTop_toTopOf="parent">
@@ -163,81 +164,152 @@
                     android:backgroundTint="@color/mapboxGrayLight"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layout_weight="1"
                     android:foreground="@drawable/card_effect"
                     app:cardBackgroundColor="@color/white">
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
                     <ImageView
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:src="@drawable/direction" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="Directions"
+                        android:textColor="#3F51B5"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:drawableTint="#3F51B5" />
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="Direction"
-                    android:textColor="#3F51B5"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:drawableTint="#3F51B5" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="Enquiry"
-                    android:textColor="#3F51B5"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:drawableTint="#3F51B5" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/call_bank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
                     android:backgroundTint="@color/mapboxGrayLight"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layout_weight="1"
                     android:foreground="@drawable/card_effect"
                     app:cardBackgroundColor="@color/white">
 
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:src="@drawable/phone_call" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/phone_call" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Enquiry"
+                            android:textColor="#3F51B5"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:drawableTint="#3F51B5" />
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/mail_bank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
                     android:backgroundTint="@color/mapboxGrayLight"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layout_weight="1"
                     android:foreground="@drawable/card_effect"
                     app:cardBackgroundColor="@color/white">
 
-                    <ImageView
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:src="@drawable/gmail" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/gmail" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Mail"
+                            android:textColor="#3F51B5"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:drawableTint="#3F51B5" />
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
-
             </LinearLayout>
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/linearLayout8"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:text="Enquiry"-->
+<!--                    android:textColor="#3F51B5"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    app:drawableTint="#3F51B5" />-->
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/call_bank"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="5dp"-->
+<!--                    android:backgroundTint="@color/mapboxGrayLight"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:foreground="@drawable/card_effect"-->
+<!--                    app:cardBackgroundColor="@color/white">-->
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="35dp"-->
+<!--                        android:layout_height="35dp"-->
+<!--                        android:src="@drawable/phone_call" />-->
+<!--                </androidx.cardview.widget.CardView>-->
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/mail_bank"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="5dp"-->
+<!--                    android:backgroundTint="@color/mapboxGrayLight"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:foreground="@drawable/card_effect"-->
+<!--                    app:cardBackgroundColor="@color/white">-->
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="35dp"-->
+<!--                        android:layout_height="35dp"-->
+<!--                        android:src="@drawable/gmail" />-->
+<!--                </androidx.cardview.widget.CardView>-->
+
+
+<!--            </LinearLayout>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -207,8 +207,9 @@
                             android:id="@+id/eventIcon"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
+                            android:padding="5dp"
                             android:contentDescription="Create Event"
-                            android:src="@drawable/create_donation_event" />
+                            android:src="@drawable/plus" />
 
                         <TextView
                             android:id="@+id/orderText"
@@ -249,8 +250,9 @@
                             android:id="@+id/historyIcon"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
+                            android:padding="5dp"
                             android:contentDescription="Show All Event"
-                            android:src="@drawable/all_donation__events" />
+                            android:src="@drawable/smartphone" />
 
                         <TextView
                             android:id="@+id/historyText"

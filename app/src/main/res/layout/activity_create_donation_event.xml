@@ -57,8 +57,9 @@
                         android:id="@+id/profileIcon"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:padding="10dp"
                         android:contentDescription="Create Donation Event"
-                        android:src="@drawable/create_donation_event" />
+                        android:src="@drawable/plus" />
 
                     <TextView
                         android:id="@+id/userProfileHeading"

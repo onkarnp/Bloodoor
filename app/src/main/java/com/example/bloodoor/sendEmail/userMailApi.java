@@ -39,7 +39,7 @@ public class userMailApi extends AsyncTask<Void, Void, Void> {
     protected void onPreExecute() {
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Please wait as the email is being sent...");
-        progressDialog.setTitle("Sending Email to Blood Bank...");
+//        progressDialog.setTitle("Sending Email to Blood Bank...");
         progressDialog.show();
         super.onPreExecute();
     }

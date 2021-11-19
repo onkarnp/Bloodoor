@@ -43,6 +43,7 @@
                 android:id="@+id/bloodAvailabilityIcon"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:padding="10dp"
                 android:contentDescription="Search Donor"
                 android:src="@drawable/request_donor" />
 

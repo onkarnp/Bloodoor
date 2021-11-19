@@ -54,6 +54,7 @@
                         android:id="@+id/profileIcon1"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:padding="10dp"
                         android:layout_marginRight="5dp"
                         android:contentDescription="All Blood Banks"
                         android:src="@drawable/group" />
@@ -62,7 +63,7 @@
                         android:id="@+id/historyText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
                         android:fontFamily="@font/baumans"
                         android:text="All Users"

@@ -1,13 +1,16 @@
 package com.example.bloodoor;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -39,6 +42,8 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
     private Button btFind;
     private Context context;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    Dialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,57 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         blurLayout1 = findViewById(R.id.blurLayout1);
         setContentView(R.layout.activity_homepage_user);
+
+
+        dialog = new Dialog(Homepage_user.this);
+        dialog.setContentView(R.layout.find_location);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(true);
+        dialog.getWindow().getAttributes().windowAnimations = R.anim.fade_in;
+        CardView blood_bank_card= dialog.findViewById(R.id.blood_bank_card);
+        CardView hospital_card= dialog.findViewById(R.id.hospitals_card);
+        CardView atm_card= dialog.findViewById(R.id.atm_card);
+        CardView bank_card= dialog.findViewById(R.id.banks_card);
+
+        blood_bank_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("geo:0, 0?q=" + "near by blood banks");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.google.android.apps.maps");
+                startActivity(intent);
+            }
+        });
+
+        hospital_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("geo:0, 0?q=" + "near by hospitals");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.google.android.apps.maps");
+                startActivity(intent);
+            }
+        });
+
+        atm_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("geo:0, 0?q=" + "near by atms");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.google.android.apps.maps");
+                startActivity(intent);
+            }
+        });
+
+        bank_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("geo:0, 0?q=" + "near by banks");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setPackage("com.google.android.apps.maps");
+                startActivity(intent);
+            }
+        });
 
         search_donor_card = (CardView) findViewById(R.id.search_donor);
         search_donor_card.setOnClickListener(new View.OnClickListener() {
@@ -79,8 +135,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
         find_banks_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), GoogleMap.class);
-                startActivity(intent);
+                dialog.show();
             }
         });
 
