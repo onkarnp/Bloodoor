@@ -96,7 +96,7 @@ public class find_nearby_bb extends AppCompatActivity {
                         + "&radius=50000"
                         + "&types=" + placeTypeList[i]
                         + "&sensor=true"
-                        + "&key=" + getResources().getString(R.string.google_map_key1);
+                        + "&key=" + getResources().getString(R.string.google_map_key);
 
                 new PlaceTask().execute(url);
             }

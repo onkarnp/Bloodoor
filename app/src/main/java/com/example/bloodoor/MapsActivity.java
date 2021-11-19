@@ -219,14 +219,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googlePlacesUrl.append("&radius=" + PROXIMITY_RADIUS);
         googlePlacesUrl.append("&type=" + nearbyPlace);
         googlePlacesUrl.append("&sensor=true");
-        googlePlacesUrl.append("&key=" + "AIzaSyATuUiZUkEc_UgHuqsBJa1oqaODI-3mLs0");
+        googlePlacesUrl.append("&key=" + "AIzaSyBFHH48XjPhde3UIkF7QHGoHoY_wPtC4CM");
         Log.d("getUrl", googlePlacesUrl.toString());
         return (googlePlacesUrl.toString());
     }
 
     @Override
     public void onConnectionSuspended(int i) {
-
+        Toast.makeText(MapsActivity.this, "Failed in getting the place...", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -266,7 +266,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-
+        Toast.makeText(MapsActivity.this, "Failed in getting the place...", Toast.LENGTH_SHORT).show();
     }
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;

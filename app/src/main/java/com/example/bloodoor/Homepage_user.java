@@ -1,8 +1,12 @@
 package com.example.bloodoor;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,9 +21,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -33,6 +42,9 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
     NavigationView navigationView;
     Toolbar toolbar;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+    FusedLocationProviderClient fusedLocationProviderClient;
+    double currentLat = 0, currentLong = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +81,30 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
             }
         });
 
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(Homepage_user.this,
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            Task<Location> task = fusedLocationProviderClient.getLastLocation();
+            task.addOnSuccessListener(new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    if (location != null) {
+                        currentLat = location.getLatitude();
+                        currentLong = location.getLongitude();
+                    }
+                }
+            });
+        }
+
         find_banks_card = (CardView) findViewById(R.id.find_banks);
         find_banks_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), mapBox.class);
-                startActivity(intent);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("geo:" + currentLat + "," + currentLong));
+                Intent intent1 = Intent.createChooser(intent, "Launch Google Map");
+                startActivity(intent1);
             }
         });
 

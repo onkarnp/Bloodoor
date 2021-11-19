@@ -56,7 +56,6 @@ public class mapBox extends AppCompatActivity implements PermissionsListener, Lo
     private Point originPosition, destinationPosition;
     private Marker destinationMarker;
     private NavigationMapRoute navigationMapRoute;
-    private MapboxNavigation navigation;
     private static final String TAG = "mapBox";
 
     @Override
@@ -64,7 +63,6 @@ public class mapBox extends AppCompatActivity implements PermissionsListener, Lo
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(this, getString(R.string.access_token));
         setContentView(R.layout.activity_map_box);
-        navigation = new MapboxNavigation(this, getString(R.string.access_token));
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
