@@ -1,6 +1,7 @@
 package com.example.bloodoor;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,6 +35,9 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    private Spinner spType;
+    private Button btFind;
+    private Context context;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override

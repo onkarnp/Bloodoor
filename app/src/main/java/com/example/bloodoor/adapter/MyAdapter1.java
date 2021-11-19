@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -19,8 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bloodoor.R;
 import com.example.bloodoor.models.User;
 import com.example.bloodoor.sendEmail.userMailApi;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -86,7 +85,7 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder>{
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
-                                        .child("BloodBanks").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                        .child("ALLBloodbanks").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 reference.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -96,10 +95,10 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder>{
                                         String address = snapshot.child("address").getValue().toString();
                                         String phoneNo = snapshot.child("phoneNo").getValue().toString();
                                         String pinCode = snapshot.child("bbPinCode").getValue().toString();
-                                        String mEmail = user.getEmail();
+                                        String mEmail = idOfReceiver;
                                         String mSubject = "BLOOD REQUEST";
-                                        String mMessage = "Hello " + nameOFReceiver + "," + nameOfSender + "from" + nameOfBank + ","
-                                                + "Would like to Blood donation from you. Here's his/her details :\n"
+                                        String mMessage = "Hello " + nameOFReceiver + ", " + nameOfSender + " from " + nameOfBank + ", "
+                                                + "would like a Blood donation from you. \nHere's his/her details :\n"
                                                 + "Name : " + nameOfSender + "\n"
                                                 + "Phone Number : " + phoneNo + "\n"
                                                 + "Email : " + email + "\n"
@@ -110,24 +109,11 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder>{
 
                                         userMailApi userMailApi = new userMailApi(context, mEmail, mSubject, mMessage);
                                         userMailApi.execute();
-
-                                        DatabaseReference senderRef = FirebaseDatabase.getInstance().getReference("email")
-                                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                                        senderRef.child(idOfReceiver).setValue(true).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if(task.isSuccessful()){
-                                                    DatabaseReference receiverRef = FirebaseDatabase.getInstance().getReference("email")
-                                                            .child(idOfReceiver);
-                                                    receiverRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(true);
-                                                }
-                                            }
-                                        });
                                     }
 
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
-
+                                        Toast.makeText(context, "Task Cancelled...", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }

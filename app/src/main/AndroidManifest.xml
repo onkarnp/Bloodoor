@@ -19,13 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloodoor">
-        <activity android:name=".GoogleMap">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".GoogleMap"/>
         <activity android:name=".available_blood" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -66,7 +60,13 @@
         <activity android:name=".Homepage_BB" />
         <activity android:name=".Homepage_user" />
         <activity android:name=".mapBox" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".enternumberUser" />
         <activity android:name=".verifyotp_User" />
 

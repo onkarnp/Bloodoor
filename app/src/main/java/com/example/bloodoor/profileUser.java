@@ -76,7 +76,7 @@ public class profileUser extends AppCompatActivity {
                     loadingBar.dismiss();
 
                     fullnameLabel.setText(user_username);
-                    usernameLabel.setText(user_username);
+                    usernameLabel.setText(user_homeAdd);
                     fullname.setText(user_username);
                     mobileNo.setText(user_mobileNo);
                     email.setText(user_emailID);
