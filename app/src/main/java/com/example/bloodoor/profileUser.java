@@ -23,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import io.alterac.blurkit.BlurLayout;
+
 public class profileUser extends AppCompatActivity {
 
     private TextView fullname, mobileNo, email, homeAdd, city, dob, bloodGroup, gender;
@@ -32,12 +34,14 @@ public class profileUser extends AppCompatActivity {
     private String userID;
     private Button updateProfileButton;
     private ProgressDialog loadingBar;
+    BlurLayout blurLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes tite bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        blurLayout = findViewById(R.id.blurLayout);         //for blurring background
         setContentView(R.layout.activity_profile_user);
 
         reference = FirebaseDatabase.getInstance().getReference("allusers");
@@ -104,6 +108,21 @@ public class profileUser extends AppCompatActivity {
             }
         });
 
+    }
+
+    //Functions for making background blurr
+    @Override
+    protected void onStart() {
+        super.onStart();
+        blurLayout = findViewById(R.id.blurLayout);
+        blurLayout.startBlur();
+    }
+
+    //FUnctions for making background blurr
+    @Override
+    protected void onStop() {
+        blurLayout.pauseBlur();
+        super.onStop();
     }
 
 }

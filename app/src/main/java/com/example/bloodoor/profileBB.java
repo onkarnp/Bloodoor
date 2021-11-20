@@ -23,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import io.alterac.blurkit.BlurLayout;
+
 public class profileBB extends AppCompatActivity {
 
     private TextView bloodBankname, holdername, mobileNo, phoneNo, email, bandLocationAdd, city;
@@ -32,12 +34,14 @@ public class profileBB extends AppCompatActivity {
     private String bloodBankID;
     private Button updateProfileButton;
     private ProgressDialog loadingBar;
+    BlurLayout blurLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes tite bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);     //removes title bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        blurLayout = findViewById(R.id.blurLayout);         //for blurring background
         setContentView(R.layout.activity_profile_b_b);
 
         reference = FirebaseDatabase.getInstance().getReference("ALLBloodbanks");
@@ -101,5 +105,20 @@ public class profileBB extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    //Functions for making background blur
+    @Override
+    protected void onStart() {
+        super.onStart();
+        blurLayout = findViewById(R.id.blurLayout);
+        blurLayout.startBlur();
+    }
+
+    //FUnctions for making background blur
+    @Override
+    protected void onStop() {
+        blurLayout.pauseBlur();
+        super.onStop();
     }
 }

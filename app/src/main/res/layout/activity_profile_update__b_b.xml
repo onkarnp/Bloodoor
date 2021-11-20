@@ -79,7 +79,6 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/back7"
                 android:layout_margin="5dp">
 
                 <LinearLayout
@@ -125,6 +124,7 @@
                         android:layout_marginRight="15dp"
                         android:background="@drawable/input_bg"
                         android:gravity="center_vertical"
+                        android:textColor="@color/black"
                         android:hint="Enter Blood Bank Name..."
                         android:inputType="textPersonName"
                         android:paddingLeft="10dp"
@@ -155,6 +155,7 @@
                         android:background="@drawable/input_bg"
                         android:gravity="center_vertical"
                         android:hint="Enter Holder Name..."
+                        android:textColor="@color/black"
                         android:inputType="textPersonName"
                         android:paddingLeft="10dp"
                         android:textSize="18dp" />
@@ -184,6 +185,7 @@
                         android:background="@drawable/input_bg"
                         android:gravity="center_vertical"
                         android:hint="Enter Mobile Number..."
+                        android:textColor="@color/black"
                         android:inputType="phone"
                         android:paddingLeft="10dp"
                         android:textSize="18dp" />
@@ -213,6 +215,7 @@
                         android:background="@drawable/input_bg"
                         android:gravity="center_vertical"
                         android:hint="Enter Phone Number..."
+                        android:textColor="@color/black"
                         android:inputType="phone"
                         android:paddingLeft="10dp"
                         android:textSize="18dp" />
@@ -242,6 +245,7 @@
                         android:background="@drawable/input_bg"
                         android:gravity="center_vertical"
                         android:hint="Enter Email ID..."
+                        android:textColor="@color/black"
                         android:inputType="textEmailAddress"
                         android:paddingLeft="10dp"
                         android:textSize="18dp" />
@@ -271,6 +275,7 @@
                         android:background="@drawable/input_bg"
                         android:gravity="center_vertical"
                         android:hint="Enter Bank Location Address..."
+                        android:textColor="@color/black"
                         android:inputType="text"
                         android:paddingLeft="10dp"
                         android:textSize="18dp" />
@@ -300,6 +305,7 @@
                         android:layout_marginRight="15dp"
                         android:background="@drawable/input_bg"
                         android:gravity="center_vertical"
+                        android:textColor="@color/black"
                         android:hint="Enter City Pincode..."
                         android:inputType="text"
                         android:paddingLeft="10dp"

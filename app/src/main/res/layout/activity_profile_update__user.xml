@@ -11,6 +11,17 @@
         android:layout_height="match_parent"
         android:background="@drawable/back7">
 
+        <io.alterac.blurkit.BlurLayout
+            android:id="@+id/blurLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:blk_blurRadius="3"
+            app:blk_fps="0"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -64,7 +75,6 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/back7"
             android:layout_margin="5dp">
 
             <LinearLayout
@@ -111,6 +121,7 @@
                     android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Name..."
+                    android:textColor="@color/black"
                     android:inputType="textPersonName"
                     android:paddingLeft="10dp"
                     android:textSize="18dp" />
@@ -140,6 +151,7 @@
                     android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Mobile Number..."
+                    android:textColor="@color/black"
                     android:inputType="phone"
                     android:paddingLeft="10dp"
                     android:textSize="18dp" />
@@ -168,6 +180,7 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
+                    android:textColor="@color/black"
                     android:hint="Enter Email ID..."
                     android:inputType="textEmailAddress"
                     android:paddingLeft="10dp"
@@ -198,6 +211,7 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
+                    android:textColor="@color/black"
                     android:hint="Enter Home Address..."
                     android:inputType="text"
                     android:paddingLeft="10dp"
@@ -228,6 +242,7 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
+                    android:textColor="@color/black"
                     android:hint="Enter City Pincode..."
                     android:inputType="number"
                     android:paddingLeft="10dp"
@@ -259,6 +274,7 @@
                     android:background="@drawable/input_bg"
                     android:gravity="center_vertical"
                     android:hint="Enter Date of Birth"
+                    android:textColor="@color/black"
                     android:inputType="date"
                     android:paddingLeft="10dp"
                     android:textSize="18dp" />

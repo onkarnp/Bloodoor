@@ -10,7 +10,7 @@
 
 
     <io.alterac.blurkit.BlurLayout
-        android:id="@+id/blurLayout1"
+        android:id="@+id/blurLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:blk_blurRadius="3"

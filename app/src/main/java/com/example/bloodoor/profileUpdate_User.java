@@ -278,4 +278,19 @@ public class profileUpdate_User extends AppCompatActivity {
             }
         });
     }
+
+    //Functions for making background blurr
+    @Override
+    protected void onStart() {
+        super.onStart();
+        blurLayout = findViewById(R.id.blurLayout);
+        blurLayout.startBlur();
+    }
+
+    //FUnctions for making background blurr
+    @Override
+    protected void onStop() {
+        blurLayout.pauseBlur();
+        super.onStop();
+    }
 }
