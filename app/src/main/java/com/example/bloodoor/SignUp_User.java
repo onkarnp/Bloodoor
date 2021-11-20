@@ -86,7 +86,6 @@ public class SignUp_User extends AppCompatActivity {
             loadingBar.setMessage("Fetching Your Data");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
-            final int[] flag = {0};
             String userID = mAuth.getCurrentUser().getUid();
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("allusers");
             ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -95,17 +94,17 @@ public class SignUp_User extends AppCompatActivity {
                     if(task.isSuccessful()){
                         for(DataSnapshot dataSnapshot : task.getResult().getChildren()){
                             if(userID.equals(dataSnapshot.getKey())){
-                                flag[0] = 1;
-                                startActivity(new Intent(SignUp_User.this,Homepage_user.class));
                                 loadingBar.dismiss();
+                                Toast.makeText(SignUp_User.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(SignUp_User.this,Homepage_user.class));
                                 finish();
-                                break;
                             }
                         }
                     }
-                    if(flag[0] != 1){
+                    else{
                         loadingBar.dismiss();
                         Toast.makeText(SignUp_User.this, "You are not a registered user :(\n Please sign up", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(SignUp_User.this,options.class));
                     }
                 }
             });

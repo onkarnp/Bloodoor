@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class profileUser extends AppCompatActivity {
 
-    private EditText fullname, mobileNo, email, homeAdd, city, dob, bloodGroup, gender;
+    private TextView fullname, mobileNo, email, homeAdd, city, dob, bloodGroup, gender;
     private TextView fullnameLabel, usernameLabel;
     private DatabaseReference reference;
     private FirebaseUser user;

@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class profileBB extends AppCompatActivity {
 
-    private EditText bloodBankname, holdername, mobileNo, phoneNo, email, bandLocationAdd, city;
+    private TextView bloodBankname, holdername, mobileNo, phoneNo, email, bandLocationAdd, city;
     private TextView fullnameLabel, usernameLabel;
     private DatabaseReference reference;
     private FirebaseUser bloodBank;
