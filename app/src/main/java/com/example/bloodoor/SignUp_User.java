@@ -57,40 +57,6 @@ public class SignUp_User extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         blurLayout = findViewById(R.id.blurLayout);         //for blurring background
         setContentView(R.layout.activity_sign_up__user);
-        loadingBar = new ProgressDialog(this);
-
-        mAuth = FirebaseAuth.getInstance();
-        if(mAuth.getCurrentUser() != null){
-            loadingBar.setMessage("Fetching Your Data");
-            loadingBar.setCanceledOnTouchOutside(false);
-            loadingBar.show();
-//            final int[] flag = {0};
-            String userID = mAuth.getCurrentUser().getUid();
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("allusers");
-            ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if(task.isSuccessful()){
-                        for(DataSnapshot dataSnapshot : task.getResult().getChildren()){
-                            if(userID.equals(dataSnapshot.getKey())){
-//                                flag[0] = 1;
-                                loadingBar.dismiss();
-                                Toast.makeText(SignUp_User.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(SignUp_User.this,Homepage_user.class));
-                                SignUp_User.this.finish();
-                            }
-                        }
-                    }
-//                    if(flag[0] != 1)
-                    else{
-                        loadingBar.dismiss();
-                        Toast.makeText(SignUp_User.this, "Something went wrong :(\n Please try again", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(SignUp_User.this,options.class));
-                    }
-                }
-            });
-        }
-
 
         setContentView(R.layout.activity_sign_up__user);
         gender = findViewById(R.id.autoCompleteTextView1);
@@ -113,10 +79,37 @@ public class SignUp_User extends AppCompatActivity {
         signupcard = (CardView) findViewById(R.id.signupcard);
         signincard = (CardView) findViewById(R.id.signincard);
 
+        loadingBar = new ProgressDialog(this);
 
-
-
-
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() != null){
+            loadingBar.setMessage("Fetching Your Data");
+            loadingBar.setCanceledOnTouchOutside(false);
+            loadingBar.show();
+            final int[] flag = {0};
+            String userID = mAuth.getCurrentUser().getUid();
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("allusers");
+            ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if(task.isSuccessful()){
+                        for(DataSnapshot dataSnapshot : task.getResult().getChildren()){
+                            if(userID.equals(dataSnapshot.getKey())){
+                                flag[0] = 1;
+                                startActivity(new Intent(SignUp_User.this,Homepage_user.class));
+                                loadingBar.dismiss();
+                                finish();
+                                break;
+                            }
+                        }
+                    }
+                    if(flag[0] != 1){
+                        loadingBar.dismiss();
+                        Toast.makeText(SignUp_User.this, "You are not a registered user :(\n Please sign up", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
 
         signupcard.setOnClickListener(new View.OnClickListener() {
             @Override
