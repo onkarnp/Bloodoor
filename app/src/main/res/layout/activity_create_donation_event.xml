@@ -20,11 +20,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!--    Your code goes here....-->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".OrderActivity">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,7 +72,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:orientation="vertical">
 
@@ -244,25 +239,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/buttonback"
-                    android:layout_marginTop="110dp"
+                    android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/createEventButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/buttonback"
-                        android:clickable="true"
-                        android:text="CREATE EVENT"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colortextfirst"
-                        android:textSize="18sp"
-                        app:backgroundTint="@color/colorPrimary"
-                        android:focusable="true" />
+
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
 
+    <Button
+        android:id="@+id/createEventButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonback"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="CREATE EVENT"
+        android:textAllCaps="false"
+        android:textColor="@color/colortextfirst"
+        android:textSize="18sp"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent" />
     <!--    Your code goes here....-->
 </androidx.constraintlayout.widget.ConstraintLayout>

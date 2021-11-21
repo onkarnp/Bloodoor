@@ -9,21 +9,24 @@
     tools:context=".available_blood">
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <io.alterac.blurkit.BlurLayout
+            android:id="@+id/blurLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:blk_blurRadius="3"
+            app:blk_fps="0">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <io.alterac.blurkit.BlurLayout
-        android:id="@+id/blurLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:blk_blurRadius="3"
-        app:blk_fps="0"/>
 
     <!--    Your code goes here....-->
 
@@ -63,7 +66,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@drawable/back7"
             android:orientation="vertical">
 
             <TextView
@@ -301,4 +303,6 @@
 
     <!--    Your code goes here....-->
     </LinearLayout>
+        </io.alterac.blurkit.BlurLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -291,6 +291,7 @@ public class available_blood extends AppCompatActivity {
     @Override
     protected void onStop() {
         blurLayout.pauseBlur();
+        blurLayout = findViewById(R.id.blurLayout);
         super.onStop();
     }
 

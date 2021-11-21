@@ -76,6 +76,7 @@ public class Homepage_BB extends AppCompatActivity implements NavigationView.OnN
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), allUsers.class);
                 startActivity(intent);
+                Toast.makeText(Homepage_BB.this, "To check all users, click on search", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -85,6 +86,7 @@ public class Homepage_BB extends AppCompatActivity implements NavigationView.OnN
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), check_requests.class);
                 startActivity(intent);
+                Toast.makeText(Homepage_BB.this, "To check all requests, click on search", Toast.LENGTH_SHORT).show();
             }
         });
 

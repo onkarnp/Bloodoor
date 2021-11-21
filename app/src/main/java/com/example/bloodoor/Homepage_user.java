@@ -146,7 +146,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), allBloodBanks.class);
                 startActivity(intent);
-                Toast.makeText(context, "To see all blood banks,\nclick on search", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Homepage_user.this, "To see all blood banks,\nclick on search", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -156,7 +156,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), check_requests.class);
                 startActivity(intent);
-                Toast.makeText(context, "To see all blood requests,\nclick on search", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Homepage_user.this, "To see all blood requests,\nclick on search", Toast.LENGTH_SHORT).show();
             }
         });
 
