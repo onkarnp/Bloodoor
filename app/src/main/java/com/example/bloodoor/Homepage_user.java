@@ -67,7 +67,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
         blood_bank_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("geo:0, 0?q=" + "near by blood banks");
+                Uri uri = Uri.parse("geo:0, 0?q=" + "nearby blood banks");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 intent.setPackage("com.google.android.apps.maps");
                 startActivity(intent);
@@ -77,7 +77,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
         hospital_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("geo:0, 0?q=" + "near by hospitals");
+                Uri uri = Uri.parse("geo:0, 0?q=" + "nearby hospitals");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 intent.setPackage("com.google.android.apps.maps");
                 startActivity(intent);
@@ -87,7 +87,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
         atm_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("geo:0, 0?q=" + "near by atms");
+                Uri uri = Uri.parse("geo:0, 0?q=" + "nearby atms");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 intent.setPackage("com.google.android.apps.maps");
                 startActivity(intent);
@@ -97,7 +97,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
         bank_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("geo:0, 0?q=" + "near by banks");
+                Uri uri = Uri.parse("geo:0, 0?q=" + "nearby banks");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 intent.setPackage("com.google.android.apps.maps");
                 startActivity(intent);
@@ -128,6 +128,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), live_events.class);
                 startActivity(intent);
+                Toast.makeText(Homepage_user.this, "To check all live/upcoming events,\nclick on search", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -145,6 +146,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), allBloodBanks.class);
                 startActivity(intent);
+                Toast.makeText(context, "To see all blood banks,\nclick on search", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -154,6 +156,7 @@ public class Homepage_user extends AppCompatActivity implements NavigationView.O
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), check_requests.class);
                 startActivity(intent);
+                Toast.makeText(context, "To see all blood requests,\nclick on search", Toast.LENGTH_SHORT).show();
             }
         });
 

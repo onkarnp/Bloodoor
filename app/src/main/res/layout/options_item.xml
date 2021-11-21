@@ -2,8 +2,6 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/mapboxGrayLight"
-    android:backgroundTint="@color/mapboxGrayLight"
     android:ellipsize="end"
     android:maxLines="1"
     android:padding="10dp"

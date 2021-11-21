@@ -75,7 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.direct_bank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri uri = Uri.parse("geo:0, 0?q=" + nameOfBank + ", " + pinCode);
+                Uri uri = Uri.parse("geo:0, 0?q=" + nameOfBank + " blood bank, " + pinCode);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 intent.setPackage("com.google.android.apps.maps");
                 context.startActivity(intent);

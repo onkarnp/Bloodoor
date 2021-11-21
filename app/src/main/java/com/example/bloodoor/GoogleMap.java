@@ -24,7 +24,7 @@ public class GoogleMap extends AppCompatActivity {
         btFind = findViewById(R.id.bt_find);
 
         //Initialize array of place type
-        String[] placeTypeList = {"current location", "near by blood banks", "near by atms", "near by banks", "near by hospitals"};
+        String[] placeTypeList = {"current location", "nearby blood banks", "nearby atms", "nearby banks", "nearby hospitals"};
 
         //Initialize array of place name
         String[] placeNameList = {"Select", "Blood Banks", "ATM", "Banks", "Hospitals"};
