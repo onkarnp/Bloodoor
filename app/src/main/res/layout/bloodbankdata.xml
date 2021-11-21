@@ -28,7 +28,7 @@
             android:textColor="#FF0000"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:drawableLeftCompat="@drawable/ic_person"
+            app:drawableLeftCompat="@drawable/bloodgroup"
             app:drawableTint="#FF0000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
