@@ -87,13 +87,6 @@ public class verifyotp_User extends AppCompatActivity {
                             inputnumber5.getText().toString() +
                             inputnumber6.getText().toString();
 
-
-
-
-
-
-
-
                     if (getotpbackend != null) {
 //                        loadingBar.setTitle("Logging in");
                         loadingBar.setMessage("Verifying OTP");
@@ -196,6 +189,7 @@ public class verifyotp_User extends AppCompatActivity {
         resendlabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(verifyotp_User.this, "Resending the OTP... Plesse wait...", Toast.LENGTH_SHORT).show();
                 PhoneAuthProvider.getInstance().verifyPhoneNumber(
                         "+91" + getIntent().getStringExtra("mobile"),
                         90,

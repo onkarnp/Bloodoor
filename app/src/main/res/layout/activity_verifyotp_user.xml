@@ -46,6 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:fontFamily="@font/baumans"
                 android:text="@string/otp_verification"
                 android:textColor="@color/colortextfirst"
                 android:textSize="22sp"
@@ -56,7 +57,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="50dp"
                 android:gravity="center"
@@ -69,7 +69,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="50dp"
                 android:gravity="center"
@@ -104,7 +103,6 @@
                     android:layout_width="40dp"
                     android:layout_height="46dp"
                     android:layout_marginStart="4dp"
-                    android:layout_marginLeft="4dp"
                     android:background="@drawable/input_bg"
                     android:gravity="center"
                     android:imeOptions="actionNext"
@@ -121,7 +119,6 @@
                     android:layout_width="40dp"
                     android:layout_height="46dp"
                     android:layout_marginStart="4dp"
-                    android:layout_marginLeft="4dp"
                     android:background="@drawable/input_bg"
                     android:gravity="center"
                     android:imeOptions="actionNext"
@@ -138,7 +135,6 @@
                     android:layout_width="40dp"
                     android:layout_height="46dp"
                     android:layout_marginStart="12dp"
-                    android:layout_marginLeft="4dp"
                     android:background="@drawable/input_bg"
                     android:gravity="center"
                     android:imeOptions="actionNext"
@@ -155,7 +151,6 @@
                     android:layout_width="40dp"
                     android:layout_height="46dp"
                     android:layout_marginStart="4dp"
-                    android:layout_marginLeft="4dp"
                     android:background="@drawable/input_bg"
                     android:gravity="center"
                     android:imeOptions="actionNext"
@@ -172,7 +167,6 @@
                     android:layout_width="40dp"
                     android:layout_height="46dp"
                     android:layout_marginStart="4dp"
-                    android:layout_marginLeft="4dp"
                     android:background="@drawable/input_bg"
                     android:gravity="center"
                     android:imeOptions="actionNext"
@@ -229,11 +223,13 @@
                 android:elevation="100dp"
                 android:focusable="true"
                 android:foreground="@drawable/card_effect">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="5dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -244,6 +240,7 @@
                         android:layout_gravity="center_vertical"
                         android:textStyle="bold"
                         android:layout_marginEnd="5dp"/>
+
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"

@@ -177,6 +177,7 @@ public class verifyotp_BB extends AppCompatActivity {
         resendlabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(verifyotp_BB.this, "Resending the OTP... Plesse wait...", Toast.LENGTH_SHORT).show();
                 PhoneAuthProvider.getInstance().verifyPhoneNumber(
                         "+91" + getIntent().getStringExtra("mobile"),
                         90,

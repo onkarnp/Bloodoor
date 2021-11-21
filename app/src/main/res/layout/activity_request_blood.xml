@@ -217,8 +217,9 @@
                 android:layout_margin="10dp"
                 android:padding="10dp"
                 android:text="Submit Request"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textColor="@color/colortextfirst"
+                android:textSize="18sp"
+                app:backgroundTint="@color/colorPrimary" />
 
         </LinearLayout>
         <!--    Your code goes here....-->

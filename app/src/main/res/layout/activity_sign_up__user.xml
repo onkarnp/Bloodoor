@@ -43,6 +43,7 @@
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/circle"
                     android:gravity="center"
+                    android:fontFamily="@font/baumans"
                     android:text="@string/sign_up"
                     android:textColor="#ECAB7A"
                     android:textSize="20sp"

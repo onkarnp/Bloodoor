@@ -126,14 +126,15 @@
 
                 <Button
                     android:id="@+id/DonorSearchbtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
                     android:text="SEARCH"
                     android:padding="5dp"
                     android:textColor="@color/black"
                     android:drawableLeft="@drawable/ic_search"
-                    android:drawableTint="@color/black"/>
+                    android:drawableTint="@color/black" />
             </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/FindDonorRecyclerView"
                 android:layout_width="match_parent"

@@ -52,7 +52,7 @@
                     android:id="@+id/searchDonorHeading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/wellfleet"
+                    android:fontFamily="@font/baumans"
                     android:text="Update Profile"
                     android:layout_marginLeft="5dp"
                     android:textColor="#FFFFFF"
@@ -64,7 +64,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/colorbg"
+            android:background="@drawable/back7"
             android:layout_margin="5dp">
 
             <LinearLayout
@@ -80,7 +80,8 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginBottom="10dp"
-                    android:text="GENERAL INFO"
+                    android:fontFamily="@font/baumans"
+                    android:text="GENERAL INFORMATION"
                     android:textStyle="bold"
                     android:layout_gravity="center"
                     android:textColor="@color/colortextfirst"

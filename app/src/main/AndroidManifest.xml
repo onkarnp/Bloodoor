@@ -19,23 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bloodoor">
-        <activity android:name=".GoogleMap" />
-        <activity android:name=".available_blood" />
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_map_key" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
+        <activity android:name=".available_blood" />
         <activity android:name=".check_requests" />
         <activity android:name=".AllEvents" />
         <activity android:name=".enternumberBB" />
@@ -43,7 +28,6 @@
         <activity android:name=".allUsers" />
         <activity android:name=".live_events" />
         <activity android:name=".create_donation_event" />
-        <activity android:name=".find_nearby_bb" />
         <activity android:name=".request_blood" />
         <activity android:name=".search_donor" />
         <activity android:name=".template" />
@@ -59,7 +43,6 @@
         <activity android:name=".options" />
         <activity android:name=".Homepage_BB" />
         <activity android:name=".Homepage_user" />
-        <activity android:name=".mapBox" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -69,6 +52,7 @@
         </activity>
         <activity android:name=".enternumberUser" />
         <activity android:name=".verifyotp_User" />
+        <activity android:name=".GoogleMap" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -54,6 +54,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:contentDescription="Blood Banks"
+                    android:fontFamily="@font/baumans"
+                    android:textStyle="bold"
                     android:text="Nearby BloodBanks"
                     android:textColor="#0353F4"
                     android:textSize="17sp" />
@@ -96,6 +98,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:contentDescription="Nearby Hospitals"
+                    android:fontFamily="@font/baumans"
+                    android:textStyle="bold"
                     android:text="Nearby Hospitals"
                     android:textColor="#0353F4"
                     android:textSize="17sp" />
@@ -140,6 +144,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:contentDescription="Nearby ATM"
+                    android:fontFamily="@font/baumans"
+                    android:textStyle="bold"
                     android:text="Nearby ATM"
                     android:textColor="#0353F4"
                     android:textSize="17sp" />
@@ -184,6 +190,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:contentDescription="Nearby Banks"
+                    android:fontFamily="@font/baumans"
+                    android:textStyle="bold"
                     android:text="Nearby Banks"
                     android:textColor="#0353F4"
                     android:textSize="17sp" />

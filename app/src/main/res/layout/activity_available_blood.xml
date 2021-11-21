@@ -63,14 +63,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@drawable/colorbg"
+            android:background="@drawable/back7"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
-                android:fontFamily="@font/baumans"
                 android:padding="5dp"
                 android:text="Please update Blood Availability"
                 android:textColor="@color/black"
@@ -87,6 +86,8 @@
                 android:layout_marginTop="10dp"
                 android:hint="Name of blood bank"
                 android:padding="5dp"
+                android:fontFamily="@font/baumans"
+                android:textStyle="bold"
                 android:textAlignment="center"
                 android:textColor="#0000FF"
                 android:textColorHint="#0000FF"
@@ -292,7 +293,9 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="UPDATE"
-                android:textColor="@color/white" />
+                android:textColor="@color/colortextfirst"
+                android:textSize="18sp"
+                app:backgroundTint="@color/colorPrimary"/>
 
         </LinearLayout>
 

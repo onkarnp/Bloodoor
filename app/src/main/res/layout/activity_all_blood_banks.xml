@@ -131,7 +131,7 @@
                 android:drawableLeft="@drawable/ic_search"
                 android:drawableTint="@color/white"
                 android:text="Search"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"/>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
